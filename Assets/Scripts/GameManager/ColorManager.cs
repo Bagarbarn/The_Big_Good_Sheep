@@ -6,6 +6,17 @@ public class ColorManager : MonoBehaviour {
 
     string[] colorList = { "red", "yellow", "blue", "orange", "green", "purple" };
 
+    string player_firstColor;
+    string player_secondColor;
+
+    public void SelectColor(string color)
+    {
+        if (player_firstColor != null)
+            player_firstColor = color;
+        else if (player_secondColor == null)
+            player_secondColor = color;
+    }
+
     string BaseToMixed(string first, string second)
     {
 
@@ -35,24 +46,17 @@ public class ColorManager : MonoBehaviour {
         {
             case "red":
                 return sprites[0];
-                break;
             case "blue":
                 return sprites[1];
-                break;
             case "yellow":
                 return sprites[2];
-                break;
             case "orange":
                 return sprites[3];
-                break;
             case "green":
                 return sprites[4];
-                break;
             case "purple":
                 return sprites[5];
-                break;
             default: return sprites[0];
-                break;
         }
     }
 
@@ -65,24 +69,17 @@ public class ColorManager : MonoBehaviour {
         {
             case "red":
                 return bullets[0];
-                break;
             case "blue":
                 return bullets[1];
-                break;
             case "yellow":
                 return bullets[2];
-                break;
             case "orange":
                 return bullets[3];
-                break;
             case "green":
                 return bullets[4];
-                break;
             case "purple":
                 return bullets[5];
-                break;
             default: return bullets[0];
-                break;
         }
     }
 }

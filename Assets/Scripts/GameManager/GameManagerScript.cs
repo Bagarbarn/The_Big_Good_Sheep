@@ -6,9 +6,12 @@ public class GameManagerScript : MonoBehaviour {
 
     public float p_minSpeed;
     public float p_maxSpeed;
-
     public float p_maxTimer;
 
+
+    public float startTime;
+
+    private float timeCounter;
 
     private float m_acceleration;
 
@@ -19,6 +22,7 @@ public class GameManagerScript : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 
+        timeCounter = startTime;
         m_acceleration = (p_maxSpeed - p_minSpeed) / p_maxTimer;
         m_currentSpeed = p_minSpeed;
 	}
@@ -30,5 +34,10 @@ public class GameManagerScript : MonoBehaviour {
         {
             m_currentSpeed += m_acceleration;
         }
+
+        if (timeCounter > 0)
+            timeCounter -= Time.deltaTime;
+        else
+            Debug.Log("Game Ends");
 	}
 }

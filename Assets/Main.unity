@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1638067195}
   - component: {fileID: 1638067194}
+  - component: {fileID: 1638067196}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -271,6 +272,7 @@ MonoBehaviour:
   p_minSpeed: 2
   p_maxSpeed: 2
   p_maxTimer: 20
+  startTime: 5
   m_currentSpeed: 0
 --- !u!4 &1638067195
 Transform:
@@ -285,6 +287,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1638067196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638067193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b240029c091e34db2f035affd9e69d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  bullets: []
 --- !u!1001 &1641154760
 Prefab:
   m_ObjectHideFlags: 0
