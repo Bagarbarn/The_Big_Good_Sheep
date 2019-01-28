@@ -10,20 +10,25 @@ public class GameManagerScript : MonoBehaviour {
     public float p_maxTimer;
 
 
-    private float m_speedIncrease;
-    private float m_currentSpeed;
+    private float m_acceleration;
+
+    [HideInInspector]
+    public float m_currentSpeed;
 
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
-        m_speedIncrease = (p_maxSpeed - p_minSpeed) / p_maxTimer;
-
+        m_acceleration = (p_maxSpeed - p_minSpeed) / p_maxTimer;
+        m_currentSpeed = p_minSpeed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+        if (m_currentSpeed < p_maxSpeed)
+        {
+            m_currentSpeed += m_acceleration;
+        }
 	}
-    
 }
