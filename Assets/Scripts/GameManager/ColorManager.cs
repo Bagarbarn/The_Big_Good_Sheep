@@ -11,11 +11,34 @@ public class ColorManager : MonoBehaviour {
 
     public void SelectColor(string color)
     {
-        if (player_firstColor != null)
+        if (player_firstColor == null)
             player_firstColor = color;
         else if (player_secondColor == null)
             player_secondColor = color;
+
+        Debug.Log(player_secondColor + ", " + player_firstColor);
     }
+
+    public GameObject GetScoop()
+    {
+        Debug.Log("Getting Scoop");
+        string end_color;
+        if ((player_firstColor != null && player_secondColor != null) && player_firstColor != player_secondColor)
+            end_color = BaseToMixed(player_firstColor, player_secondColor);
+        else if (player_firstColor != null)
+            end_color = player_firstColor;
+        else
+            return null;
+
+        player_firstColor = null;
+        player_secondColor = null;
+
+        Debug.Log(end_color);
+
+        return GetBullet(end_color);
+
+    }
+
 
     string BaseToMixed(string first, string second)
     {

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float p_speed;
-
-
     KeyCode key_moveUp = KeyCode.W;
     KeyCode key_moveDown = KeyCode.S;
     KeyCode key_shoot = KeyCode.Space;
@@ -15,6 +12,13 @@ public class PlayerController : MonoBehaviour {
     KeyCode key_colorThree = KeyCode.L;
 
 
+    public float p_speed;
+    public float bullet_speed;
+
+
+    private ColorManager colorManager;
+    private Transform barrelEnd;
+
 
     //Debug Temp vars
 
@@ -22,7 +26,8 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        colorManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ColorManager>();
+        barrelEnd = transform.Find("Barrel");
 	}
 	
 	// Update is called once per frame
@@ -44,14 +49,20 @@ public class PlayerController : MonoBehaviour {
 
 
         if (Input.GetKeyDown(key_shoot))
-            currentColor = "Shoot"; //Shoot
+        {
+            GameObject scoop = colorManager.GetScoop();
+            if (scoop != null)
+            {
+                GameObject icecream = Instantiate(scoop, barrelEnd.position, Quaternion.identity);
+            }
+        }
 
         if (Input.GetKeyDown(key_colorOne))
-            currentColor = "Red"; //colorManager.SetColor("Red");
+            colorManager.SelectColor("red");
         if (Input.GetKeyDown(key_colorTwo))
-            currentColor = "Blue"; //colorManager.SetColor("Blue");
+            colorManager.SelectColor("blue");
         if (Input.GetKeyDown(key_colorThree))
-            currentColor = "Yellow"; //colorManager.SetColor("Yellow");
+            colorManager.SelectColor("yellow");
 
     }
 }

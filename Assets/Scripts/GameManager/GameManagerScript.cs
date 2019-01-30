@@ -32,7 +32,7 @@ public class GameManagerScript : MonoBehaviour {
 
         if (m_currentSpeed < p_maxSpeed)
         {
-            m_currentSpeed += m_acceleration;
+            m_currentSpeed += m_acceleration * Time.deltaTime;
         }
 
         if (timeCounter > 0)
