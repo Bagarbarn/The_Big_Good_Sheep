@@ -9,6 +9,13 @@ public class ColorManager : MonoBehaviour {
     string player_firstColor;
     string player_secondColor;
 
+
+    public GameObject[] bullets;
+    public Sprite[] sprites;
+
+    private Color color_purple = new Color(255, 0, 255, 255);
+    private Color color_orange = new Color(255, 82, 0, 255);
+
     public void SelectColor(string color)
     {
         if (player_firstColor == null)
@@ -61,9 +68,9 @@ public class ColorManager : MonoBehaviour {
     }
 
 
-    public Sprite[] sprites;
 
-    Sprite GetSprite(string color)
+
+    public Sprite GetSprite(string color)
     {
         switch (color)
         {
@@ -84,7 +91,27 @@ public class ColorManager : MonoBehaviour {
     }
 
 
-    public GameObject[] bullets;
+    public Color GetColor(string color)
+    {
+        switch (color)
+        {
+            case "red":
+                return Color.red;
+            case "blue":
+                return Color.blue;
+            case "yellow":
+                return Color.yellow;
+            case "orange":
+                return color_orange;
+            case "green":
+                return Color.green;
+            case "purple":
+                return color_purple;
+            default: return Color.red;
+        }
+    }
+
+
 
     GameObject GetBullet(string color)
     {
