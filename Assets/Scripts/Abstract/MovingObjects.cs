@@ -6,7 +6,8 @@ public abstract class MovingObjects : MonoBehaviour {
 
     public float p_speed;
 
-    private GameManagerScript gameManagerScript;
+    [HideInInspector]
+    public GameManagerScript gameManagerScript;
 
 
 
