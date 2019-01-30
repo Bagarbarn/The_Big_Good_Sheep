@@ -14,7 +14,7 @@ public class ColorManager : MonoBehaviour {
     public Sprite[] sprites;
 
     private Color color_purple = new Color(255, 0, 255, 255);
-    private Color color_orange = new Color(255, 82, 0, 255);
+    private Color color_orange = new Color(1.0f, 0.64f, 0f, 1f);
 
     public void SelectColor(string color)
     {
@@ -133,3 +133,6 @@ public class ColorManager : MonoBehaviour {
         }
     }
 }
+
+
+//GitLab
