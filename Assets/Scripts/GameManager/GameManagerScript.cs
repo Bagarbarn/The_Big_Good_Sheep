@@ -17,11 +17,14 @@ public class GameManagerScript : MonoBehaviour {
 
     public float startTime;
 
+
     public GameObject customerObject;
+    public GameObject[] roadObstacles;
 
     private float timeCounter;
 
     private float m_acceleration;
+    private GameObject[] objectSpawners;
 
     //private float customerSpawnTimeCounter;
 
@@ -37,6 +40,8 @@ public class GameManagerScript : MonoBehaviour {
         m_currentSpeed = p_minSpeed;
         //customerSpawnTimeCounter = customerSpawnTime;
 
+        objectSpawners = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
+
     }
 	
 	// Update is called once per frame
@@ -51,10 +56,36 @@ public class GameManagerScript : MonoBehaviour {
             Debug.Log("Game Ends");
 
         if (timeCounter <= 0)
-            SpawnSheep();
+            SpawnRandomObject();
         else
             timeCounter -= Time.deltaTime;
 	}
+
+    void SpawnRandomObject()
+    {
+
+        int sheep_or_object = Random.Range(0, 2);
+
+        switch (sheep_or_object)
+        {
+            case 0: SpawnSheep(); break;
+            case 1: SpawnRoadObstacle();  break;
+            default: SpawnRandomObject(); break;
+        }
+    }
+
+    void SpawnRoadObstacle()
+    {
+
+        //I am a dwarf and I'm digging a hole
+
+        int object_choice = Random.Range(0, roadObstacles.Length);
+        int spawner_choice = Random.Range(0, objectSpawners.Length);
+
+        Instantiate(roadObstacles[object_choice], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
+
+
+    }
 
     void SpawnSheep()
     {

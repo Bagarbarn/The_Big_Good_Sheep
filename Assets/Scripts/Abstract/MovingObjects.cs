@@ -15,7 +15,6 @@ public abstract class MovingObjects : MonoBehaviour {
 	public virtual void Start () {
 
         gameManagerScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
-
 	}
 	
 	// Update is called once per frame

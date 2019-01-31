@@ -12,6 +12,7 @@ public class BulletScript : MonoBehaviour {
     private void Start()
     {
         m_speed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().bullet_speed;
+        Destroy(this.gameObject, 20 / m_speed);
     }
 
     private void Update()
