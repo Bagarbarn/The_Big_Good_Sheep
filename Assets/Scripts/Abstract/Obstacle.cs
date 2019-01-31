@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class Obstacle : MovingObjects {
 
+    public override void Start()
+    {
+        base.Start();
+        Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
+    }
 
     public virtual void ObstacleEvent()
     {

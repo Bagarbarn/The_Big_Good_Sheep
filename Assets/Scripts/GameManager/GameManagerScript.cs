@@ -16,7 +16,8 @@ public class GameManagerScript : MonoBehaviour {
     //public float customerSpawnTime;
 
 
-    public float startTime;
+    public float customerSpawnTime;
+    public float obstacleSpawnTime;
 
     public GameObject customerObject;
     public GameObject[] roadObstacles;
@@ -26,7 +27,9 @@ public class GameManagerScript : MonoBehaviour {
     public int p_customerPoints;
     private int m_score;
 
-    private float timeCounter;
+    
+    public float customerTimeCounter;
+    public float obstacleTimeCounter;
 
     private float m_acceleration;
     private GameObject[] objectSpawners;
@@ -40,10 +43,10 @@ public class GameManagerScript : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 
-        timeCounter = startTime;
+        customerTimeCounter = customerSpawnTime;
+        obstacleTimeCounter = obstacleSpawnTime;
         m_acceleration = (p_maxSpeed - p_minSpeed) / p_maxTimer;
         m_currentSpeed = p_minSpeed;
-        //customerSpawnTimeCounter = customerSpawnTime;
 
         objectSpawners = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
         p_scoreText.text = "Score: " + m_score;
@@ -56,16 +59,21 @@ public class GameManagerScript : MonoBehaviour {
         if (m_currentSpeed < p_maxSpeed)
             m_currentSpeed += m_acceleration * Time.deltaTime;
 
-        if (timeCounter > 0)
-            timeCounter -= Time.deltaTime;
+        if (customerTimeCounter <= 0)
+            SpawnSheep();
         else
-            Debug.Log("Game Ends");
+            customerTimeCounter -= Time.deltaTime;
 
-        if (timeCounter <= 0)
-            SpawnRandomObject();
+        if (obstacleTimeCounter <= 0)
+            SpawnRoadObstacle();
         else
-            timeCounter -= Time.deltaTime;
-	}
+            obstacleTimeCounter -= Time.deltaTime;
+
+
+        if (Mathf.Abs(obstacleTimeCounter - customerTimeCounter) < 0.25f)
+            obstacleTimeCounter += 0.5f;
+
+    }
 
     void SpawnRandomObject()
     {
@@ -78,19 +86,18 @@ public class GameManagerScript : MonoBehaviour {
             case 1: SpawnRoadObstacle();  break;
             default: SpawnRandomObject(); break;
         }
+        //timeCounter = startTime;
     }
 
     void SpawnRoadObstacle()
     {
-
         //I am a dwarf and I'm digging a hole
 
         int object_choice = Random.Range(0, roadObstacles.Length);
         int spawner_choice = Random.Range(0, objectSpawners.Length);
 
         Instantiate(roadObstacles[object_choice], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
-
-
+        obstacleTimeCounter = obstacleSpawnTime;
     }
 
     void SpawnSheep()
@@ -99,7 +106,7 @@ public class GameManagerScript : MonoBehaviour {
         Vector2 spawnPos = new Vector2(11, y_pos);
 
         Instantiate(customerObject, spawnPos, Quaternion.identity);
-        timeCounter = startTime;
+        customerTimeCounter = customerSpawnTime;
     }
 
     public void AddScore()
