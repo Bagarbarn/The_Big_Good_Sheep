@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour {
 
@@ -17,9 +18,13 @@ public class GameManagerScript : MonoBehaviour {
 
     public float startTime;
 
-
     public GameObject customerObject;
     public GameObject[] roadObstacles;
+
+    public Text p_scoreText;
+
+    public int p_customerPoints;
+    private int m_score;
 
     private float timeCounter;
 
@@ -41,6 +46,7 @@ public class GameManagerScript : MonoBehaviour {
         //customerSpawnTimeCounter = customerSpawnTime;
 
         objectSpawners = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
+        p_scoreText.text = "Score: " + m_score;
 
     }
 	
@@ -94,5 +100,11 @@ public class GameManagerScript : MonoBehaviour {
 
         Instantiate(customerObject, spawnPos, Quaternion.identity);
         timeCounter = startTime;
+    }
+
+    public void AddScore()
+    {
+        m_score += p_customerPoints;
+        p_scoreText.text = "Score: " + m_score;
     }
 }
