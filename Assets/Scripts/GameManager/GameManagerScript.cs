@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour {
 
@@ -11,18 +12,24 @@ public class GameManagerScript : MonoBehaviour {
     public float screenHeight;
     public float screenLow;
 
+    private float m_score;
+    public float p_customerPoints;
+    public Text p_scoreText;
 
     //public float customerSpawnTime;
 
 
     public float startTime;
+<<<<<<< Updated upstream
 
 
     public GameObject customerObject;
     public GameObject[] roadObstacles;
 
+=======
+    public GameObject customerObject;
+>>>>>>> Stashed changes
     private float timeCounter;
-
     private float m_acceleration;
     private GameObject[] objectSpawners;
 
@@ -39,9 +46,14 @@ public class GameManagerScript : MonoBehaviour {
         m_acceleration = (p_maxSpeed - p_minSpeed) / p_maxTimer;
         m_currentSpeed = p_minSpeed;
         //customerSpawnTimeCounter = customerSpawnTime;
+<<<<<<< Updated upstream
 
         objectSpawners = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
 
+=======
+        m_score = 0;
+        p_scoreText.text = "Score: " + m_score;
+>>>>>>> Stashed changes
     }
 	
 	// Update is called once per frame
@@ -94,5 +106,11 @@ public class GameManagerScript : MonoBehaviour {
 
         Instantiate(customerObject, spawnPos, Quaternion.identity);
         timeCounter = startTime;
+    }
+
+    public void AddPoint()
+    {
+        m_score += p_customerPoints;
+        p_scoreText.text = "Score: " + m_score;
     }
 }

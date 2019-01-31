@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SheepController : MovingObjects {
 
-
-
     private string m_demandedColor;
 
     SpriteRenderer demandSprite;
@@ -27,7 +25,12 @@ public class SheepController : MovingObjects {
 
             if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor)
             {
+<<<<<<< Updated upstream
                 Destroy(other.gameObject);
+=======
+                gameManagerScript.AddPoint();
+                Destroy(other);
+>>>>>>> Stashed changes
                 Destroy(gameObject);
             }
             else
