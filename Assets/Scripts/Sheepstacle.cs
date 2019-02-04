@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Sheepstacle : Obstacle
 {
-    public override void ObstacleEvent()
-    {
-        base.ObstacleEvent();
+    //public override void ObstacleEvent()
+    //{
+    //    base.ObstacleEvent();
 
-    }
+    //}
 
 
 }

@@ -10,10 +10,11 @@ public abstract class Obstacle : MovingObjects {
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
     }
 
-    public virtual void ObstacleEvent()
+    public virtual void ObstacleEvent(GameObject playerObject)
     {
         //this is for the object specific script;
         Debug.Log("Au, I'm Hit");
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -21,8 +22,7 @@ public abstract class Obstacle : MovingObjects {
         
         if (other.tag == "Player")
         {
-            ObstacleEvent();
-
+            ObstacleEvent(other.gameObject);
         }
     }
 

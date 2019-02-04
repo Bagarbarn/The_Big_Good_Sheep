@@ -8,6 +8,10 @@ public class SheepController : MovingObjects {
 
     SpriteRenderer demandSprite;
 
+    public int p_scoreValue;
+    public int p_scoreFailure;
+    public int p_timeWhenHit;
+
     override public void Start()
     {
         base.Start();
@@ -25,17 +29,32 @@ public class SheepController : MovingObjects {
 
             if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor)
             {
-                gameManagerScript.AddScore();
+                gameManagerScript.AddScore(p_scoreValue);
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
             else
             {
                 Destroy(other.gameObject);
+                gameManagerScript.AddScore(-p_scoreFailure);
                 //Something when wrong color hits sheeps
             }
+        } else if (other.gameObject.tag == "Player")
+        {
+            gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_timeWhenHit);
+            Debug.Log("Sheep Hit");
+            Destroy(this.gameObject);
         }
     }
+
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_timeWhenHit);
+    //        Debug.Log("Sheep Hit");
+    //    }
+    //}
 
 
 }

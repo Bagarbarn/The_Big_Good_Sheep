@@ -24,7 +24,7 @@ public class GameManagerScript : MonoBehaviour {
 
     public Text p_scoreText;
 
-    public int p_customerPoints;
+    //public int p_customerPoints;
     private int m_score;
 
     
@@ -109,9 +109,14 @@ public class GameManagerScript : MonoBehaviour {
         customerTimeCounter = customerSpawnTime;
     }
 
-    public void AddScore()
+    public void AddScore(int scoreToAdd)
     {
-        m_score += p_customerPoints;
+        m_score += scoreToAdd;
         p_scoreText.text = "Score: " + m_score;
+    }
+
+    public void EndGame()
+    {
+        GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
     }
 }
