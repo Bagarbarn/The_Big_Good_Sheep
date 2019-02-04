@@ -16,7 +16,6 @@ public class SheepController : MovingObjects {
     {
         base.Start();
         m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor();
-        Debug.Log(m_demandedColor);
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         demandSprite.color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(m_demandedColor);
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
@@ -42,19 +41,12 @@ public class SheepController : MovingObjects {
         } else if (other.gameObject.tag == "Player")
         {
             gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_timeWhenHit);
-            Debug.Log("Sheep Hit");
+            //Debug.Log("Sheep Hit");
             Destroy(this.gameObject);
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if (other.gameObject.tag == "Player")
-    //    {
-    //        gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_timeWhenHit);
-    //        Debug.Log("Sheep Hit");
-    //    }
-    //}
+
 
 
 }

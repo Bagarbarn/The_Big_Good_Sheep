@@ -118,5 +118,6 @@ public class GameManagerScript : MonoBehaviour {
     public void EndGame()
     {
         GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
+        Debug.Log("Times up! \nWait... Am I supposed to do something here?");
     }
 }

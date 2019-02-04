@@ -12,8 +12,6 @@ public abstract class Obstacle : MovingObjects {
 
     public virtual void ObstacleEvent(GameObject playerObject)
     {
-        //this is for the object specific script;
-        Debug.Log("Au, I'm Hit");
         Destroy(this.gameObject);
     }
 
