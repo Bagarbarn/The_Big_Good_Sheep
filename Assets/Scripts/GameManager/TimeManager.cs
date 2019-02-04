@@ -21,6 +21,12 @@ public class TimeManager : MonoBehaviour {
         if (m_currentTime < 0)
         {
             Debug.Log("Time's up!");
+            gameObject.GetComponent<GameManagerScript>().EndGame();
         }
+    }
+
+    public void AdjustTime(float timeToAdjust)
+    {
+        m_currentTime += timeToAdjust;
     }
 }

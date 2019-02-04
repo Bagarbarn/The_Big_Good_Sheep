@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
     public float p_speed;
     public float bullet_speed;
+    public bool p_stunned;
 
 
     private ColorManager colorManager;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        p_stunned = false;
         colorManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ColorManager>();
         barrelEnd = transform.Find("Barrel");
 	}
@@ -33,7 +35,9 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        GetInput();
+
+        if (!p_stunned)
+            GetInput();
 
 
 	}
@@ -63,6 +67,20 @@ public class PlayerController : MonoBehaviour {
             colorManager.SelectColor("blue");
         if (Input.GetKeyDown(key_colorThree))
             colorManager.SelectColor("yellow");
+
+    }
+
+    public IEnumerator SetStunned(float time)
+    {
+        p_stunned = true;
+        float time_left = time;
+        while (time_left > 0 )
+        {
+            time_left -= Time.deltaTime;
+
+            yield return null;
+        }
+        p_stunned = false;
 
     }
 }
