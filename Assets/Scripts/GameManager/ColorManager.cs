@@ -84,6 +84,8 @@ public class ColorManager : MonoBehaviour {
             return "green";
         else if ((first == "red" && second == "yellow") || (first == "yellow" && second == "red"))
             return "orange";
+        else if (first == second)
+            return first;
         else return "null";
     }
 
