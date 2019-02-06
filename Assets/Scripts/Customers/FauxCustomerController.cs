@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FauxCustomerController : MovingObjects {
 
+    public float p_decreaseTime;
+
     private string m_demandedColor;
 
     SpriteRenderer demandSprite;
@@ -18,8 +20,22 @@ public class FauxCustomerController : MovingObjects {
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Bullet")
+        {
+
+            gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_decreaseTime);
+            //Cool smoke bomb animation with evil laughter
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
+
+        } else if (other.tag == "Player")
+        {
+            //They can die
+            Destroy(this.gameObject);
+        }
+    }
+
 }

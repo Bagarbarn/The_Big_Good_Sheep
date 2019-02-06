@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ColorManager : MonoBehaviour {
+
+    public Canvas canvas;
 
     string[] colorList = { "red", "yellow", "blue", "orange", "green", "purple" };
 
@@ -16,14 +19,39 @@ public class ColorManager : MonoBehaviour {
     private Color color_purple = new Color(255, 0, 255, 255);
     private Color color_orange = new Color(1.0f, 0.64f, 0f, 1f);
 
+    private Image scoopImageOne;
+    private Image scoopImageTwo;
+    private Image scoopImageThree;
+
+    private void Start()
+    {
+        scoopImageOne = canvas.transform.Find("IceCreamOne").GetComponent<Image>();
+        scoopImageTwo = canvas.transform.Find("IceCreamTwo").GetComponent<Image>();
+        scoopImageThree = canvas.transform.Find("IceCreamThree").GetComponent<Image>();
+    }
+
     public void SelectColor(string color)
     {
         if (player_firstColor == null)
+        {
             player_firstColor = color;
+            scoopImageOne.gameObject.SetActive(true);
+            scoopImageOne.color = GetColor(color);
+            scoopImageThree.gameObject.SetActive(true);
+            scoopImageThree.color = GetColor(color);
+        }
         else if (player_secondColor == null)
+        {
             player_secondColor = color;
+            scoopImageTwo.gameObject.SetActive(true);
+            scoopImageTwo.color = GetColor(color);
+            scoopImageThree.gameObject.SetActive(true);
+            scoopImageThree.color = GetColor(BaseToMixed(player_firstColor, player_secondColor));
+        }
 
-        Debug.Log(player_secondColor + ", " + player_firstColor);
+
+
+        //Debug.Log(player_secondColor + ", " + player_firstColor);
     }
 
     public GameObject GetScoop()
@@ -131,6 +159,16 @@ public class ColorManager : MonoBehaviour {
                 return bullets[5];
             default: return bullets[0];
         }
+    }
+
+    public void Cancel()
+    {
+        player_firstColor = null;
+        player_secondColor = null;
+        scoopImageOne.gameObject.SetActive(false);
+        scoopImageTwo.gameObject.SetActive(false);
+        scoopImageThree.gameObject.SetActive(false);
+
     }
 }
 
