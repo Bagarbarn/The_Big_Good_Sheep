@@ -71,11 +71,12 @@ public class GameManagerScript : MonoBehaviour {
             obstacleTimeCounter += 0.5f;
 
         //FOR TESTING
+        /*
         if (m_score > 10)
         {
             GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
             SceneManager.LoadScene("ScoreBoard");
-        }
+        }*/
     }
 
     void SpawnRandomObject()
