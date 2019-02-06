@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
+    public bool t_gameEnd;
+
     public float p_minSpeed;
     public float p_maxSpeed;
     public float p_maxTimer;
@@ -13,11 +15,14 @@ public class GameManagerScript : MonoBehaviour {
     public float screenHeight;
     public float screenLow;
 
+    public int fauxSpawnPercent;
     public float customerSpawnTime;
     public float obstacleSpawnTime;
 
     public GameObject customerObject;
     public GameObject[] roadObstacles;
+    public float[] roadObstaclesSpawnChance;
+    public GameObject fauxCustomerObject;
 
     public Text p_scoreText;
 
@@ -71,11 +76,11 @@ public class GameManagerScript : MonoBehaviour {
             obstacleTimeCounter += 0.5f;
 
         //FOR TESTING
-        if (m_score > 10)
-        {
-            GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
-            SceneManager.LoadScene("ScoreBoard");
-        }
+        //if (m_score > 10)
+        //{
+        //    GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
+        //    SceneManager.LoadScene("ScoreBoard");
+        //}
     }
 
     void SpawnRandomObject()
@@ -96,19 +101,42 @@ public class GameManagerScript : MonoBehaviour {
     {
         //I am a dwarf and I'm digging a hole
 
-        int object_choice = Random.Range(0, roadObstacles.Length);
+        float object_choice = Random.Range(1, 101);
+        int numberToSpawn = 0;
+        for (int i = 0; i < roadObstaclesSpawnChance.Length; i++)
+        {
+            if (object_choice <= roadObstaclesSpawnChance[i])
+            {
+                numberToSpawn = i;
+                break;
+            }
+            else
+                object_choice -= roadObstaclesSpawnChance[i];
+        }
+        
+
+
         int spawner_choice = Random.Range(0, objectSpawners.Length);
 
-        Instantiate(roadObstacles[object_choice], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
+        Instantiate(roadObstacles[numberToSpawn], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
         obstacleTimeCounter = obstacleSpawnTime;
     }
 
     void SpawnSheep()
     {
+
+        GameObject gameObjectToSpawn;
+        int rand = Random.Range(1, 101);
+        if (rand <= fauxSpawnPercent)
+            gameObjectToSpawn = fauxCustomerObject;
+        else
+            gameObjectToSpawn = customerObject;
+
+
         float y_pos = Random.Range(screenLow, screenHeight);
         Vector2 spawnPos = new Vector2(11, y_pos);
 
-        Instantiate(customerObject, spawnPos, Quaternion.identity);
+        Instantiate(gameObjectToSpawn, spawnPos, Quaternion.identity);
         customerTimeCounter = customerSpawnTime;
     }
 
@@ -122,6 +150,7 @@ public class GameManagerScript : MonoBehaviour {
     {
         GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
         Debug.Log("Times up! \nWait... Am I supposed to do something here?");
-        //SceneManager.LoadScene("ScoreBoard");
+        if (t_gameEnd)
+            SceneManager.LoadScene("ScoreBoard");
     }
 }
