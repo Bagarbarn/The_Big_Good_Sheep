@@ -34,12 +34,18 @@ public class HighScoreManager : MonoBehaviour {
     void Awake()
     {
         playerScore = GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore;
-        ReadString();
-        WriteString();
+        ReadFile();
+
+        for (int i = 0; i < highscoreSlots.Length; i++)
+        {
+            highscoreSlots[i].text = scoreList[i].GetName() + ": " + scoreList[i].GetScore();
+        }
+
+        WriteFile();
     }
 
     [MenuItem("Tools/Write file")]
-    static void WriteString()
+    static void WriteFile()
     {
         StreamWriter writer = new StreamWriter(path, false);
 
@@ -56,7 +62,7 @@ public class HighScoreManager : MonoBehaviour {
     }
 
     [MenuItem("Tools/Read file")]
-    static void ReadString()
+    static void ReadFile()
     {
         StreamReader reader = new StreamReader(path);
 
