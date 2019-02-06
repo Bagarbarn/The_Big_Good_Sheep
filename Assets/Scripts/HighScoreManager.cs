@@ -21,6 +21,7 @@ public struct HighScoreData
         m_name = p_name;
         m_score = p_score;
     }
+
 }
 
 public class HighScoreManager : MonoBehaviour {
