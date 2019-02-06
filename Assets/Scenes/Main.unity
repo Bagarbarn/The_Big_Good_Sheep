@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 1184776641}
   - component: {fileID: 1184776643}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: FauxCustomer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,6 +723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6bad826f6ceee44b17064b1bbfc556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p_speed: 0
+  gameManagerScript: {fileID: 0}
 --- !u!1 &1197251023
 GameObject:
   m_ObjectHideFlags: 0
