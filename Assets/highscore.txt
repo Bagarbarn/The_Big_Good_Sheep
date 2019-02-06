@@ -1,10 +1,12 @@
 Tommy
 77
 Tommy
-77
+66
 Tommy
-77
+55
 Tommy
-77
+44
 Tommy
-77
+33
+Player
+20

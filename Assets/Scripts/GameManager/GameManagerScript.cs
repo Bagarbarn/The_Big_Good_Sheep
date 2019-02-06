@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
@@ -11,10 +12,6 @@ public class GameManagerScript : MonoBehaviour {
 
     public float screenHeight;
     public float screenLow;
-
-
-    //public float customerSpawnTime;
-
 
     public float customerSpawnTime;
     public float obstacleSpawnTime;
@@ -73,6 +70,12 @@ public class GameManagerScript : MonoBehaviour {
         if (Mathf.Abs(obstacleTimeCounter - customerTimeCounter) < 0.25f)
             obstacleTimeCounter += 0.5f;
 
+        //FOR TESTING
+        if (m_score > 10)
+        {
+            GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
+            SceneManager.LoadScene("ScoreBoard");
+        }
     }
 
     void SpawnRandomObject()
@@ -119,5 +122,6 @@ public class GameManagerScript : MonoBehaviour {
     {
         GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
         Debug.Log("Times up! \nWait... Am I supposed to do something here?");
+        //SceneManager.LoadScene("ScoreBoard");
     }
 }
