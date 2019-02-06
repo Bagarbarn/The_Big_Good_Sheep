@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 1184776641}
   - component: {fileID: 1184776643}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: FauxCustomer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
