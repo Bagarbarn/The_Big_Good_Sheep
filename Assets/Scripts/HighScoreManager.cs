@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
+//using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public struct HighScoreData
 {
@@ -54,6 +55,16 @@ public class HighScoreManager : MonoBehaviour {
         WriteFile();
     }
 
+    public void MainMenuClick()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartClick()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
     public void UpdateList()
     {
         scoreList.Sort((s1, s2) => -1 * s1.GetScore().CompareTo(s2.GetScore()));
@@ -69,7 +80,7 @@ public class HighScoreManager : MonoBehaviour {
         }
     }
 
-    [MenuItem("Tools/Write file")]
+    //[MenuItem("Tools/Write file")]
     static void WriteFile()
     {
         StreamWriter writer = new StreamWriter(path, false);
@@ -82,11 +93,11 @@ public class HighScoreManager : MonoBehaviour {
         writer.Close();
 
         //Re-import the file to update the reference in the editor
-        AssetDatabase.ImportAsset(path);
-        TextAsset asset = (TextAsset)Resources.Load("highscore", typeof (TextAsset));
+        /*AssetDatabase.ImportAsset(path);
+        TextAsset asset = (TextAsset)Resources.Load("highscore", typeof (TextAsset));*/
     }
 
-    [MenuItem("Tools/Read file")]
+    //[MenuItem("Tools/Read file")]
     static void ReadFile()
     {
         StreamReader reader = new StreamReader(path);
