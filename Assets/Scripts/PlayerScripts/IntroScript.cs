@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class IntroScript : MonoBehaviour {
 
+
+    public bool testing;
+
     public GameObject introObject;
 
     public float p_displayTime;
     public float p_blinkTime;
     public float p_blinkInterval;
 
+
     IEnumerator coroutine;
 
 	void Start () {
 
-
+        
         coroutine = SetIntro(introObject);
-        StartCoroutine(coroutine);
+        if (!testing)
+            StartCoroutine(coroutine);
 
 	}
 

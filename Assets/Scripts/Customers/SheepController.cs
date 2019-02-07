@@ -26,7 +26,7 @@ public class SheepController : MovingObjects {
         if (other.tag == "Bullet")
         {
 
-            if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor)
+            if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor || other.gameObject.GetComponent<BulletScript>().p_color == "Rainbow")
             {
                 gameManagerScript.AddScore(p_scoreValue);
                 Destroy(other.gameObject);

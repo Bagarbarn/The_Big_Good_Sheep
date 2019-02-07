@@ -12,6 +12,7 @@ public class ColorManager : MonoBehaviour {
     string player_firstColor;
     string player_secondColor;
 
+    public GameObject rainbowBullet;
 
     public GameObject[] bullets;
     public Sprite[] sprites;
@@ -28,6 +29,11 @@ public class ColorManager : MonoBehaviour {
         scoopImageOne = canvas.transform.Find("IceCreamOne").GetComponent<Image>();
         scoopImageTwo = canvas.transform.Find("IceCreamTwo").GetComponent<Image>();
         scoopImageThree = canvas.transform.Find("IceCreamThree").GetComponent<Image>();
+    }
+
+    public GameObject GetRainbowScoop()
+    {
+        return rainbowBullet;
     }
 
     public void SelectColor(string color)
