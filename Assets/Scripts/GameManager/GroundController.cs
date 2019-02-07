@@ -12,9 +12,7 @@ public class GroundController : MovingObjects {
 
         if (transform.position.x < endPos)
         {
-
             transform.position = new Vector3(startPos, transform.position.y, 0);
-
         }
 
 	}
