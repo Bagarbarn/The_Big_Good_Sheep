@@ -15,14 +15,17 @@ public class PlayerController : MonoBehaviour {
 
     public float p_speed;
     public float bullet_speed;
-    public bool p_stunned;
 
 
     private float m_currentSpeed;
 
+    private GameObject gameManager;
+    private SoundScript soundScript;
     private ColorManager colorManager;
     private Transform barrelEnd;
 
+    private bool m_stunned;
+    private bool m_overdrive;
 
     //Debug Temp vars
 
@@ -31,12 +34,17 @@ public class PlayerController : MonoBehaviour {
 
     [HideInInspector]
     public float p_slowPercentage;
+    [HideInInspector]
+    public float p_overdriveShotInterval;
 
     // Use this for initialization
     void Start() {
-        p_stunned = false;
+        m_stunned = false;
+        m_overdrive = false;
         m_currentSpeed = p_speed;
-        colorManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ColorManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        soundScript = gameManager.GetComponent<SoundScript>();
+        colorManager = gameManager.GetComponent<ColorManager>();
         barrelEnd = transform.Find("Barrel");
     }
 
@@ -44,7 +52,7 @@ public class PlayerController : MonoBehaviour {
     void Update() {
 
 
-        if (!p_stunned)
+        if (!m_stunned)
             GetInput();
 
 
@@ -67,7 +75,7 @@ public class PlayerController : MonoBehaviour {
             colorManager.Cancel();
             if (scoop != null)
             {
-                Instantiate(scoop, barrelEnd.position, Quaternion.identity);
+                Shoot(scoop);
             }
         }
 
@@ -83,9 +91,15 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    void Shoot(GameObject bullet)
+    {
+        Instantiate(bullet, barrelEnd.position, Quaternion.identity);
+        soundScript.PlayShotAudio();
+    }
+
     public IEnumerator SetStunned(float time)
     {
-        p_stunned = true;
+        m_stunned = true;
         float time_left = time;
         while (time_left > 0)
         {
@@ -93,7 +107,7 @@ public class PlayerController : MonoBehaviour {
 
             yield return null;
         }
-        p_stunned = false;
+        m_stunned = false;
 
     }
 
@@ -110,5 +124,25 @@ public class PlayerController : MonoBehaviour {
         m_currentSpeed = p_speed;
     }
 
+    public IEnumerator Overdrive(float time)
+    {
+        m_overdrive = true;
+        float time_left = time;
+        float shotCD = 0;
+        //Get Rainbow Scoop
+        GameObject rainbowScoop =  colorManager.GetRainbowScoop();
+        while (time_left > 0)
+        {
+            time_left -= Time.deltaTime;
+            if (shotCD <= 0)
+            {
+                Shoot(rainbowScoop);
+                shotCD = p_overdriveShotInterval;
+            } else
+                shotCD -= Time.deltaTime;
 
+            yield return null;
+        }
+        m_overdrive = false;
+    }
 }

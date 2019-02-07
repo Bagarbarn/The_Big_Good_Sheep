@@ -20,9 +20,14 @@ public class GameManagerScript : MonoBehaviour {
     public float obstacleSpawnTime;
 
     public GameObject customerObject;
-    public GameObject[] roadObstacles;
-    public float[] roadObstaclesSpawnChance;
     public GameObject fauxCustomerObject;
+
+    public Vector2 pickUpsVsRoadObstacles;
+    public GameObject[] roadObstacles;
+    public GameObject[] pickUpObjects;
+    public float[] roadObstaclesSpawnChance;
+    public float[] pickUpSpawnChance;
+   
 
     public Text p_scoreText;
 
@@ -99,26 +104,47 @@ public class GameManagerScript : MonoBehaviour {
 
     void SpawnRoadObstacle()
     {
-        //I am a dwarf and I'm digging a hole
+        float random = Random.Range(1, 101);
 
-        float object_choice = Random.Range(1, 101);
-        int numberToSpawn = 0;
-        for (int i = 0; i < roadObstaclesSpawnChance.Length; i++)
+        if (random <= pickUpsVsRoadObstacles.x)
         {
-            if (object_choice <= roadObstaclesSpawnChance[i])
+            float pickUp_choice = Random.Range(1, 101);
+            int numberToSpawn = 0;
+            for (int i = 0; i < pickUpSpawnChance.Length; i++)
             {
-                numberToSpawn = i;
-                break;
+                if (pickUp_choice <= pickUpSpawnChance[i])
+                {
+                    numberToSpawn = i;
+                    break;
+                }
+                else
+                    pickUp_choice -= pickUpSpawnChance[i];
             }
-            else
-                object_choice -= roadObstaclesSpawnChance[i];
+
+
+
+            int spawner_choice = Random.Range(0, objectSpawners.Length);
+
+            Instantiate(pickUpObjects[numberToSpawn], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
         }
-        
+        else
+        {
 
-
-        int spawner_choice = Random.Range(0, objectSpawners.Length);
-
-        Instantiate(roadObstacles[numberToSpawn], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
+            float object_choice = Random.Range(1, 101);
+            int numberToSpawn = 0;
+            for (int i = 0; i < roadObstaclesSpawnChance.Length; i++)
+            {
+                if (object_choice <= roadObstaclesSpawnChance[i])
+                {
+                    numberToSpawn = i;
+                    break;
+                }
+                else
+                    object_choice -= roadObstaclesSpawnChance[i];
+            }
+            int spawner_choice = Random.Range(0, objectSpawners.Length);
+            Instantiate(roadObstacles[numberToSpawn], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
+        }
         obstacleTimeCounter = obstacleSpawnTime;
     }
 
