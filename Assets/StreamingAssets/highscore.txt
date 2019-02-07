@@ -6,6 +6,10 @@ Tommy
 66
 Elleon
 45
+Ester
+40
+Elona
+40
 Elliot
 30
 Ellen
