@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public struct HighScoreData
 {
@@ -52,6 +53,16 @@ public class HighScoreManager : MonoBehaviour {
         scoreList.Add(newPlayerScore);
         UpdateList();
         WriteFile();
+    }
+
+    public void MainMenuClick()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartClick()
+    {
+        SceneManager.LoadScene("Main");
     }
 
     public void UpdateList()
