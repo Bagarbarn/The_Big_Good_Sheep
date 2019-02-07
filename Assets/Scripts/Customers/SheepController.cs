@@ -8,13 +8,26 @@ public class SheepController : MovingObjects {
 
     SpriteRenderer demandSprite;
 
+    public float p_timeValue;
     public int p_scoreValue;
     public int p_scoreFailure;
     public int p_timeWhenHit;
 
+    public Vector2 speedValues;
+    public Vector2 modifier_SpeedModifier_secondsToMax;
+
+    private float timeSpeedModifier;
+    private float time;
+
     override public void Start()
     {
         base.Start();
+        if (Time.timeSinceLevelLoad < modifier_SpeedModifier_secondsToMax.y)
+            time = Time.timeSinceLevelLoad;
+        else
+            time = modifier_SpeedModifier_secondsToMax.y;
+        timeSpeedModifier = modifier_SpeedModifier_secondsToMax.x * (time / modifier_SpeedModifier_secondsToMax.y);
+        p_speed = Random.Range(speedValues.x, speedValues.y) * timeSpeedModifier;
         m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor();
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         demandSprite.color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(m_demandedColor);
@@ -28,6 +41,7 @@ public class SheepController : MovingObjects {
 
             if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor || other.gameObject.GetComponent<BulletScript>().p_color == "Rainbow")
             {
+                gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(p_timeValue);
                 gameManagerScript.AddScore(p_scoreValue);
                 Destroy(other.gameObject);
                 Destroy(gameObject);

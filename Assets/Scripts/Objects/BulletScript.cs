@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
 
-
     public string p_color;
 
     private float m_speed;
@@ -14,7 +13,7 @@ public class BulletScript : MonoBehaviour {
     private void Start()
     {
         m_speed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().bullet_speed;
-        Destroy(this.gameObject, 20 / m_speed);
+        Destroy(this.gameObject, 15 / m_speed);
         soundScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<SoundScript>();
     }
 

@@ -196,7 +196,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4309651484433478, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.55
+      value: -7.35
       objectReference: {fileID: 0}
     - target: {fileID: 4309651484433478, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1159,15 +1159,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65753d270d320944db9cd24d042d9863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_gameEnd: 1
+  t_gameEnd: 0
   p_minSpeed: 2
   p_maxSpeed: 10
   p_maxTimer: 40
   screenHeight: 3
   screenLow: -3
   fauxSpawnPercent: 10
-  customerSpawnTime: 5
-  obstacleSpawnTime: 5
+  customerSpawnTime: {x: 2, y: 5}
+  obstacleSpawnTime: {x: 2, y: 5}
+  spawn_timeModifier_seconds: {x: 0.5, y: 10}
   customerObject: {fileID: 1892643202498942, guid: b977be6df0afa2f41b82b96d19bcf0a9,
     type: 2}
   fauxCustomerObject: {fileID: 1822574494949314, guid: 15ab8d3d7077a3c4ca2309354373231d,

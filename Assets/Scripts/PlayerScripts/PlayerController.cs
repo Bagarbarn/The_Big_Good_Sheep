@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
     KeyCode key_cancelColor = KeyCode.C;
 
 
+    public AudioSource shootAudio;
+
     public float p_speed;
     public float bullet_speed;
 
@@ -50,13 +52,8 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-
         if (!m_stunned)
             GetInput();
-
-
-
     }
 
     void GetInput()
@@ -68,33 +65,34 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(key_moveDown))
                 transform.Translate(-Vector2.up * m_currentSpeed * Time.deltaTime);
 
-
-        if (Input.GetKeyDown(key_shoot))
+        if (!m_overdrive)
         {
-            GameObject scoop = colorManager.GetScoop();
-            colorManager.Cancel();
-            if (scoop != null)
+            if (Input.GetKeyDown(key_shoot))
             {
-                Shoot(scoop);
+                GameObject scoop = colorManager.GetScoop();
+                colorManager.Cancel();
+                if (scoop != null)
+                {
+                    Shoot(scoop);
+                }
             }
+
+            if (Input.GetKeyDown(key_colorOne))
+                colorManager.SelectColor("red");
+            if (Input.GetKeyDown(key_colorTwo))
+                colorManager.SelectColor("blue");
+            if (Input.GetKeyDown(key_colorThree))
+                colorManager.SelectColor("yellow");
+
+            if (Input.GetKeyDown(key_cancelColor))
+                colorManager.Cancel();
         }
-
-        if (Input.GetKeyDown(key_colorOne))
-            colorManager.SelectColor("red");
-        if (Input.GetKeyDown(key_colorTwo))
-            colorManager.SelectColor("blue");
-        if (Input.GetKeyDown(key_colorThree))
-            colorManager.SelectColor("yellow");
-
-        if (Input.GetKeyDown(key_cancelColor))
-            colorManager.Cancel();
-
     }
 
     void Shoot(GameObject bullet)
     {
         Instantiate(bullet, barrelEnd.position, Quaternion.identity);
-        soundScript.PlayShotAudio();
+        shootAudio.Play();
     }
 
     public IEnumerator SetStunned(float time)
@@ -127,6 +125,7 @@ public class PlayerController : MonoBehaviour {
     public IEnumerator Overdrive(float time)
     {
         m_overdrive = true;
+        colorManager.Cancel();
         float time_left = time;
         float shotCD = 0;
         //Get Rainbow Scoop

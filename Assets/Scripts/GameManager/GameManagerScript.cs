@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class GameManagerScript : MonoBehaviour {
+
+    
+    
 
     public bool t_gameEnd;
 
@@ -16,8 +20,9 @@ public class GameManagerScript : MonoBehaviour {
     public float screenLow;
 
     public int fauxSpawnPercent;
-    public float customerSpawnTime;
-    public float obstacleSpawnTime;
+    public Vector2 customerSpawnTime;
+    public Vector2 obstacleSpawnTime;
+    public Vector2 spawn_timeModifier_seconds;
 
     public GameObject customerObject;
     public GameObject fauxCustomerObject;
@@ -31,7 +36,6 @@ public class GameManagerScript : MonoBehaviour {
 
     public Text p_scoreText;
 
-    //public int p_customerPoints;
     private int m_score;
 
     
@@ -41,17 +45,16 @@ public class GameManagerScript : MonoBehaviour {
     private float m_acceleration;
     private GameObject[] objectSpawners;
 
-    //private float customerSpawnTimeCounter;
+    private float spawn_timeModifier;
 
     [HideInInspector]
     public float m_currentSpeed;
 
 
-	// Use this for initialization
 	void Awake () {
-
-        customerTimeCounter = customerSpawnTime;
-        obstacleTimeCounter = obstacleSpawnTime;
+        StartCoroutine("decreaseSpawnTimeModifier");
+        customerTimeCounter = GetRandomSpawnTime(customerSpawnTime);
+        obstacleTimeCounter = GetRandomSpawnTime(obstacleSpawnTime);
         m_acceleration = (p_maxSpeed - p_minSpeed) / p_maxTimer;
         m_currentSpeed = p_minSpeed;
 
@@ -60,7 +63,6 @@ public class GameManagerScript : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
 	void Update () {
 
         if (m_currentSpeed < p_maxSpeed)
@@ -79,27 +81,6 @@ public class GameManagerScript : MonoBehaviour {
 
         if (Mathf.Abs(obstacleTimeCounter - customerTimeCounter) < 0.25f)
             obstacleTimeCounter += 0.5f;
-
-        //FOR TESTING
-        //if (m_score > 10)
-        //{
-        //    GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
-        //    SceneManager.LoadScene("ScoreBoard");
-        //}
-    }
-
-    void SpawnRandomObject()
-    {
-
-        int sheep_or_object = Random.Range(0, 2);
-
-        switch (sheep_or_object)
-        {
-            case 0: SpawnSheep(); break;
-            case 1: SpawnRoadObstacle();  break;
-            default: SpawnRandomObject(); break;
-        }
-        //timeCounter = startTime;
     }
 
     void SpawnRoadObstacle()
@@ -145,7 +126,7 @@ public class GameManagerScript : MonoBehaviour {
             int spawner_choice = Random.Range(0, objectSpawners.Length);
             Instantiate(roadObstacles[numberToSpawn], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
         }
-        obstacleTimeCounter = obstacleSpawnTime;
+        obstacleTimeCounter = GetRandomSpawnTime(obstacleSpawnTime);
     }
 
     void SpawnSheep()
@@ -163,7 +144,7 @@ public class GameManagerScript : MonoBehaviour {
         Vector2 spawnPos = new Vector2(11, y_pos);
 
         Instantiate(gameObjectToSpawn, spawnPos, Quaternion.identity);
-        customerTimeCounter = customerSpawnTime;
+        customerTimeCounter = GetRandomSpawnTime(customerSpawnTime);
     }
 
     public void AddScore(int scoreToAdd)
@@ -178,5 +159,21 @@ public class GameManagerScript : MonoBehaviour {
         Debug.Log("Times up! \nWait... Am I supposed to do something here?");
         if (t_gameEnd)
             SceneManager.LoadScene("ScoreBoard");
+    }
+
+    float GetRandomSpawnTime(Vector2 minMax)
+    {
+        return Random.Range(minMax.x, minMax.y) * spawn_timeModifier;
+    }
+
+    private IEnumerator decreaseSpawnTimeModifier()
+    {
+        spawn_timeModifier = 1f;
+        while(spawn_timeModifier > spawn_timeModifier_seconds.x)
+        {
+            spawn_timeModifier -= spawn_timeModifier_seconds.x / spawn_timeModifier_seconds.y;
+
+            yield return null;
+        }
     }
 }

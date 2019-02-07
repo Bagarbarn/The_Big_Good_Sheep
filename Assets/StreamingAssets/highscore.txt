@@ -1,22 +1,49 @@
+Also Matt
+100
+Also Matt
+100
+Still Matt
+85
+Matt
+80
 Matt
 80
 Tommy
 77
+Tommy
+77
+Ellinor
+70
 Ellinor
 70
 Tommy
 66
+Tommy
+66
 Elleon
 45
+<<<<<<< Updated upstream:Assets/StreamingAssets/highscore.txt
 Ester
 40
 Elona
 40
+=======
+Elleon
+45
+Elliot
+30
+>>>>>>> Stashed changes:Assets/highscore.txt
 Elliot
 30
 Ellen
 15
+Ellen
+15
 Tommy
 15
+Tommy
+15
+Tommy
+11
 Tommy
 11
