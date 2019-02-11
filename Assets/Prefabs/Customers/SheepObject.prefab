@@ -53,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892643202498942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.491786, y: -4.659516, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -11.432352, y: 0.96533686, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.8999999, z: 1}
   m_Children:
   - {fileID: 4216859731165300}
   m_Father: {fileID: 0}
@@ -105,18 +105,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.005421445, y: -0.009462118}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8270835, y: 1.2916667}
+    oldSize: {x: 0.72, y: 1.023}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7126311, y: 1.1979575}
   m_EdgeRadius: 0
 --- !u!114 &114167505625233380
 MonoBehaviour:
@@ -134,9 +134,9 @@ MonoBehaviour:
   p_timeValue: 5
   p_scoreValue: 10
   p_scoreFailure: 5
-  p_timeWhenHit: 5
-  speedValues: {x: 0, y: 5}
-  modifier_SpeedModifier_secondsToMax: {x: 2, y: 10}
+  p_timeWhenHit: 3
+  speedValues: {x: 0, y: 2}
+  modifier_SpeedModifier_secondsToMax: {x: 2, y: 100}
 --- !u!212 &212481375871965776
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3d6c6539f23372445908a1fa80c08b6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -215,7 +215,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 64b6f42dd70636849a81420389d559f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21db7e13298c15748a6f333863a56b7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

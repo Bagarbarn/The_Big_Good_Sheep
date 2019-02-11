@@ -8,13 +8,13 @@ public class BulletScript : MonoBehaviour {
 
     private float m_speed;
 
-    private SoundScript soundScript;
+    //private SoundScript soundScript;
 
     private void Start()
     {
         m_speed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().bullet_speed;
         Destroy(this.gameObject, 15 / m_speed);
-        soundScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<SoundScript>();
+        //soundScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<SoundScript>();
     }
 
     private void Update()
@@ -24,8 +24,8 @@ public class BulletScript : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if (transform.position.x < 10.5)
-            soundScript.PlaySplatAudio();
+        //if (transform.position.x < 10.5)
+        //    soundScript.PlaySplatAudio();
     }
 
 }

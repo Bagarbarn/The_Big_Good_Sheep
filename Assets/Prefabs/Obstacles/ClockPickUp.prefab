@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_speed: 0
   gameManagerScript: {fileID: 0}
-  p_timeToAdd: 10
+  p_timeToAdd: 5
 --- !u!212 &212203092875446874
 SpriteRenderer:
   m_ObjectHideFlags: 1
