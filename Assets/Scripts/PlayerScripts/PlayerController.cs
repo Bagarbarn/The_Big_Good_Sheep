@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    KeyCode key_moveUp = KeyCode.W;
-    KeyCode key_moveDown = KeyCode.S;
-    KeyCode key_shoot = KeyCode.Space;
-    KeyCode key_colorOne = KeyCode.J;
-    KeyCode key_colorTwo = KeyCode.K;
-    KeyCode key_colorThree = KeyCode.L;
-    KeyCode key_cancelColor = KeyCode.C;
+    [HideInInspector]
+    public KeyCode key_moveUp = KeyCode.W;
+    [HideInInspector]
+    public KeyCode key_moveDown = KeyCode.S;
+    [HideInInspector]
+    public KeyCode key_shoot = KeyCode.Space;
+    [HideInInspector]
+    public KeyCode key_colorOne = KeyCode.J;
+    [HideInInspector]
+    public KeyCode key_colorTwo = KeyCode.K;
+    [HideInInspector]
+    public KeyCode key_colorThree = KeyCode.L;
+    [HideInInspector]
+    public KeyCode key_cancelColor = KeyCode.C;
 
 
     public AudioSource shootAudio;

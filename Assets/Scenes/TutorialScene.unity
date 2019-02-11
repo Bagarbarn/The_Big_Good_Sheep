@@ -520,6 +520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6929377f556bfa84f8189afcecbb5591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorial_moveSpeed: 2
+  tutorial_inwardMovement: 5
+  spawnHeightDifference: 3
+  sheepObject: {fileID: 1686278885912106, guid: 2f8b2550a580e374db7767c6d4a05abe,
+    type: 2}
 --- !u!4 &1017053779
 Transform:
   m_ObjectHideFlags: 0
