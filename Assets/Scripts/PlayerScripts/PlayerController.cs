@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour {
     private float m_currentSpeed;
 
     private GameObject gameManager;
-    private SoundScript soundScript;
     private ColorManager colorManager;
     private Transform barrelEnd;
 
@@ -52,7 +51,6 @@ public class PlayerController : MonoBehaviour {
         m_overdrive = false;
         m_currentSpeed = p_speed;
         gameManager = GameObject.FindGameObjectWithTag("GameController");
-        soundScript = gameManager.GetComponent<SoundScript>();
         colorManager = gameManager.GetComponent<ColorManager>();
         barrelEnd = transform.Find("Barrel");
     }
