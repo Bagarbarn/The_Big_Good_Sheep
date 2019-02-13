@@ -1234,7 +1234,6 @@ MonoBehaviour:
   p_scoreText: {fileID: 47789418}
   customerTimeCounter: 0
   obstacleTimeCounter: 0
-  soundManager: {fileID: 0}
   m_currentSpeed: 0
 --- !u!4 &1638067195
 Transform:
@@ -1783,8 +1782,6 @@ MonoBehaviour:
   - {fileID: 1885643200}
   - {fileID: 1885643199}
   - {fileID: 1885643198}
-  shotAudio: {fileID: 8300000, guid: 24b91f56693030840ae6ca2cfa7890df, type: 3}
-  satisfiedBleat: {fileID: 8300000, guid: 37c2a3e0972cd9d4f8e460df385ecb90, type: 3}
 --- !u!82 &1885643198
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1840,7 +1837,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1864,7 +1861,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &1885643199
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1920,7 +1917,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1944,7 +1941,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &1885643200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2000,7 +1997,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2024,7 +2021,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &1885643201
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2080,7 +2077,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2104,7 +2101,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &1903526672
 GameObject:
   m_ObjectHideFlags: 0

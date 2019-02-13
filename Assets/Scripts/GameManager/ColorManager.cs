@@ -17,12 +17,17 @@ public class ColorManager : MonoBehaviour {
     public GameObject[] bullets;
     public Sprite[] sprites;
 
-    private Color color_purple = new Color(255, 0, 255, 255);
-    private Color color_orange = new Color(1.0f, 0.64f, 0f, 1f);
-
     private Image scoopImageOne;
     private Image scoopImageTwo;
     private Image scoopImageThree;
+
+    private Color color_red = new Color(232f/255f, 108f/255f, 96f/255f, 1.0f);
+    private Color color_blue = new Color(124f/255f, 156f/255f, 205f/255f, 1.0f);
+    private Color color_yellow = new Color(243f/255f, 236f/255f, 139f/255f, 1.0f);
+
+    private Color color_orange = new Color(249f/255f, 190f/255f, 90f/255, 1.0f);
+    private Color color_green = new Color(196f/255f, 221f/255f, 120f/255f, 1.0f);
+    private Color color_purple = new Color(197f/255f, 128f/255f, 183f/255f, 1.0f);
 
     private void Start()
     {
@@ -132,18 +137,18 @@ public class ColorManager : MonoBehaviour {
         switch (color)
         {
             case "red":
-                return Color.red;
+                return color_red;
             case "blue":
-                return Color.blue;
+                return color_blue;
             case "yellow":
-                return Color.yellow;
+                return color_yellow;
             case "orange":
                 return color_orange;
             case "green":
-                return Color.green;
+                return color_green;
             case "purple":
                 return color_purple;
-            default: return Color.red;
+            default: return color_red;
         }
     }
 
