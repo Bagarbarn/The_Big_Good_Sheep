@@ -32,6 +32,9 @@ public class Tutorial_SheepScript : MonoBehaviour {
             {
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
+            } else
+            {
+                Destroy(other.gameObject);
             }
         } else if (other.tag == "Player")
         {
