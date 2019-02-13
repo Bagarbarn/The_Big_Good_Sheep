@@ -30,11 +30,8 @@ public class GameManagerScript : MonoBehaviour {
     public float[] roadObstaclesSpawnChance;
     public float[] pickUpSpawnChance;
    
-
     public Text p_scoreText;
-
     private int m_score;
-
     
     public float customerTimeCounter;
     public float obstacleTimeCounter;
