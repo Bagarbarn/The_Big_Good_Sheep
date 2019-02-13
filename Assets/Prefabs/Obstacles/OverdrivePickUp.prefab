@@ -65,7 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.13, y: 0.13}
   m_EdgeRadius: 0
 --- !u!114 &114901709364063444
 MonoBehaviour:
@@ -80,8 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_speed: 0
   gameManagerScript: {fileID: 0}
-  overdriveTime: 10
-  overdriveShotSpeed: 0.2
+  overdriveTime: 3
+  overdriveShotSpeed: 0.3
 --- !u!212 &212308243234885362
 SpriteRenderer:
   m_ObjectHideFlags: 1

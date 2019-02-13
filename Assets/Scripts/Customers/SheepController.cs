@@ -7,6 +7,8 @@ public class SheepController : MovingObjects {
     private string m_demandedColor;
 
     SpriteRenderer demandSprite;
+    private SoundScript soundManager;
+    public AudioClip satisfiedBleat;
 
     public float p_timeValue;
     public int p_scoreValue;
@@ -26,11 +28,19 @@ public class SheepController : MovingObjects {
             time = Time.timeSinceLevelLoad;
         else
             time = modifier_SpeedModifier_secondsToMax.y;
+
+        soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+
+        //Gets modifier for speed increase
         timeSpeedModifier = modifier_SpeedModifier_secondsToMax.x * (time / modifier_SpeedModifier_secondsToMax.y);
         p_speed = Random.Range(speedValues.x, speedValues.y) * timeSpeedModifier;
+
+        //Gets demanded color
         m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor();
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         demandSprite.color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(m_demandedColor);
+
+        //Destroys sheep outside screen
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
     }
 
@@ -38,11 +48,13 @@ public class SheepController : MovingObjects {
     {
         if (other.tag == "Bullet")
         {
-
             if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor || other.gameObject.GetComponent<BulletScript>().p_color == "Rainbow")
             {
                 gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(p_timeValue);
                 gameManagerScript.AddScore(p_scoreValue);
+
+                soundManager.PlayAudio(satisfiedBleat);
+
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
