@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour {
 
     GameObject playerObject;
     PlayerController playerController;
+    TutorialUIScript tutorialUI;
 
     Transform spawnPoint;
 
@@ -31,6 +32,7 @@ public class TutorialManager : MonoBehaviour {
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         playerController = playerObject.GetComponent<PlayerController>();
+        tutorialUI = this.GetComponent<TutorialUIScript>();
         this.key_moveUp = playerController.key_moveUp;
         this.key_moveDown = playerController.key_moveDown;
         this.key_colorOne = playerController.key_colorOne;
@@ -55,6 +57,9 @@ public class TutorialManager : MonoBehaviour {
 
         bool movedUp = false;
         bool movedDown = false;
+
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
+        tutorialUI.BlinkObject(tutorialUI.keyBlue, 6f);
 
         while (!movedDown || !movedUp)
         {

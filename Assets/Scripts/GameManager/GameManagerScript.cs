@@ -7,9 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
-    
-    
-
     public bool t_gameEnd;
 
     public float p_minSpeed;
