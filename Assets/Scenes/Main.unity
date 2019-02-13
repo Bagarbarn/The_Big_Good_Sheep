@@ -1027,8 +1027,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   t_gameEnd: 1
   p_minSpeed: 2
-  p_maxSpeed: 8
-  p_maxTimer: 100
+  p_maxSpeed: 6
+  p_maxTimer: 60
   screenHeight: 3
   screenLow: -3
   fauxSpawnPercent: 5
@@ -1054,8 +1054,8 @@ MonoBehaviour:
   - 25
   - 10
   pickUpSpawnChance:
-  - 80
-  - 20
+  - 75
+  - 25
   p_scoreText: {fileID: 47789418}
   customerTimeCounter: 0
   obstacleTimeCounter: 0
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_timeText: {fileID: 777019279}
-  p_timeLimit: 30
+  p_timeLimit: 45
 --- !u!114 &1638067198
 MonoBehaviour:
   m_ObjectHideFlags: 0

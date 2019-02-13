@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_speed: 0.5
   gameManagerScript: {fileID: 0}
-  p_timeValue: 5
+  p_timeValue: 3
   p_scoreValue: 10
   p_scoreFailure: 5
   p_timeWhenHit: 3
