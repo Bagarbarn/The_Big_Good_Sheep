@@ -68,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 1682524537763458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.45, y: 0.87, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4197185526622898}
   m_RootOrder: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_speed: 0.5
   gameManagerScript: {fileID: 0}
-  p_timeValue: 5
+  p_timeValue: 3
   p_scoreValue: 10
   p_scoreFailure: 5
   p_timeWhenHit: 3
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 3d6c6539f23372445908a1fa80c08b6c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30ef6fdcef2d4d8418ed383070b06139, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
