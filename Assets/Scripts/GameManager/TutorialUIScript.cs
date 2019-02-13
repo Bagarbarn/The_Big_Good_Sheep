@@ -30,6 +30,8 @@ public class TutorialUIScript : MonoBehaviour {
     public float preBlinkTime;
     public float blinkInterval;
 
+    private float preBlinkTimeCounter;
+
 
     public void ChangeActive(GameObject p_object, bool p_active)
     {
@@ -45,20 +47,23 @@ public class TutorialUIScript : MonoBehaviour {
     }
 
 
-    public void BlinkObject(GameObject p_blinkObject, float p_blinkTime)
+    public void BlinkObject(GameObject p_blinkObject, float p_preBlinkTime , float p_blinkTime)
     {
+        preBlinkTime = p_preBlinkTime;
         blinkObject = p_blinkObject;
         blinkTime = p_blinkTime;
         StartCoroutine("blinkObjRoutine");
     }
-    public void BlinkObject(Text p_blinkObject, float p_blinkTime)
+    public void BlinkObject(Text p_blinkObject, float p_preBlinkTime, float p_blinkTime)
     {
+        preBlinkTime = p_preBlinkTime;
         blinkObject = p_blinkObject.gameObject;
         blinkTime = p_blinkTime;
         StartCoroutine("blinkObjRoutine");
     }
-    public void BlinkObject(Image p_blinkObject, float p_blinkTime)
+    public void BlinkObject(Image p_blinkObject, float p_preBlinkTime, float p_blinkTime)
     {
+        preBlinkTime = p_preBlinkTime;
         blinkObject = p_blinkObject.gameObject;
         blinkTime = p_blinkTime;
         StartCoroutine("blinkObjRoutine");
@@ -66,16 +71,21 @@ public class TutorialUIScript : MonoBehaviour {
 
     IEnumerator blinkObjRoutine()
     {
+
+        GameObject usedObject = blinkObject;
+        float m_blinkTime = blinkTime;
+        float m_preBlinkTime = preBlinkTime;
+
         bool active = true;
         float timePassed = 0;
-        blinkObject.SetActive(active);
+        usedObject.SetActive(active);
 
-        while (preBlinkTime > 0)
+        while (m_preBlinkTime > 0)
         {
-            preBlinkTime -= Time.deltaTime;
+            m_preBlinkTime -= Time.deltaTime;
             yield return null;
         }
-        while (blinkTime > 0)
+        while (m_blinkTime > 0)
         {
             timePassed += Time.deltaTime;
             if (timePassed >= blinkInterval)
@@ -85,12 +95,12 @@ public class TutorialUIScript : MonoBehaviour {
                 else
                     active = true;
 
-                blinkObject.SetActive(active);
+                usedObject.SetActive(active);
                 timePassed = 0;
             }
-            blinkTime -= Time.deltaTime;
+            m_blinkTime -= Time.deltaTime;
             yield return null;
         }
-        blinkObject.SetActive(true);
+        usedObject.SetActive(false);
     }
 }

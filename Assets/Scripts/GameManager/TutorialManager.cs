@@ -23,7 +23,9 @@ public class TutorialManager : MonoBehaviour {
 
     public float spawnHeightDifference;
 
+    public GameObject background;
     public GameObject sheepObject;
+    public GameObject roadblockObject;
 
     private Vector2 topSpawn;
     private Vector2 bottomSpawn;
@@ -58,8 +60,13 @@ public class TutorialManager : MonoBehaviour {
         bool movedUp = false;
         bool movedDown = false;
 
-        tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
-        tutorialUI.BlinkObject(tutorialUI.keyBlue, 6f);
+
+
+
+        //tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
+        //tutorialUI.BlinkObject(tutorialUI.keyBlue, 6f);
+
+        tutorialUI.BlinkObject(tutorialUI.moveSprites, 2f, 2f);
 
         while (!movedDown || !movedUp)
         {
@@ -72,8 +79,8 @@ public class TutorialManager : MonoBehaviour {
             yield return null;
         }
 
+        //tutorialUI.ChangeActive(tutorialUI.moveSprites, false);
         StartCoroutine("EventTwo");
-
     }
 
     //Single colored sheep;
@@ -87,7 +94,9 @@ public class TutorialManager : MonoBehaviour {
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("red");
-        
+
+        tutorialUI.BlinkObject(tutorialUI.keyRed, 1f, 2f);
+
         while (currentSheep != null)
         {
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
@@ -99,7 +108,8 @@ public class TutorialManager : MonoBehaviour {
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("blue");
-        Debug.Log("EventTwo has started");
+        tutorialUI.BlinkObject(tutorialUI.keyBlue, 1f, 2f);
+
         while (currentSheep != null)
         {
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
@@ -111,7 +121,8 @@ public class TutorialManager : MonoBehaviour {
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("yellow");
-        Debug.Log("EventTwo has started");
+        tutorialUI.BlinkObject(tutorialUI.keyYellow, 1f, 2f);
+
         while (currentSheep != null)
         {
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
@@ -134,6 +145,7 @@ public class TutorialManager : MonoBehaviour {
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("purple");
         
+
         while (currentSheep != null)
         {
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
@@ -167,6 +179,13 @@ public class TutorialManager : MonoBehaviour {
 
     }
 
-
+    //The roadblock
+    IEnumerator EventFour()
+    {
+        GameObject roadblock;
+        roadblock = Instantiate(roadblockObject, spawnPoint.position, Quaternion.identity);
+        //while ()
+        yield return null;
+    }
 
 }
