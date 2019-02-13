@@ -9,6 +9,7 @@ TagManager:
   - ObjectSpawner
   - ObstacleSpawner
   - ScoreHolder
+  - Offscreen
   - SoundManager
   layers:
   - Default
