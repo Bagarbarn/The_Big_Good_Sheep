@@ -9,6 +9,12 @@ public class FluidAsphaltObstacle : Obstacle {
 
     private IEnumerator coroutine;
 
+    public override void Start()
+    {
+        base.Start();
+        spriteRenderer.sortingOrder = -100;
+    }
+
     public override void ObstacleEvent(GameObject playerObject)
     {
         Debug.Log("Asphalt hit");
