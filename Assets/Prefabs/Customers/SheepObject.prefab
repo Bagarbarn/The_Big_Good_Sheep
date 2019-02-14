@@ -54,7 +54,7 @@ Transform:
   m_GameObject: {fileID: 1892643202498942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.432352, y: 0.96533686, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.8999999, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4216859731165300}
   m_Father: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_speed: 0.5
   gameManagerScript: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   satisfiedBleat: {fileID: 8300000, guid: 37c2a3e0972cd9d4f8e460df385ecb90, type: 3}
   p_timeValue: 3
   p_scoreValue: 10
