@@ -178,9 +178,9 @@ public class TutorialManager : MonoBehaviour {
 
         while (currentSheep != null)
         {
-            if (Input.GetKeyDown(key_colorOne))
-                tutorialUI.ChangeActive(tutorialUI.keyRed, false);
-            else if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorThree))
+            //if (Input.GetKeyDown(key_colorOne))
+            //    tutorialUI.ChangeActive(tutorialUI.keyRed, false);
+            /*else*/ if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorThree))
                 tutorialUI.infoText.text = "Press C to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
@@ -193,7 +193,7 @@ public class TutorialManager : MonoBehaviour {
             yield return null;
         }
 
-        
+        tutorialUI.ChangeActive(tutorialUI.keyRed, false);
 
         //blue sheep
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
@@ -205,9 +205,9 @@ public class TutorialManager : MonoBehaviour {
 
         while (currentSheep != null)
         {
-            if (Input.GetKeyDown(key_colorTwo))
-                tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
-            else if (Input.GetKeyDown(key_colorOne) || Input.GetKeyDown(key_colorThree))
+            //if (Input.GetKeyDown(key_colorTwo))
+            //    tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+            /*else*/ if (Input.GetKeyDown(key_colorOne) || Input.GetKeyDown(key_colorThree))
                 tutorialUI.infoText.text = "Press C to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
@@ -218,7 +218,7 @@ public class TutorialManager : MonoBehaviour {
             yield return null;
         }
 
-
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
 
         tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
         //yellow sheep
@@ -231,9 +231,9 @@ public class TutorialManager : MonoBehaviour {
 
         while (currentSheep != null)
         {
-            if (Input.GetKeyDown(key_colorThree))
-                tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
-            else if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorOne))
+            //if (Input.GetKeyDown(key_colorThree))
+            //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+            /*else*/ if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorOne))
                 tutorialUI.infoText.text = "Press C to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
@@ -271,11 +271,11 @@ public class TutorialManager : MonoBehaviour {
 
         while (currentSheep != null)
         {
-            if (Input.GetKeyDown(key_colorOne))
-                tutorialUI.ChangeActive(tutorialUI.keyRed, false);
-            else if (Input.GetKeyDown(key_colorTwo))
-                tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
-            else if (Input.GetKeyDown(key_colorThree))
+            //if (Input.GetKeyDown(key_colorOne))
+            //    tutorialUI.ChangeActive(tutorialUI.keyRed, false);
+            //else if (Input.GetKeyDown(key_colorTwo))
+            //    tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+            /*else*/ if (Input.GetKeyDown(key_colorThree))
                 tutorialUI.infoText.text = "Press C to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color";
@@ -299,11 +299,11 @@ public class TutorialManager : MonoBehaviour {
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("orange");
         while (currentSheep != null)
         {
-            if (Input.GetKeyDown(key_colorOne))
-                tutorialUI.ChangeActive(tutorialUI.keyRed, false);
-            else if (Input.GetKeyDown(key_colorThree))
-                tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
-            else if (Input.GetKeyDown(key_colorTwo))
+            //if (Input.GetKeyDown(key_colorOne))
+            //    tutorialUI.ChangeActive(tutorialUI.keyRed, false);
+            //else if (Input.GetKeyDown(key_colorThree))
+            //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+            /*else*/ if (Input.GetKeyDown(key_colorTwo))
                 tutorialUI.infoText.text = "Press C to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color";
@@ -328,11 +328,11 @@ public class TutorialManager : MonoBehaviour {
 
         while (currentSheep != null)
         {
-            if (Input.GetKeyDown(key_colorTwo))
-                tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
-            else if (Input.GetKeyDown(key_colorThree))
-                tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
-            else if (Input.GetKeyDown(key_colorOne))
+            //if (Input.GetKeyDown(key_colorTwo))
+            //    tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+            //else if (Input.GetKeyDown(key_colorThree))
+            //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+            /*else*/ if (Input.GetKeyDown(key_colorOne))
                 tutorialUI.infoText.text = "Press C to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color";

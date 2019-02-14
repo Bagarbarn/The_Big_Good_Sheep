@@ -966,7 +966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6929377f556bfa84f8189afcecbb5591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_startEvent: 4
+  t_startEvent: 3
   transitionTime: 2
   tutorial_moveSpeed: 3
   tutorial_inwardMovement: 5
@@ -1705,8 +1705,10 @@ MonoBehaviour:
   shootAudio: {fileID: 1888281153}
   p_speed: 7
   bullet_speed: 6
+  invincible: 0
   currentColor: 
   p_slowPercentage: 0
+  p_boostPercentage: 0
   p_overdriveShotInterval: 0
 --- !u!212 &1888281157
 SpriteRenderer:
@@ -1878,7 +1880,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -117.5}
-  m_SizeDelta: {x: 290, y: 80}
+  m_SizeDelta: {x: 320, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2077486637
 MonoBehaviour:

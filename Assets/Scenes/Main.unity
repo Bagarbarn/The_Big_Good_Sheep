@@ -976,63 +976,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1158680827
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4931018956605564, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -1.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931018956605564, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.7581473
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931018956605564, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.594496
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931018956605564, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931018956605564, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931018956605564, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931018956605564, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931018956605564, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920298858215466, guid: ace2ddc913dd460408116a3df8818594,
-        type: 2}
-      propertyPath: p_effectTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920298858215466, guid: ace2ddc913dd460408116a3df8818594,
-        type: 2}
-      propertyPath: p_boostPercentage
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 61471491866857904, guid: ace2ddc913dd460408116a3df8818594,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1197251023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,15 +1396,17 @@ MonoBehaviour:
   - {fileID: 1490820736153604, guid: b285b875de28db54faed60129862a707, type: 2}
   - {fileID: 1979113769968162, guid: 3f052c0a92851bd4cb0c4d4ae5251f0e, type: 2}
   - {fileID: 1501323327823042, guid: 9d8214b05fb4798438d49c84525305fa, type: 2}
+  - {fileID: 1410155610982338, guid: ace2ddc913dd460408116a3df8818594, type: 2}
   roadObstaclesSpawnChance:
   - 40
   - 25
   - 25
   - 10
   pickUpSpawnChance:
-  - 60
-  - 20
-  - 20
+  - 50
+  - 15
+  - 5
+  - 30
   p_scoreText: {fileID: 47789418}
   customerTimeCounter: 0
   obstacleTimeCounter: 0
