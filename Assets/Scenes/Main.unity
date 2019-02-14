@@ -271,7 +271,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f2e69ebcae07d914a8f0cc2e350fc535, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a5e6075c0abaf9940ab308f4c54bfef2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -497,17 +497,17 @@ Prefab:
     - target: {fileID: 224857634874401986, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224761822405059982, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224304872326071656, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0c39ccb03f87d344b09500bb6edcb74, type: 2}
@@ -1382,7 +1382,7 @@ MonoBehaviour:
     type: 2}
   fauxCustomerObject: {fileID: 1822574494949314, guid: 15ab8d3d7077a3c4ca2309354373231d,
     type: 2}
-  pickUpsVsRoadObstacles: {x: 100, y: 0}
+  pickUpsVsRoadObstacles: {x: 15, y: 0}
   roadObstacles:
   - {fileID: 1193369989513182, guid: 5ad13934c271ce34f9e7276c7d9a02eb, type: 2}
   - {fileID: 1686856830222854, guid: 0924952cabc7f5044b27500ddac1c88a, type: 2}
