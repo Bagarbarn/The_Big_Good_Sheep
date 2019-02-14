@@ -197,6 +197,8 @@ public class TutorialManager : MonoBehaviour {
         }
 
 
+
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
         //yellow sheep
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
 
@@ -219,6 +221,8 @@ public class TutorialManager : MonoBehaviour {
             yield return null;
         }
 
+        tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+
         tutorialUI.ChangeActive(tutorialUI.infoText, false);
 
         StartCoroutine("EventZero");
@@ -231,50 +235,96 @@ public class TutorialManager : MonoBehaviour {
         Debug.Log("EventThree has started");
         GameObject currentSheep;
 
+        tutorialUI.ChangeActive(tutorialUI.infoText, true);
+        tutorialUI.infoText.text = "You can mix two base colors to make a new color";
+
         //Purple sheep;
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("purple");
-        
+
+        tutorialUI.ChangeActive(tutorialUI.keyRed, true);
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
+
 
         while (currentSheep != null)
         {
             if (Input.GetKeyDown(key_colorOne))
                 tutorialUI.ChangeActive(tutorialUI.keyRed, false);
-            else if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorThree))
+            else if (Input.GetKeyDown(key_colorTwo))
+                tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+            else if (Input.GetKeyDown(key_colorThree))
                 tutorialUI.infoText.text = "Press C to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
-                tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+                tutorialUI.infoText.text = "You can mix two base colors to make a new color";
 
 
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
         }
+
+        tutorialUI.ChangeActive(tutorialUI.keyRed, false);
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
 
         //Orange sheep
         currentSheep = Instantiate(sheepObject, bottomSpawn, Quaternion.identity);
 
+        tutorialUI.ChangeActive(tutorialUI.keyRed, true);
+        tutorialUI.ChangeActive(tutorialUI.keyYellow, true);
+
+
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("orange");
-        Debug.Log("EventTwo has started");
         while (currentSheep != null)
         {
+            if (Input.GetKeyDown(key_colorOne))
+                tutorialUI.ChangeActive(tutorialUI.keyRed, false);
+            else if (Input.GetKeyDown(key_colorThree))
+                tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+            else if (Input.GetKeyDown(key_colorTwo))
+                tutorialUI.infoText.text = "Press C to cancel your color selection";
+            else if (Input.GetKeyDown(key_cancelColor))
+                tutorialUI.infoText.text = "You can mix two base colors to make a new color";
+
+
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
         }
+
+
+        tutorialUI.ChangeActive(tutorialUI.keyRed, false);
+        tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
 
         //Green sheep
         currentSheep = Instantiate(sheepObject, topSpawn, Quaternion.identity);
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("green");
-        Debug.Log("EventTwo has started");
+
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
+        tutorialUI.ChangeActive(tutorialUI.keyYellow, true);
+
         while (currentSheep != null)
         {
+            if (Input.GetKeyDown(key_colorTwo))
+                tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+            else if (Input.GetKeyDown(key_colorThree))
+                tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+            else if (Input.GetKeyDown(key_colorOne))
+                tutorialUI.infoText.text = "Press C to cancel your color selection";
+            else if (Input.GetKeyDown(key_cancelColor))
+                tutorialUI.infoText.text = "You can mix two base colors to make a new color";
+
+
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
         }
+
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+        tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
+
         StartCoroutine("EventZero");
     }
 
@@ -326,6 +376,7 @@ public class TutorialManager : MonoBehaviour {
             yield return null;
         }
         Destroy(roadblock);
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
 
         StartCoroutine("EventZero");
     }
