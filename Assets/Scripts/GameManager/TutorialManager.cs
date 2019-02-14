@@ -21,6 +21,9 @@ public class TutorialManager : MonoBehaviour {
 
     public int t_startEvent;
 
+    public float transitionTime;
+    private float transitionTimer;
+
     public float tutorial_moveSpeed;
     public float tutorial_inwardMovement;
 
@@ -39,6 +42,7 @@ public class TutorialManager : MonoBehaviour {
 
     private Vector2 topSpawn;
     private Vector2 bottomSpawn;
+    public GameObject[] backgrounds;
 
     public void Awake()
     {
@@ -55,6 +59,7 @@ public class TutorialManager : MonoBehaviour {
 
         spawnPoint = GameObject.FindGameObjectWithTag("ObjectSpawner").transform;
         offScreenPoint = GameObject.FindGameObjectWithTag("Offscreen").transform;
+        backgrounds = GameObject.FindGameObjectsWithTag("Background");
 
         topSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y + spawnHeightDifference);
         bottomSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y - spawnHeightDifference);
@@ -64,6 +69,12 @@ public class TutorialManager : MonoBehaviour {
         //StartCoroutine("EventZero");
     }
 
+
+    void MoveBackgrounds()
+    {
+        for (int i = 0; i < backgrounds.Length; i++)
+            backgrounds[i].transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+    }
 
     void StartRoutine()
     {
@@ -83,9 +94,13 @@ public class TutorialManager : MonoBehaviour {
     IEnumerator EventZero()
     {
         t_startEvent++;
-
-        yield return null;
-
+        transitionTimer = transitionTime;
+        while (transitionTimer > 0)
+        {
+            transitionTimer -= Time.deltaTime;
+            MoveBackgrounds();
+            yield return null;
+        }
         StartRoutine();
     }
 
@@ -98,8 +113,10 @@ public class TutorialManager : MonoBehaviour {
         bool movedUp = false;
         bool movedDown = false;
 
-        tutorialUI.BlinkObject(tutorialUI.moveSprites, 2f, 2f);
-
+        tutorialUI.ChangeActive(tutorialUI.moveSprites, true);
+        tutorialUI.infoText.text = "Move up and down with the displayed keys";
+        tutorialUI.ChangeActive(tutorialUI.infoText, true);
+        
         while (!movedDown || !movedUp)
         {
             if (Input.GetKeyDown(key_moveDown))
@@ -110,6 +127,9 @@ public class TutorialManager : MonoBehaviour {
 
             yield return null;
         }
+
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
+        tutorialUI.ChangeActive(tutorialUI.moveSprites, false);
 
         //tutorialUI.ChangeActive(tutorialUI.moveSprites, false);
         StartCoroutine("EventZero");
@@ -127,40 +147,79 @@ public class TutorialManager : MonoBehaviour {
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("red");
 
-        tutorialUI.BlinkObject(tutorialUI.keyRed, 1f, 2f);
+        tutorialUI.ChangeActive(tutorialUI.keyRed, true);
+
+        tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+        tutorialUI.ChangeActive(tutorialUI.infoText, true);
+
+        tutorialUI.ChangeActive(tutorialUI.shootSprite, true);
 
         while (currentSheep != null)
         {
+            if (Input.GetKeyDown(key_colorOne))
+                tutorialUI.ChangeActive(tutorialUI.keyRed, false);
+            else if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorThree))
+                tutorialUI.infoText.text = "Press C to cancel your color selection";
+            else if (Input.GetKeyDown(key_cancelColor))
+                tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+            else if (Input.GetKeyDown(key_shoot))
+                tutorialUI.ChangeActive(tutorialUI.shootSprite, false);
+
+
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
         }
+
+        
 
         //blue sheep
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("blue");
-        tutorialUI.BlinkObject(tutorialUI.keyBlue, 1f, 2f);
+
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
+        tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
 
         while (currentSheep != null)
         {
+            if (Input.GetKeyDown(key_colorTwo))
+                tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+            else if (Input.GetKeyDown(key_colorOne) || Input.GetKeyDown(key_colorThree))
+                tutorialUI.infoText.text = "Press C to cancel your color selection";
+            else if (Input.GetKeyDown(key_cancelColor))
+                tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+
+
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
         }
+
 
         //yellow sheep
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
 
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("yellow");
-        tutorialUI.BlinkObject(tutorialUI.keyYellow, 1f, 2f);
+
+        tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+        tutorialUI.ChangeActive(tutorialUI.keyYellow, true);
 
         while (currentSheep != null)
         {
+            if (Input.GetKeyDown(key_colorThree))
+                tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+            else if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorOne))
+                tutorialUI.infoText.text = "Press C to cancel your color selection";
+            else if (Input.GetKeyDown(key_cancelColor))
+                tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
         }
+
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
 
         StartCoroutine("EventZero");
     }
@@ -180,6 +239,14 @@ public class TutorialManager : MonoBehaviour {
 
         while (currentSheep != null)
         {
+            if (Input.GetKeyDown(key_colorOne))
+                tutorialUI.ChangeActive(tutorialUI.keyRed, false);
+            else if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorThree))
+                tutorialUI.infoText.text = "Press C to cancel your color selection";
+            else if (Input.GetKeyDown(key_cancelColor))
+                tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+
+
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
@@ -220,6 +287,7 @@ public class TutorialManager : MonoBehaviour {
         while (roadblock.transform.position.x > tutorial_inwardMovement)
         {
             roadblock.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+            MoveBackgrounds();
             yield return null;
         }
         float time = tutorial_waitTime;
@@ -247,12 +315,14 @@ public class TutorialManager : MonoBehaviour {
                 }
             }
             roadblock.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+            MoveBackgrounds();
             yield return null;
         }
         tutorialUI.infoText.text = "Well done!";
         while (roadblock.transform.position.x > offScreenPoint.position.x)
         {
             roadblock.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+            MoveBackgrounds();
             yield return null;
         }
         Destroy(roadblock);
@@ -268,6 +338,7 @@ public class TutorialManager : MonoBehaviour {
         while (pickup.transform.position.x > tutorial_inwardMovement)
         {
             pickup.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+            MoveBackgrounds();
             yield return null;
         }
 
@@ -297,7 +368,7 @@ public class TutorialManager : MonoBehaviour {
             else
             {
                 pickup.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
-
+                MoveBackgrounds();
                 if (pickup.transform.position.x <= offScreenPoint.position.x)
                 {
                     pickup.transform.position = lastPospu;
@@ -333,7 +404,7 @@ public class TutorialManager : MonoBehaviour {
                         Destroy(sheepArray[i]);
                 }
             }
-
+            MoveBackgrounds();
             yield return null;
         }
 
@@ -341,12 +412,14 @@ public class TutorialManager : MonoBehaviour {
         StartCoroutine("EventZero");
     }
 
+    //End of tutorial
     IEnumerator EventSix()
     {
         tutorialUI.ChangeActive(tutorialUI.timeText, true);
         while (endTimer > 0)
         {
             tutorialUI.timeText.text = endTimer.ToString("F1");
+            MoveBackgrounds();
             endTimer -= Time.deltaTime;
             yield return null;
         }

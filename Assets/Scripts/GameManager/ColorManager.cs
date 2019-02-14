@@ -25,8 +25,8 @@ public class ColorManager : MonoBehaviour {
     private Color color_blue = new Color(124f/255f, 156f/255f, 205f/255f, 1.0f);
     private Color color_yellow = new Color(243f/255f, 236f/255f, 139f/255f, 1.0f);
 
-    private Color color_orange = new Color(249f/255f, 190f/255f, 90f/255, 1.0f);
-    private Color color_green = new Color(196f/255f, 221f/255f, 120f/255f, 1.0f);
+    private Color color_orange = new Color(230f/255f, 170f/255f, 68f/255, 1.0f);
+    private Color color_green = new Color(168f/255f, 197f/255f, 81f/255f, 1.0f);
     private Color color_purple = new Color(197f/255f, 128f/255f, 183f/255f, 1.0f);
 
     private void Start()
