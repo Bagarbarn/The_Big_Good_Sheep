@@ -12,6 +12,7 @@ TagManager:
   - Offscreen
   - SoundManager
   - Background
+  - Obstacle
   layers:
   - Default
   - TransparentFX
