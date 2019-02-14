@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour {
 
@@ -64,9 +65,7 @@ public class TutorialManager : MonoBehaviour {
         topSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y + spawnHeightDifference);
         bottomSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y - spawnHeightDifference);
 
-        //Only for testing
-        StartRoutine();
-        //StartCoroutine("EventZero");
+        StartCoroutine("EventMinusOne");
     }
 
 
@@ -74,6 +73,12 @@ public class TutorialManager : MonoBehaviour {
     {
         for (int i = 0; i < backgrounds.Length; i++)
             backgrounds[i].transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        Debug.Log("yeet");
+        SceneManager.LoadScene("MainMenu");
     }
 
     void StartRoutine()
@@ -89,6 +94,23 @@ public class TutorialManager : MonoBehaviour {
             case 6: StartCoroutine("EventSix"); break;
             default: StartCoroutine("EventZero"); break;
         }
+    }
+
+    IEnumerator EventMinusOne()
+    {
+        tutorialUI.infoText.text = "Welcome to the tutorial, press Space to start";
+        tutorialUI.ChangeActive(tutorialUI.infoText, true);
+        bool pressed = false;
+
+        while (!pressed)
+        {
+            if (Input.GetKeyDown(key_shoot))
+                pressed = true;
+            yield return null;
+        }
+
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
+        StartRoutine();
     }
 
     IEnumerator EventZero()
@@ -478,6 +500,6 @@ public class TutorialManager : MonoBehaviour {
         tutorialUI.timeText.text = endTimer.ToString("F1");
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
         tutorialUI.infoText.text = "Well done! You completed the tutorial!";
-        //Set return to main menu button active
+        tutorialUI.ChangeActive(tutorialUI.mainMenuButton, true);
     }
 }

@@ -22,7 +22,8 @@ public class TutorialUIScript : MonoBehaviour {
     public Image keyRed;
     public Image keyBlue;
     public Image keyYellow;
-    
+
+    public GameObject mainMenuButton;
 
     protected GameObject blinkObject;
 

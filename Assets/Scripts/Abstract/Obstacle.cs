@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Obstacle : MovingObjects {
 
+
+
+
     public override void Start()
     {
         base.Start();

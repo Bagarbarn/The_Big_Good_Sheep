@@ -6,6 +6,12 @@ public class GroundController : MovingObjects {
 
     public float startPos, endPos;
 
+    public override void Start()
+    {
+        base.Start();
+        spriteRenderer.sortingOrder = -1000;
+    }
+
     // Update is called once per frame
     override public void Update () {
         base.Update();

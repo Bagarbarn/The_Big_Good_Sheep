@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour {
     private GameObject gameManager;
     private ColorManager colorManager;
     private Transform barrelEnd;
+    private SpriteRenderer spriteRenderer;
 
     private bool m_stunned;
     private bool m_overdrive;
@@ -53,20 +54,23 @@ public class PlayerController : MonoBehaviour {
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         colorManager = gameManager.GetComponent<ColorManager>();
         barrelEnd = transform.Find("Barrel");
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update() {
         if (!m_stunned)
             GetInput();
+
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
     }
 
     void GetInput()
     {
-        if (transform.position.y < 4)
+        if (transform.position.y < 3.5)
             if (Input.GetKey(key_moveUp))
                 transform.Translate(Vector2.up * m_currentSpeed * Time.deltaTime);
-        if (transform.position.y > -4)
+        if (transform.position.y > -2.1)
             if (Input.GetKey(key_moveDown))
                 transform.Translate(-Vector2.up * m_currentSpeed * Time.deltaTime);
 
