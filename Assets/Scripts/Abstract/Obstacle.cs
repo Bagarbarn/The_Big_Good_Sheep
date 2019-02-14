@@ -23,7 +23,14 @@ public abstract class Obstacle : MovingObjects {
         
         if (other.tag == "Player")
         {
-            ObstacleEvent(other.gameObject);
+            if (this.tag == "Obstacle")
+            {
+                if (other.gameObject.GetComponent<PlayerController>().invincible)
+                    Destroy(this.gameObject);
+                else
+                    ObstacleEvent(other.gameObject);
+            } else
+                ObstacleEvent(other.gameObject);
         }
     }
 

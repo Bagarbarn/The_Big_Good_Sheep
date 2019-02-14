@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour {
     public float p_speed;
     public float bullet_speed;
 
+    [HideInInspector]
+    public bool invincible;
 
     private float m_currentSpeed;
 
@@ -44,10 +46,13 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector]
     public float p_slowPercentage;
     [HideInInspector]
+    public float p_boostPercentage;
+    [HideInInspector]
     public float p_overdriveShotInterval;
 
     // Use this for initialization
     void Start() {
+        invincible = false;
         m_stunned = false;
         m_overdrive = false;
         m_currentSpeed = p_speed;
@@ -131,6 +136,19 @@ public class PlayerController : MonoBehaviour {
         m_currentSpeed = p_speed;
     }
 
+    public IEnumerator SetBoost(float time)
+    {
+        m_currentSpeed = p_speed * (1 + p_boostPercentage / 100);
+        float time_left = time;
+        while (time_left > 0)
+        {
+            time_left -= Time.deltaTime;
+
+            yield return null;
+        }
+        m_currentSpeed = p_speed;
+    }
+
     public IEnumerator Overdrive(float time)
     {
         m_overdrive = true;
@@ -153,4 +171,20 @@ public class PlayerController : MonoBehaviour {
         }
         m_overdrive = false;
     }
+
+    public IEnumerator Invincibility(float time)
+    {
+        invincible = true;
+
+        float time_left = time;
+
+        while (time_left > 0)
+        {
+            time_left -= Time.deltaTime;
+            yield return null;
+        }
+
+        invincible = false;
+    }
+
 }
