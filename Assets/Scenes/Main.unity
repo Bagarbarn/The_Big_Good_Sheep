@@ -1459,15 +1459,17 @@ MonoBehaviour:
   - {fileID: 1490820736153604, guid: b285b875de28db54faed60129862a707, type: 2}
   - {fileID: 1979113769968162, guid: 3f052c0a92851bd4cb0c4d4ae5251f0e, type: 2}
   - {fileID: 1501323327823042, guid: 9d8214b05fb4798438d49c84525305fa, type: 2}
+  - {fileID: 1410155610982338, guid: ace2ddc913dd460408116a3df8818594, type: 2}
   roadObstaclesSpawnChance:
   - 40
   - 25
   - 25
   - 10
   pickUpSpawnChance:
-  - 60
-  - 20
-  - 20
+  - 50
+  - 15
+  - 5
+  - 30
   p_scoreText: {fileID: 47789418}
   customerTimeCounter: 0
   obstacleTimeCounter: 0
