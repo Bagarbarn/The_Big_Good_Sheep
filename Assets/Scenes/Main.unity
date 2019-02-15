@@ -1504,7 +1504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_timeText: {fileID: 777019279}
-  p_timeLimit: 300
+  p_timeLimit: 45
 --- !u!114 &1638067198
 MonoBehaviour:
   m_ObjectHideFlags: 0
