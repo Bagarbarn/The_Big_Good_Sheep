@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756235d46b467e942bf9ab2e69210b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testing: 1
+  testing: 0
   introObject: {fileID: 641588744}
   p_displayTime: 2
   p_blinkTime: 4
