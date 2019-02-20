@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_demandedColor: 
+  satisfiedBleat: {fileID: 8300000, guid: 37c2a3e0972cd9d4f8e460df385ecb90, type: 3}
 --- !u!212 &212498636903843382
 SpriteRenderer:
   m_ObjectHideFlags: 1
