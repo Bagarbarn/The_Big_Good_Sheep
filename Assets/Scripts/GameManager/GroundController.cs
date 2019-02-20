@@ -6,10 +6,16 @@ public class GroundController : MovingObjects {
 
     public float startPos, endPos;
 
+    public GameObject other_ground;
+
+    public float offset;
+
     public override void Start()
     {
         base.Start();
         spriteRenderer.sortingOrder = -1000;
+        offset = other_ground.GetComponent<SpriteRenderer>().bounds.size.x - 0.1f;
+        endPos = -offset;
     }
 
     // Update is called once per frame
@@ -18,7 +24,7 @@ public class GroundController : MovingObjects {
 
         if (transform.position.x < endPos)
         {
-            transform.position = new Vector3(startPos, transform.position.y, 0);
+            transform.position = new Vector3(other_ground.transform.position.x + offset, transform.position.y, 0);
         }
 
 	}

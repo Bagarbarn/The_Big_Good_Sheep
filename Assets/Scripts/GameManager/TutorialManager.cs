@@ -45,6 +45,8 @@ public class TutorialManager : MonoBehaviour {
     private Vector2 bottomSpawn;
     public GameObject[] backgrounds;
 
+    private int fuck_ups;
+
     public void Awake()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -333,9 +335,9 @@ public class TutorialManager : MonoBehaviour {
             //else if (Input.GetKeyDown(key_colorThree))
             //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
             /*else*/ if (Input.GetKeyDown(key_colorOne))
-                tutorialUI.infoText.text = "Press C to cancel your color selection";
+                tutorialUI.infoText.text = "Press C to cancel your color selection.";
             else if (Input.GetKeyDown(key_cancelColor))
-                tutorialUI.infoText.text = "You can mix two base colors to make a new color";
+                tutorialUI.infoText.text = "You can mix two base colors to make a new color.";
 
 
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
@@ -345,7 +347,33 @@ public class TutorialManager : MonoBehaviour {
 
         tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
         tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+
+        //Fox customer
+        currentSheep = Instantiate(foxObject, spawnPoint.position, Quaternion.identity);
+        currentSheep.GetComponent<Tutorial_FoxScript>().ObtainColor("blue");
+        tutorialUI.infoText.text = "Another customer? How unexpected...";
+
+        while (currentSheep != null)
+        {
+            if (currentSheep.transform.position.x > tutorial_inwardMovement)
+                currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        tutorialUI.infoText.text = "Oh no, it was a fox! It just wasted your time.";
+
+        float time = tutorial_waitTime;
+        while(time > 0f)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+        tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
         tutorialUI.ChangeActive(tutorialUI.infoText, false);
+
+
 
         StartCoroutine("EventZero");
     }
@@ -364,7 +392,7 @@ public class TutorialManager : MonoBehaviour {
         }
         float time = tutorial_waitTime;
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
-        tutorialUI.infoText.text = "A roadblock! Avoid it";
+        tutorialUI.infoText.text = "A roadblock! Try to avoid it.";
         Vector2 lastPosrb = roadblock.transform.position;
         while (time > 0)
         {
@@ -416,7 +444,7 @@ public class TutorialManager : MonoBehaviour {
         }
 
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
-        tutorialUI.infoText.text = "A pickup! try running it over";
+        tutorialUI.infoText.text = "A pickup! Try to run it over.";
 
         float time = tutorial_waitTime;
 
@@ -436,7 +464,7 @@ public class TutorialManager : MonoBehaviour {
             if (pickup == null)
             {
                 pickedUp = true;
-                tutorialUI.infoText.text = "Nice! Now serve the customers";
+                tutorialUI.infoText.text = "Nice! Now serve the customers.";
             }
             else
             {
@@ -445,7 +473,7 @@ public class TutorialManager : MonoBehaviour {
                 if (pickup.transform.position.x <= offScreenPoint.position.x)
                 {
                     pickup.transform.position = lastPospu;
-                    tutorialUI.infoText.text = "You missed the pickup! Please run it over";
+                    tutorialUI.infoText.text = "You missed the pickup! Please run it over.";
                     float retime = tutorial_waitTime;
                     while (retime > 0)
                     {
@@ -455,6 +483,15 @@ public class TutorialManager : MonoBehaviour {
                 }
 
             }
+            yield return null;
+        }
+
+        float timer = tutorial_waitTime;
+
+        while(timer > 0)
+        {
+            MoveBackgrounds();
+            timer -= Time.deltaTime;
             yield return null;
         }
 
