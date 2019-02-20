@@ -82,7 +82,7 @@ MonoBehaviour:
   gameManagerScript: {fileID: 0}
   spriteRenderer: {fileID: 0}
   p_effectTime: 5
-  p_boostPercentage: 180
+  p_boostPercentage: 50
 --- !u!212 &212050266513460412
 SpriteRenderer:
   m_ObjectHideFlags: 1
