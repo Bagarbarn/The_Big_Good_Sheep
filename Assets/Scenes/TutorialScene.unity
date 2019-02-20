@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ef2c7775b33c94abd382480456061c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftPoint: {fileID: 2139222623}
-  rightPoint: {fileID: 831203319}
+  other_ground: {fileID: 889263053}
+  offset: 0
 --- !u!1 &280807464
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,8 +795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ef2c7775b33c94abd382480456061c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftPoint: {fileID: 2139222623}
-  rightPoint: {fileID: 831203319}
+  other_ground: {fileID: 74105354}
+  offset: 0
 --- !u!212 &889263055
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1653,7 +1653,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.7540001, y: 1.24}
+    oldSize: {x: 2.1924999, y: 1.55}
     newSize: {x: 2.1924999, y: 1.55}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
