@@ -100,8 +100,9 @@ public class TutorialManager : MonoBehaviour {
 
     IEnumerator EventMinusOne()
     {
-        tutorialUI.infoText.text = "Welcome to the tutorial, press Space to start";
+        tutorialUI.infoText.text = "Welcome to the tutorial!";
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
         bool pressed = false;
 
         while (!pressed)
@@ -111,6 +112,7 @@ public class TutorialManager : MonoBehaviour {
             yield return null;
         }
 
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, false);
         tutorialUI.ChangeActive(tutorialUI.infoText, false);
         StartRoutine();
     }
@@ -426,6 +428,35 @@ public class TutorialManager : MonoBehaviour {
             yield return null;
         }
         Destroy(roadblock);
+
+        float timerTime = 1.5f;
+        while (timerTime > 0.0f)
+        {
+            timerTime -= Time.deltaTime;
+            MoveBackgrounds();
+            yield return null;
+        }
+
+        tutorialUI.infoText.text = "Here's all the obstacles you may encounter while playing";
+
+        tutorialUI.ShowPowerupImg(false);
+        tutorialUI.ShowObstacleImg(true);
+        tutorialUI.FrameTxt(0, "Makes you lose time");
+        tutorialUI.FrameTxt(1, "Slows vertical movement");
+        tutorialUI.FrameTxt(2, "Stuns you for a short time");
+        tutorialUI.FrameTxt(3, "Ends the game");
+        tutorialUI.ShowFrames(true);
+
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
+        bool pressed = false;
+        while (!pressed)
+        {
+            if (Input.GetKeyDown(key_shoot))
+                pressed = true;
+            yield return null;
+        }
+        tutorialUI.ShowFrames(false);
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, false);
         tutorialUI.ChangeActive(tutorialUI.infoText, false);
 
         StartCoroutine("EventZero");
@@ -517,6 +548,39 @@ public class TutorialManager : MonoBehaviour {
             MoveBackgrounds();
             yield return null;
         }
+
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
+
+        float timerTime = 5.5f;
+        while (timerTime > 0.0f)
+        {
+            timerTime -= Time.deltaTime;
+            MoveBackgrounds();
+            yield return null;
+        }
+
+        tutorialUI.infoText.text = "Here's all the powerups you may encounter while playing";
+        tutorialUI.ChangeActive(tutorialUI.infoText, true);
+
+        tutorialUI.ShowPowerupImg(true);
+        tutorialUI.ShowObstacleImg(false);
+        tutorialUI.FrameTxt(0, "Gives you extra time");
+        tutorialUI.FrameTxt(1, "Everyone loves rainbow icecream!");
+        tutorialUI.FrameTxt(2, "Speeds up vertical movement");
+        tutorialUI.FrameTxt(3, "Obstacles don't affect you for a while");
+        tutorialUI.ShowFrames(true);
+
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
+        bool pressed = false;
+        while (!pressed)
+        {
+            if (Input.GetKeyDown(key_shoot))
+                pressed = true;
+            yield return null;
+        }
+        tutorialUI.ShowFrames(false);
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, false);
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
 
         tutorialUI.ChangeActive(tutorialUI.infoText, false);
         StartCoroutine("EventZero");
