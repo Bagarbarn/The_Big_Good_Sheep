@@ -250,8 +250,8 @@ public class TutorialManager : MonoBehaviour {
         }
 
         tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
-
         tutorialUI.ChangeActive(tutorialUI.infoText, false);
+        tutorialUI.ChangeActive(tutorialUI.shootSprite, false);
 
         StartCoroutine("EventZero");
     }
@@ -262,7 +262,7 @@ public class TutorialManager : MonoBehaviour {
     {
         Debug.Log("EventThree has started");
         GameObject currentSheep;
-
+        
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
         tutorialUI.infoText.text = "You can mix two base colors to make a new color";
 
