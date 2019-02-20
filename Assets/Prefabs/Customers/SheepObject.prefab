@@ -133,7 +133,7 @@ MonoBehaviour:
   gameManagerScript: {fileID: 0}
   spriteRenderer: {fileID: 0}
   satisfiedBleat: {fileID: 8300000, guid: 37c2a3e0972cd9d4f8e460df385ecb90, type: 3}
-  p_timeValue: 3
+  p_timeValue: 1.5
   p_scoreValue: 10
   p_scoreFailure: 5
   p_timeWhenHit: 3
