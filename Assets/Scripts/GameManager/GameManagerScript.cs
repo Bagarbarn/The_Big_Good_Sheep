@@ -9,6 +9,11 @@ public class GameManagerScript : MonoBehaviour {
 
     public bool t_gameEnd;
 
+    public float p_startTimer;
+
+    public Image countdownImage;
+    public Sprite[] countdownSprites;
+
     public float p_minSpeed;
     public float p_maxSpeed;
     public float p_maxTimer;
@@ -44,6 +49,7 @@ public class GameManagerScript : MonoBehaviour {
     [HideInInspector]
     public float m_currentSpeed;
 
+    private bool started;
 
 	void Awake () {
         StartCoroutine("decreaseSpawnTimeModifier");
@@ -54,27 +60,44 @@ public class GameManagerScript : MonoBehaviour {
 
         objectSpawners = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
         p_scoreText.text = "Score: " + m_score;
-
+        started = false;
+        StartCoroutine("StartGameCountdown");
     }
 	
 	void Update () {
+        if (started)
+        {
+            if (m_currentSpeed < p_maxSpeed)
+                m_currentSpeed += m_acceleration * Time.deltaTime;
 
-        if (m_currentSpeed < p_maxSpeed)
-            m_currentSpeed += m_acceleration * Time.deltaTime;
+            if (customerTimeCounter <= 0)
+                SpawnSheep();
+            else
+                customerTimeCounter -= Time.deltaTime;
 
-        if (customerTimeCounter <= 0)
-            SpawnSheep();
-        else
-            customerTimeCounter -= Time.deltaTime;
-
-        if (obstacleTimeCounter <= 0)
-            SpawnRoadObstacle();
-        else
-            obstacleTimeCounter -= Time.deltaTime;
+            if (obstacleTimeCounter <= 0)
+                SpawnRoadObstacle();
+            else
+                obstacleTimeCounter -= Time.deltaTime;
 
 
-        if (Mathf.Abs(obstacleTimeCounter - customerTimeCounter) < 0.25f)
-            obstacleTimeCounter += 0.5f;
+            if (Mathf.Abs(obstacleTimeCounter - customerTimeCounter) < 0.25f)
+                obstacleTimeCounter += 0.5f;
+        }
+    }
+
+    IEnumerator StartGameCountdown()
+    {
+        int count = 3;
+        while (p_startTimer > 0)
+        {
+
+            p_startTimer -= Time.deltaTime;
+            yield return null;
+        }
+        gameObject.GetComponent<TimeManager>().started = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().started = true;
+        started = true;
     }
 
     void SpawnRoadObstacle()

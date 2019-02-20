@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour {
     public float p_speed;
     public float bullet_speed;
 
+
+
     [HideInInspector]
     public bool invincible;
 
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour {
     private bool m_stunned;
     private bool m_overdrive;
 
+    private GameObject invincibilityStar;
+
     //Debug Temp vars
 
     public string currentColor;
@@ -49,22 +53,27 @@ public class PlayerController : MonoBehaviour {
     public float p_boostPercentage;
     [HideInInspector]
     public float p_overdriveShotInterval;
+    [HideInInspector]
+    public bool started;
 
     // Use this for initialization
     void Start() {
         invincible = false;
         m_stunned = false;
         m_overdrive = false;
+        started = false;
         m_currentSpeed = p_speed;
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         colorManager = gameManager.GetComponent<ColorManager>();
         barrelEnd = transform.Find("Barrel");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        invincibilityStar = transform.GetChild(2).gameObject;
+        invincibilityStar.SetActive(false);
     }
 
     // Update is called once per frame
     void Update() {
-        if (!m_stunned)
+        if (!m_stunned && started)
             GetInput();
 
         spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
@@ -175,16 +184,41 @@ public class PlayerController : MonoBehaviour {
     public IEnumerator Invincibility(float time)
     {
         invincible = true;
-
+        invincibilityStar.SetActive(true);
         float time_left = time;
+        float blink_start = time / 5;
+        float blink_interval = .5f;
+        float blink_timer = 0;
+        bool on = true;
 
         while (time_left > 0)
         {
+            if (time_left <= blink_start)
+            {
+                if (blink_timer <= 0)
+                {
+                    if (on)
+                    {
+                        invincibilityStar.SetActive(false);
+                        on = false;
+                        blink_timer = blink_interval;
+                    }
+                    else
+                    {
+                        invincibilityStar.SetActive(true);
+                        on = true;
+                        blink_timer = blink_interval;
+                    }
+                }
+                blink_timer -= Time.deltaTime;
+            }
+
             time_left -= Time.deltaTime;
             yield return null;
         }
 
         invincible = false;
+        invincibilityStar.SetActive(false);
     }
 
 }

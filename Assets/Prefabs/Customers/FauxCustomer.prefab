@@ -131,7 +131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_speed: 0
   gameManagerScript: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   p_decreaseTime: 5
+  p_increasePoints: 5
+  evilLaughter: {fileID: 8300000, guid: 9bcace641bea5824a896f914fbaa81ad, type: 3}
 --- !u!212 &212258500670380002
 SpriteRenderer:
   m_ObjectHideFlags: 1

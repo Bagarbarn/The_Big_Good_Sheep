@@ -40,8 +40,6 @@ public abstract class Obstacle : MovingObjects {
 
     IEnumerator FloatingAnim()
     {
-        float start_y = transform.position.y;
-
         string direction;
         float speed_current;
         if (Random.Range(0,2) == 1)

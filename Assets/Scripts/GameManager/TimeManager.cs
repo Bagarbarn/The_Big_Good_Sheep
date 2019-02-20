@@ -10,12 +10,17 @@ public class TimeManager : MonoBehaviour {
 
     private float m_currentTime;
 
+    [HideInInspector]
+    public bool started;
+
 	void Start () {
         m_currentTime = p_timeLimit;
+        started = false;
 	}
 	
 	void Update () {
-        m_currentTime -= Time.deltaTime;
+        if (started)
+            m_currentTime -= Time.deltaTime;
         p_timeText.text = "Time left: " + m_currentTime.ToString("F1");
 
         if (m_currentTime < 0)
