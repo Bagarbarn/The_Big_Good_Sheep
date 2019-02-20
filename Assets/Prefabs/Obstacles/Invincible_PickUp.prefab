@@ -81,6 +81,9 @@ MonoBehaviour:
   p_speed: 0
   gameManagerScript: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  pickup: 1
+  speed_max: 0.5
+  speed_addition: 0.75
   duration: 10
 --- !u!212 &212298720003904570
 SpriteRenderer:

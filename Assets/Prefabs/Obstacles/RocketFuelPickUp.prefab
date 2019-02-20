@@ -81,6 +81,9 @@ MonoBehaviour:
   p_speed: 0
   gameManagerScript: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  pickup: 1
+  speed_max: 0.5
+  speed_addition: 0.75
   p_effectTime: 5
   p_boostPercentage: 50
 --- !u!212 &212050266513460412

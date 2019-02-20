@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4816033072291186}
   - component: {fileID: 212203092875446874}
-  - component: {fileID: 58166525337613822}
   - component: {fileID: 114423528711965660}
   - component: {fileID: 60274184410253494}
   m_Layer: 0
@@ -43,21 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58166525337613822
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490820736153604}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.075
 --- !u!60 &60274184410253494
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -222,6 +206,9 @@ MonoBehaviour:
   p_speed: 0
   gameManagerScript: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  pickup: 1
+  speed_max: 0.5
+  speed_addition: 0.75
   p_timeToAdd: 5
 --- !u!212 &212203092875446874
 SpriteRenderer:
