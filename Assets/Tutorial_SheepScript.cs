@@ -8,10 +8,13 @@ public class Tutorial_SheepScript : MonoBehaviour {
     public string m_demandedColor;
 
     private SpriteRenderer demandSprite;
+    public AudioClip satisfiedBleat;
+    private SoundScript soundManager;
 
     private void Awake()
     {
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
     }
 
 
@@ -30,6 +33,7 @@ public class Tutorial_SheepScript : MonoBehaviour {
             if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor ||
                 other.gameObject.GetComponent<BulletScript>().p_color == "Rainbow")
             {
+                soundManager.PlayAudio(satisfiedBleat);
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
             } else

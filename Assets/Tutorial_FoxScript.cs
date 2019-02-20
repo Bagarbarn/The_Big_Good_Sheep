@@ -8,10 +8,13 @@ public class Tutorial_FoxScript : MonoBehaviour {
     public string m_demandedColor;
 
     private SpriteRenderer demandSprite;
+    public AudioClip evilLaughter;
+    private SoundScript soundManager;
 
     private void Awake()
     {
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
     }
 
 
@@ -27,8 +30,9 @@ public class Tutorial_FoxScript : MonoBehaviour {
     {
         if (other.tag == "Bullet")
         {
-                Destroy(other.gameObject);
-                Destroy(this.gameObject);
+            soundManager.PlayAudio(evilLaughter);
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
         }
         else if (other.tag == "Player")
         {
