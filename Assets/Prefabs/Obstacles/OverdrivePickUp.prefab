@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_speed: 0
   gameManagerScript: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   overdriveTime: 3
   overdriveShotSpeed: 0.3
 --- !u!212 &212308243234885362

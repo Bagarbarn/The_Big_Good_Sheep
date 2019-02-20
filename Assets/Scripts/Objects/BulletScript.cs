@@ -14,7 +14,8 @@ public class BulletScript : MonoBehaviour {
     private void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.sortingOrder = spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
+        spriteRenderer.sortingOrder = spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f) + 50;
+            //400;
         m_speed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().bullet_speed;
         Destroy(this.gameObject, 15 / m_speed);
         //soundScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<SoundScript>();
