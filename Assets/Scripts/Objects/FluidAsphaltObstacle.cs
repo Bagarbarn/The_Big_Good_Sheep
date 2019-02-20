@@ -12,7 +12,7 @@ public class FluidAsphaltObstacle : Obstacle {
     public override void Start()
     {
         base.Start();
-        spriteRenderer.sortingOrder = -100;
+        spriteRenderer.sortingOrder = -900;
     }
 
     public override void ObstacleEvent(GameObject playerObject)
