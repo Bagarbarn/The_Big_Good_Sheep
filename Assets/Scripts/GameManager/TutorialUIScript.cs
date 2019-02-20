@@ -13,6 +13,7 @@ public class TutorialUIScript : MonoBehaviour {
     public Text infoText;
     public Text scoreText;
     public Text timeText;
+    public Text spacebarText;
 
     //Images
     public Image iceCreamRed;
@@ -23,8 +24,13 @@ public class TutorialUIScript : MonoBehaviour {
     public Image keyBlue;
     public Image keyYellow;
 
-    public GameObject mainMenuButton;
+    //Powerup/Obstacle
+    public Image[] frames;
+    public Image[] powerups;
+    public Image[] obstacles;
+    public Text[] frameText;
 
+    public GameObject mainMenuButton;
     protected GameObject blinkObject;
 
     protected float blinkTime;
@@ -32,6 +38,33 @@ public class TutorialUIScript : MonoBehaviour {
     public float blinkInterval;
 
     private float preBlinkTimeCounter;
+
+
+    public void ShowPowerupImg(bool active)
+    {
+        for (int i = 0; i < powerups.Length; i++)
+        {
+            ChangeActive(powerups[i], active);
+        }
+    }
+    public void ShowObstacleImg(bool active)
+    {
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            ChangeActive(obstacles[i], active);
+        }
+    }
+    public void ShowFrames(bool active)
+    {
+        for (int i = 0; i < frames.Length; i++)
+        {
+            ChangeActive(frames[i], active);
+        }
+    }
+    public void FrameTxt(int index, string txt)
+    {
+        frameText[index].text = txt;
+    }
 
 
     public void ChangeActive(GameObject p_object, bool p_active)
