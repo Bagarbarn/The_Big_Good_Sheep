@@ -225,12 +225,12 @@ Prefab:
     - target: {fileID: 212171432077715310, guid: c0424c22fd7c5bf4dac718f7a11551d1,
         type: 2}
       propertyPath: m_SortingLayerID
-      value: 324894403
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212171432077715310, guid: c0424c22fd7c5bf4dac718f7a11551d1,
         type: 2}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212171432077715310, guid: c0424c22fd7c5bf4dac718f7a11551d1,
         type: 2}
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 364409123}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1672,6 +1672,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t_gameEnd: 1
+  p_startTimer: 3
+  countdownImage: {fileID: 364409125}
+  countdownSprites:
+  - {fileID: 21300000, guid: 5f191da6d4b70d34b969ee0891379a75, type: 3}
+  - {fileID: 21300000, guid: bb9a7724fab5d5241a810840c17cd6ce, type: 3}
+  - {fileID: 21300000, guid: 504f11bccf79c6844b011c8ec3efb22a, type: 3}
+  - {fileID: 21300000, guid: fe2e1f8b2c2c6834b83b2aa2bfdd3c6b, type: 3}
   p_minSpeed: 2
   p_maxSpeed: 6
   p_maxTimer: 60
@@ -1771,7 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756235d46b467e942bf9ab2e69210b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testing: 0
+  testing: 1
   introObject: {fileID: 641588744}
   p_displayTime: 2
   p_blinkTime: 4

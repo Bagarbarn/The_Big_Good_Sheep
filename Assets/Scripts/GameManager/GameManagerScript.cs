@@ -88,16 +88,27 @@ public class GameManagerScript : MonoBehaviour {
 
     IEnumerator StartGameCountdown()
     {
-        int count = 3;
-        while (p_startTimer > 0)
+        countdownImage.sprite = countdownSprites[3];
+        countdownImage.enabled = true;
+        while (p_startTimer >= 0)
         {
-
+            if (p_startTimer <= 2)
+                countdownImage.sprite = countdownSprites[2];
+            if (p_startTimer <= 1)
+                countdownImage.sprite = countdownSprites[1];
             p_startTimer -= Time.deltaTime;
             yield return null;
         }
+        countdownImage.sprite = countdownSprites[0];
         gameObject.GetComponent<TimeManager>().started = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().started = true;
         started = true;
+        while(p_startTimer >= -1)
+        {
+            p_startTimer -= Time.deltaTime;
+            yield return null;
+        }
+        countdownImage.enabled = false;
     }
 
     void SpawnRoadObstacle()
