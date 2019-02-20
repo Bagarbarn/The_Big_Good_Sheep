@@ -166,17 +166,17 @@ Prefab:
     - target: {fileID: 61844785788976288, guid: c0424c22fd7c5bf4dac718f7a11551d1,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.45800012
+      value: 0.578252
       objectReference: {fileID: 0}
     - target: {fileID: 61844785788976288, guid: c0424c22fd7c5bf4dac718f7a11551d1,
         type: 2}
       propertyPath: m_Offset.y
-      value: -0.37599996
+      value: -0.315874
       objectReference: {fileID: 0}
     - target: {fileID: 61844785788976288, guid: c0424c22fd7c5bf4dac718f7a11551d1,
         type: 2}
       propertyPath: m_Offset.x
-      value: 0.08138892
+      value: 0.08138895
       objectReference: {fileID: 0}
     - target: {fileID: 114868893526194704, guid: c0424c22fd7c5bf4dac718f7a11551d1,
         type: 2}
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65753d270d320944db9cd24d042d9863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_gameEnd: 0
+  t_gameEnd: 1
   p_minSpeed: 2
   p_maxSpeed: 6
   p_maxTimer: 60
