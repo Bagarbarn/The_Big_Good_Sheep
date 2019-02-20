@@ -51,6 +51,7 @@ public class TutorialManager : MonoBehaviour {
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         playerController = playerObject.GetComponent<PlayerController>();
+        
         tutorialUI = this.GetComponent<TutorialUIScript>();
         this.key_moveUp = playerController.key_moveUp;
         this.key_moveDown = playerController.key_moveDown;
@@ -104,7 +105,7 @@ public class TutorialManager : MonoBehaviour {
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
         tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
         bool pressed = false;
-
+        
         while (!pressed)
         {
             if (Input.GetKeyDown(key_shoot))
@@ -119,6 +120,7 @@ public class TutorialManager : MonoBehaviour {
 
     IEnumerator EventZero()
     {
+        playerController.started = true;
         t_startEvent++;
         transitionTimer = transitionTime;
         while (transitionTimer > 0)

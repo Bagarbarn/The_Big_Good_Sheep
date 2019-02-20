@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour {
     public float p_boostPercentage;
     [HideInInspector]
     public float p_overdriveShotInterval;
-    [HideInInspector]
+    //[HideInInspector]
     public bool started;
 
     // Use this for initialization
