@@ -52,7 +52,8 @@ public class SheepController : MovingObjects {
             {
                 gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(p_timeValue);
                 gameManagerScript.AddScore(p_scoreValue);
-
+                FloatTextController.CreateFloatingText(p_scoreValue.ToString() + "p", transform, true);
+                FloatTextController.CreateFloatingText(p_timeValue.ToString() + "s", transform, true);
                 soundManager.PlayAudio(satisfiedBleat);
 
                 Destroy(other.gameObject);
@@ -62,11 +63,13 @@ public class SheepController : MovingObjects {
             {
                 Destroy(other.gameObject);
                 gameManagerScript.AddScore(-p_scoreFailure);
+                FloatTextController.CreateFloatingText("-"+p_scoreFailure.ToString()+"p", transform, false);
                 //Something when wrong color hits sheeps
             }
         } else if (other.gameObject.tag == "Player")
         {
             gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_timeWhenHit);
+            FloatTextController.CreateFloatingText("-"+p_timeWhenHit.ToString()+"s", transform, false);
             //Debug.Log("Sheep Hit");
             Destroy(this.gameObject);
         }

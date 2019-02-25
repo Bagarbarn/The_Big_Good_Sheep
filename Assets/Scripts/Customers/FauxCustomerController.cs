@@ -30,6 +30,7 @@ public class FauxCustomerController : MovingObjects {
         if (other.tag == "Bullet")
         {
             gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_decreaseTime);
+            FloatTextController.CreateFloatingText("-"+p_decreaseTime.ToString()+"s", transform, false);
             //Cool smoke bomb animation with evil laughter
             soundManager.PlayAudio(evilLaughter);
             Destroy(other.gameObject);
@@ -39,6 +40,7 @@ public class FauxCustomerController : MovingObjects {
         {
             //They can die
             gameManagerScript.AddScore(p_increasePoints);
+            FloatTextController.CreateFloatingText(p_increasePoints.ToString()+"p", transform, true);
             Destroy(this.gameObject);
         }
     }
