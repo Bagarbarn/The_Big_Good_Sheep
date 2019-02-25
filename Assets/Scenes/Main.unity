@@ -1583,6 +1583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1638067195}
   - component: {fileID: 1638067194}
+  - component: {fileID: 1638067199}
   - component: {fileID: 1638067196}
   - component: {fileID: 1638067197}
   - component: {fileID: 1638067198}
@@ -1647,8 +1648,6 @@ MonoBehaviour:
   - 10
   - 30
   p_scoreText: {fileID: 47789418}
-  customerTimeCounter: 0
-  obstacleTimeCounter: 0
   m_currentSpeed: 0
 --- !u!4 &1638067195
 Transform:
@@ -1716,6 +1715,32 @@ MonoBehaviour:
   p_displayTime: 2
   p_blinkTime: 4
   p_blinkInterval: 0.5
+--- !u!114 &1638067199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638067193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0356aa12201efe144811be763b533e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customer_object: {fileID: 1892643202498942, guid: b977be6df0afa2f41b82b96d19bcf0a9,
+    type: 2}
+  fauxCustomer_object: {fileID: 1822574494949314, guid: 15ab8d3d7077a3c4ca2309354373231d,
+    type: 2}
+  pickUp_objects: []
+  pickUp_spawnChances: 
+  obstacle_objects: []
+  obstacle_spawnChances: 
+  tick_rate: 1
+  time_maxDifficulty: 0
+  wave_spawnChance: 0
+  customer_spawnRate: 50
+  object_spawnRate: 0
+  fauxCustomer_spawnChance_normal: 10
+  pickup_spawnChance_normal: 0
 --- !u!1 &1690570992
 GameObject:
   m_ObjectHideFlags: 0
