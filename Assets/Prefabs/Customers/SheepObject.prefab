@@ -138,7 +138,7 @@ MonoBehaviour:
   p_scoreFailure: 5
   p_timeWhenHit: 3
   speedValues: {x: 0, y: 2}
-  modifier_SpeedModifier_secondsToMax: {x: 2, y: 100}
+  modifier_SpeedModifier_secondsToMax: {x: 2, y: 8}
 --- !u!212 &212481375871965776
 SpriteRenderer:
   m_ObjectHideFlags: 1

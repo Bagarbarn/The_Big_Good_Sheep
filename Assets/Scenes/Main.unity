@@ -158,6 +158,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4309651484433478, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309651484433478, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
   m_IsPrefabParent: 0
@@ -1599,13 +1607,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bb9a7724fab5d5241a810840c17cd6ce, type: 3}
   - {fileID: 21300000, guid: 504f11bccf79c6844b011c8ec3efb22a, type: 3}
   - {fileID: 21300000, guid: fe2e1f8b2c2c6834b83b2aa2bfdd3c6b, type: 3}
-  p_minSpeed: 2
-  p_maxSpeed: 6
+  p_minSpeed: 1
+  p_maxSpeed: 3
   p_maxTimer: 60
   screenHeight: 3.4
   screenLow: -2
   fauxSpawnPercent: 10
-  customerSpawnTime: {x: 3, y: 6}
+  customerSpawnTime: {x: 3, y: 4.5}
   obstacleSpawnTime: {x: 7, y: 10}
   spawn_timeModifier_seconds: {x: 0.5, y: 10}
   customerObject: {fileID: 1892643202498942, guid: b977be6df0afa2f41b82b96d19bcf0a9,
@@ -1629,9 +1637,9 @@ MonoBehaviour:
   - 25
   - 10
   pickUpSpawnChance:
-  - 50
-  - 15
-  - 5
+  - 40
+  - 20
+  - 10
   - 30
   p_scoreText: {fileID: 47789418}
   customerTimeCounter: 0
@@ -2034,7 +2042,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: cfb2d7aacb2b540478c691fb709530b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6429e5c26ecfcbc49a250318d00457de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2131,7 +2139,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: cfb2d7aacb2b540478c691fb709530b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6429e5c26ecfcbc49a250318d00457de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
