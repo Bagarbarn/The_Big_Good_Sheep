@@ -24,12 +24,17 @@ public class FloatTextController : MonoBehaviour {
     public static void CreateFloatingText(string text, Transform location, bool good)
     {
         FloatingText instance;
+        float add = 0;
+
+        GameObject[] floatTextCheck = GameObject.FindGameObjectsWithTag("FloatingText");
+        if (floatTextCheck.Length != 0)
+        {
+            add += (0.5f * floatTextCheck.Length);
+        }
+        offset.x = 0; offset.y = add; offset.z = 0;
 
         if (good == true) { instance = Instantiate(popupText); }
         else { instance = Instantiate(popupTextBad); }
-
-        float rand = Random.Range(-0.75f, 0.75f);
-        offset.x = 0; offset.y = rand; offset.z = 0;
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(location.position + offset);
         instance.transform.SetParent(canvas.transform, false);

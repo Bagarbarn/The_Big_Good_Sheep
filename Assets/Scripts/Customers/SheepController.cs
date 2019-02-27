@@ -52,9 +52,9 @@ public class SheepController : MovingObjects {
             {
                 gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(p_timeValue);
                 gameManagerScript.AddScore(p_scoreValue);
+                soundManager.PlayAudio(satisfiedBleat);
                 FloatTextController.CreateFloatingText(p_scoreValue.ToString() + "p", transform, true);
                 FloatTextController.CreateFloatingText(p_timeValue.ToString() + "s", transform, true);
-                soundManager.PlayAudio(satisfiedBleat);
 
                 Destroy(other.gameObject);
                 Destroy(gameObject);

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114685147417360516}
   m_Layer: 5
   m_Name: PopupParentBad
-  m_TagString: Untagged
+  m_TagString: FloatingText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
