@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour {
     private bool m_overdrive;
 
     private GameObject invincibilityStar;
+    private PowerBar powerBar;
 
     //Debug Temp vars
 
@@ -65,10 +66,12 @@ public class PlayerController : MonoBehaviour {
         m_currentSpeed = p_speed;
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         colorManager = gameManager.GetComponent<ColorManager>();
+        powerBar = GameObject.Find("PowerBar").GetComponent<PowerBar>();
         barrelEnd = transform.Find("Barrel");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         invincibilityStar = transform.GetChild(2).gameObject;
         invincibilityStar.SetActive(false);
+        powerBar.ChangeActive(false);
         key_cancelColor = KeyCode.I;
     }
 
@@ -126,11 +129,9 @@ public class PlayerController : MonoBehaviour {
         while (time_left > 0)
         {
             time_left -= Time.deltaTime;
-
             yield return null;
         }
         m_stunned = false;
-
     }
 
     public IEnumerator SetSlowed(float time)
@@ -140,7 +141,6 @@ public class PlayerController : MonoBehaviour {
         while (time_left > 0)
         {
             time_left -= Time.deltaTime;
-
             yield return null;
         }
         m_currentSpeed = p_speed;
@@ -149,19 +149,25 @@ public class PlayerController : MonoBehaviour {
     public IEnumerator SetBoost(float time)
     {
         m_currentSpeed = p_speed * (1 + p_boostPercentage / 100);
+        powerBar.ChangeActive(true);
+        powerBar.SetColor(colorManager.GetColor("orange"));
         float time_left = time;
         while (time_left > 0)
         {
             time_left -= Time.deltaTime;
-
+            powerBar.SetFill(time_left / time);
             yield return null;
         }
         m_currentSpeed = p_speed;
+        powerBar.ChangeActive(false);
+        powerBar.SetFill(1);
     }
 
     public IEnumerator Overdrive(float time)
     {
         m_overdrive = true;
+        powerBar.ChangeActive(true);
+        powerBar.SetColor(colorManager.GetColor("green"));
         colorManager.Cancel();
         float time_left = time;
         float shotCD = 0;
@@ -170,6 +176,7 @@ public class PlayerController : MonoBehaviour {
         while (time_left > 0)
         {
             time_left -= Time.deltaTime;
+            powerBar.SetFill(time_left / time);
             if (shotCD <= 0)
             {
                 Shoot(rainbowScoop);
@@ -180,12 +187,16 @@ public class PlayerController : MonoBehaviour {
             yield return null;
         }
         m_overdrive = false;
+        powerBar.ChangeActive(false);
+        powerBar.SetFill(1);
     }
 
     public IEnumerator Invincibility(float time)
     {
         invincible = true;
         invincibilityStar.SetActive(true);
+        powerBar.ChangeActive(true);
+        powerBar.SetColor(colorManager.GetColor("purple"));
         float time_left = time;
         float blink_start = time / 5;
         float blink_interval = .5f;
@@ -215,11 +226,13 @@ public class PlayerController : MonoBehaviour {
             }
 
             time_left -= Time.deltaTime;
+            powerBar.SetFill(time_left / time);
             yield return null;
         }
-
         invincible = false;
         invincibilityStar.SetActive(false);
+        powerBar.ChangeActive(false);
+        powerBar.SetFill(1);
     }
 
 }
