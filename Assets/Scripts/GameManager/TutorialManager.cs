@@ -137,6 +137,7 @@ public class TutorialManager : MonoBehaviour {
     IEnumerator EventOne()
     {
         Debug.Log("EventOne has started");
+        playerController.started = true;
         t_startEvent = 1;
         bool movedUp = false;
         bool movedDown = false;
@@ -167,7 +168,7 @@ public class TutorialManager : MonoBehaviour {
     IEnumerator EventTwo()
     {
         Debug.Log("EventTwo has started");
-
+        playerController.started = true;
         GameObject currentSheep;
 
         //red sheep;
@@ -187,7 +188,7 @@ public class TutorialManager : MonoBehaviour {
             //if (Input.GetKeyDown(key_colorOne))
             //    tutorialUI.ChangeActive(tutorialUI.keyRed, false);
             /*else*/ if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorThree))
-                tutorialUI.infoText.text = "Press C to cancel your color selection";
+                tutorialUI.infoText.text = "Press I to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
             else if (Input.GetKeyDown(key_shoot))
@@ -214,7 +215,7 @@ public class TutorialManager : MonoBehaviour {
             //if (Input.GetKeyDown(key_colorTwo))
             //    tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
             /*else*/ if (Input.GetKeyDown(key_colorOne) || Input.GetKeyDown(key_colorThree))
-                tutorialUI.infoText.text = "Press C to cancel your color selection";
+                tutorialUI.infoText.text = "Press I to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
 
@@ -240,7 +241,7 @@ public class TutorialManager : MonoBehaviour {
             //if (Input.GetKeyDown(key_colorThree))
             //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
             /*else*/ if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorOne))
-                tutorialUI.infoText.text = "Press C to cancel your color selection";
+                tutorialUI.infoText.text = "Press I to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
 
@@ -261,6 +262,7 @@ public class TutorialManager : MonoBehaviour {
     IEnumerator EventThree()
     {
         Debug.Log("EventThree has started");
+        playerController.started = true;
         GameObject currentSheep;
         
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
@@ -282,7 +284,7 @@ public class TutorialManager : MonoBehaviour {
             //else if (Input.GetKeyDown(key_colorTwo))
             //    tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
             /*else*/ if (Input.GetKeyDown(key_colorThree))
-                tutorialUI.infoText.text = "Press C to cancel your color selection";
+                tutorialUI.infoText.text = "Press I to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color";
 
@@ -310,7 +312,7 @@ public class TutorialManager : MonoBehaviour {
             //else if (Input.GetKeyDown(key_colorThree))
             //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
             /*else*/ if (Input.GetKeyDown(key_colorTwo))
-                tutorialUI.infoText.text = "Press C to cancel your color selection";
+                tutorialUI.infoText.text = "Press I to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color";
 
@@ -339,7 +341,7 @@ public class TutorialManager : MonoBehaviour {
             //else if (Input.GetKeyDown(key_colorThree))
             //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
             /*else*/ if (Input.GetKeyDown(key_colorOne))
-                tutorialUI.infoText.text = "Press C to cancel your color selection.";
+                tutorialUI.infoText.text = "Press I to cancel your color selection.";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color.";
 
@@ -385,6 +387,7 @@ public class TutorialManager : MonoBehaviour {
     //The roadblock
     IEnumerator EventFour()
     {
+        playerController.started = true;
         GameObject roadblock;
         roadblock = Instantiate(roadblockObject, spawnPoint.position, Quaternion.identity);
         //Get roadblock on the screen
@@ -455,6 +458,7 @@ public class TutorialManager : MonoBehaviour {
         {
             if (Input.GetKeyDown(key_shoot))
                 pressed = true;
+            MoveBackgrounds();
             yield return null;
         }
         tutorialUI.ShowFrames(false);
@@ -467,6 +471,7 @@ public class TutorialManager : MonoBehaviour {
     //Overdrive Pickup
     IEnumerator EventFive()
     {
+        playerController.started = true;
         GameObject pickup;
         pickup = Instantiate(overdriveObject, topSpawn, Quaternion.identity);
         while (pickup.transform.position.x > tutorial_inwardMovement)
@@ -578,6 +583,7 @@ public class TutorialManager : MonoBehaviour {
         {
             if (Input.GetKeyDown(key_shoot))
                 pressed = true;
+            MoveBackgrounds();
             yield return null;
         }
         tutorialUI.ShowFrames(false);
@@ -591,6 +597,7 @@ public class TutorialManager : MonoBehaviour {
     //End of tutorial
     IEnumerator EventSix()
     {
+        playerController.started = true;
         tutorialUI.ChangeActive(tutorialUI.timeText, true);
         while (endTimer > 0)
         {

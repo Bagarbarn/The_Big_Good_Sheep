@@ -23,18 +23,19 @@ public class FloatTextController : MonoBehaviour {
 
     public static void CreateFloatingText(string text, Transform location, bool good)
     {
+        if (canvas == null)
+            canvas = GameObject.Find("UICanvas");
+        
         FloatingText instance;
         float add = 0;
 
         GameObject[] floatTextCheck = GameObject.FindGameObjectsWithTag("FloatingText");
         if (floatTextCheck.Length != 0)
-        {
             add += (0.5f * floatTextCheck.Length);
-        }
         offset.x = 0; offset.y = add; offset.z = 0;
 
-        if (good == true) { instance = Instantiate(popupText); }
-        else { instance = Instantiate(popupTextBad); }
+        if (good == true)   instance = Instantiate(popupText);
+        else                instance = Instantiate(popupTextBad);
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(location.position + offset);
         instance.transform.SetParent(canvas.transform, false);

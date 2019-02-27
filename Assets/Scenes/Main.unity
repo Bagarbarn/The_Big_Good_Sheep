@@ -1616,37 +1616,6 @@ MonoBehaviour:
   p_minSpeed: 1
   p_maxSpeed: 3
   p_maxTimer: 60
-  screenHeight: 3.4
-  screenLow: -2
-  fauxSpawnPercent: 10
-  customerSpawnTime: {x: 3, y: 4.5}
-  obstacleSpawnTime: {x: 7, y: 10}
-  spawn_timeModifier_seconds: {x: 0.5, y: 10}
-  customerObject: {fileID: 1892643202498942, guid: b977be6df0afa2f41b82b96d19bcf0a9,
-    type: 2}
-  fauxCustomerObject: {fileID: 1822574494949314, guid: 15ab8d3d7077a3c4ca2309354373231d,
-    type: 2}
-  pickUpsVsRoadObstacles: {x: 15, y: 0}
-  roadObstacles:
-  - {fileID: 1193369989513182, guid: 5ad13934c271ce34f9e7276c7d9a02eb, type: 2}
-  - {fileID: 1686856830222854, guid: 0924952cabc7f5044b27500ddac1c88a, type: 2}
-  - {fileID: 1347629452354080, guid: 42acae5460d96824798f3b3ad5cbf9d3, type: 2}
-  - {fileID: 1554708634578432, guid: 3a743e1240026c147a4b241a96058261, type: 2}
-  pickUpObjects:
-  - {fileID: 1490820736153604, guid: b285b875de28db54faed60129862a707, type: 2}
-  - {fileID: 1979113769968162, guid: 3f052c0a92851bd4cb0c4d4ae5251f0e, type: 2}
-  - {fileID: 1501323327823042, guid: 9d8214b05fb4798438d49c84525305fa, type: 2}
-  - {fileID: 1410155610982338, guid: ace2ddc913dd460408116a3df8818594, type: 2}
-  roadObstaclesSpawnChance:
-  - 40
-  - 25
-  - 25
-  - 10
-  pickUpSpawnChance:
-  - 40
-  - 20
-  - 10
-  - 30
   p_scoreText: {fileID: 47789418}
   m_currentSpeed: 0
 --- !u!4 &1638067195
@@ -1738,8 +1707,8 @@ MonoBehaviour:
   time_maxDifficulty: 0
   wave_spawnChance: 0
   customer_spawnRate: 50
-  object_spawnRate: 0
   fauxCustomer_spawnChance_normal: 10
+  object_spawnRate: 0
   pickup_spawnChance_normal: 0
 --- !u!1 &1690570992
 GameObject:
