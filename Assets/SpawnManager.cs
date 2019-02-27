@@ -14,7 +14,10 @@ public class SpawnManager : MonoBehaviour {
 
     private GameObject[] spawner_objects;
 
-    public float tick_rate;
+    public float tick_max;
+    public float tick_min;
+
+    private float tick_rate;
     private float tick_time;
     private int tick_count;
 
@@ -52,17 +55,35 @@ public class SpawnManager : MonoBehaviour {
         pickup_spawnChance_delta = pickup_spawnChance_bottom / 4;
 
         // Setting tick
+        tick_rate = tick_max;
         tick_time = tick_rate;
 
         spawner_objects = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
         StartCoroutine("tick");
     }
 
+    // Change tick over time to tick_min
+
     IEnumerator tick()
     {
-        SpawnCustomer();
+        float customerDelay = GetDelay();
+        float objectDelay = GetDelay();
+        bool customerSpawned = false;
+        bool objectSpawned = false;
+        
         while (tick_time > 0)
         {
+            if (customerDelay <= 0 && !customerSpawned)
+            { SpawnCustomer(); customerSpawned = true; }
+            else
+                customerDelay -= Time.deltaTime;
+
+            if (objectDelay <= 0 && !objectSpawned)
+            { SpawnObject(); objectSpawned = true; }
+            else
+                objectDelay -= Time.deltaTime;
+
+
             tick_time -= Time.deltaTime;
             yield return null;
         }
@@ -70,7 +91,12 @@ public class SpawnManager : MonoBehaviour {
         StartCoroutine("tick");
     }
 
-    int GetRandom()
+    float GetDelay()
+    {
+        return Random.Range(0, tick_rate);
+    }
+
+    int GetPercentage()
     {
         return Random.Range(0, 100);
     }
@@ -81,14 +107,14 @@ public class SpawnManager : MonoBehaviour {
         return spawner_objects[lane].transform;
     }
 
-    // Spawn Sheep or Fox
+    // Note: Spawn Sheep or Fox
     void SpawnCustomer()
     {
-        int spawn = GetRandom();
+        int spawn = GetPercentage();
         if (spawn <= customer_spawnRate)
         {
             Transform lane = GetSpawnLane();
-            int fauxChance = GetRandom();
+            int fauxChance = GetPercentage();
             if(fauxChance <= fauxCustomer_spawnChance_current)
             {
                 Instantiate(fauxCustomer_object, lane.position, Quaternion.identity);
@@ -104,10 +130,52 @@ public class SpawnManager : MonoBehaviour {
     }
 
 
-    // Spawn Pickup or Obstacle
-    void SpawnObstacle()
+    // Note: Spawn Pickup or Obstacle
+    void SpawnObject()
     {
+        int spawn = GetPercentage();
+        if (spawn <= object_spawnRate)
+        {
+            Transform lane = GetSpawnLane();
+            int PoO = GetPercentage();
+            // Note: Spawn pickup
+            if (PoO <= pickup_spawnChance_current)
+            {
+                int randomPickup = GetPercentage();
+                GameObject obj = null;
+                for (int i = 0; i < pickUp_objects.Length; i++)
+                {
+                    if (randomPickup < pickUp_spawnChances[i])
+                    {
+                        obj = pickUp_objects[i]; break;
+                    }
+                    else
+                        randomPickup -= pickUp_spawnChances[i];
+                }
+                Instantiate(obj, lane.position, Quaternion.identity);
+            }
+            // Note: Spawn obstacle
+            else
+            {
+                if (pickup_spawnChance_current < pickup_spawnChance_normal * 1.5)
+                    pickup_spawnChance_current += pickup_spawnChance_delta;
 
+                int randomObstacle = GetPercentage();
+                GameObject obj = null;
+                for (int i = 0; i < obstacle_objects.Length; i++)
+                {
+                    if (randomObstacle < obstacle_spawnChances[i])
+                    {
+                        obj = obstacle_objects[i]; break;
+                    }
+                    else
+                        randomObstacle -= obstacle_spawnChances[i];
+                }
+                Instantiate(obj, lane.position, Quaternion.identity);
+
+            }
+
+        }
     }
 
 
