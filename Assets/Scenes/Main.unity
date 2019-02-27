@@ -1592,7 +1592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65753d270d320944db9cd24d042d9863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_gameEnd: 1
+  t_gameEnd: 0
   p_startTimer: 3
   countdownImage: {fileID: 364409125}
   countdownSprites:
@@ -1686,17 +1686,25 @@ MonoBehaviour:
     type: 2}
   fauxCustomer_object: {fileID: 1822574494949314, guid: 15ab8d3d7077a3c4ca2309354373231d,
     type: 2}
-  pickUp_objects: []
-  pickUp_spawnChances: 
-  obstacle_objects: []
-  obstacle_spawnChances: 
+  pickUp_objects:
+  - {fileID: 1490820736153604, guid: b285b875de28db54faed60129862a707, type: 2}
+  - {fileID: 1410155610982338, guid: ace2ddc913dd460408116a3df8818594, type: 2}
+  - {fileID: 1501323327823042, guid: 9d8214b05fb4798438d49c84525305fa, type: 2}
+  - {fileID: 1979113769968162, guid: 3f052c0a92851bd4cb0c4d4ae5251f0e, type: 2}
+  pickUp_spawnChances: 280000001e000000140000000a000000
+  obstacle_objects:
+  - {fileID: 1193369989513182, guid: 5ad13934c271ce34f9e7276c7d9a02eb, type: 2}
+  - {fileID: 1686856830222854, guid: 0924952cabc7f5044b27500ddac1c88a, type: 2}
+  - {fileID: 1347629452354080, guid: 42acae5460d96824798f3b3ad5cbf9d3, type: 2}
+  - {fileID: 1554708634578432, guid: 3a743e1240026c147a4b241a96058261, type: 2}
+  obstacle_spawnChances: 280000001e000000140000000a000000
   tick_rate: 1
   time_maxDifficulty: 0
   wave_spawnChance: 0
   customer_spawnRate: 50
-  object_spawnRate: 0
   fauxCustomer_spawnChance_normal: 10
-  pickup_spawnChance_normal: 0
+  object_spawnRate: 25
+  pickup_spawnChance_normal: 25
 --- !u!1 &1690570992
 GameObject:
   m_ObjectHideFlags: 0
