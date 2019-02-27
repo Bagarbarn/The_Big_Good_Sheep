@@ -17,7 +17,8 @@ public class FauxCustomerController : MovingObjects {
     override public void Start()
     {
         base.Start();
-        m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor();
+        bool multicolor = gameManagerScript.gameObject.GetComponent<SpawnManager>().GetColorMode();
+        m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor(multicolor);
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         demandSprite.color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(m_demandedColor);
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));

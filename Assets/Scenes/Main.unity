@@ -584,7 +584,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 40cef8f7f2d3dfa41a010c557b008738, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
@@ -1698,12 +1698,19 @@ MonoBehaviour:
   - {fileID: 1347629452354080, guid: 42acae5460d96824798f3b3ad5cbf9d3, type: 2}
   - {fileID: 1554708634578432, guid: 3a743e1240026c147a4b241a96058261, type: 2}
   obstacle_spawnChances: 280000001e000000140000000a000000
-  tick_rate: 1
-  time_maxDifficulty: 0
-  wave_spawnChance: 0
+  tick_max: 1.5
+  tick_min: 0.5
+  tick_rate: 0
+  time_maxDifficulty: 60
+  difficulty: 0
+  difficulty_multicolor: 69
+  wave_difficulty: 0
+  wave_spawnChance: 10
+  wave_minSize: 2
+  wave_maxSize: 4
   customer_spawnRate: 50
   fauxCustomer_spawnChance_normal: 10
-  object_spawnRate: 25
+  object_spawnRate: 30
   pickup_spawnChance_normal: 25
 --- !u!1 &1690570992
 GameObject:

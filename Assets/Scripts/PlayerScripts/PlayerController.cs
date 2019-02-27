@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         invincibilityStar = transform.GetChild(2).gameObject;
         invincibilityStar.SetActive(false);
+        //key_cancelColor = KeyCode.I;
     }
 
     // Update is called once per frame

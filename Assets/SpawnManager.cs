@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
 
-    
+
+    struct Event
+    {
+        public float time;
+        public string name;
+    }
+
+
     public GameObject customer_object;
     public GameObject fauxCustomer_object;
     public GameObject[] pickUp_objects;
@@ -14,37 +21,59 @@ public class SpawnManager : MonoBehaviour {
 
     private GameObject[] spawner_objects;
 
+    Event[] events =
+        {
+        
+    };
+
+
     public float tick_max;
     public float tick_min;
 
-    private float tick_rate;
+    public float tick_rate;
+    private float tick_delta;
     private float tick_time;
     private int tick_count;
 
     public float time_maxDifficulty;
-    private float difficuty;
+    public float difficulty;
 
+    public float difficulty_multicolor;
+    private bool spawn_multicolor;
+
+    public int wave_difficulty;
     public float wave_spawnChance;
+    public int wave_minSize;
+    public int wave_maxSize;
 
-    public float customer_spawnRate;
+    public int customer_spawnRate;
+    private int customer_spawnRate_current;
+    private int customer_spawnRate_bottom;
+    private int customer_spawnRate_delta;
 
     public int fauxCustomer_spawnChance_normal;
     private int fauxCustomer_spawnChance_current;
     private int fauxCustomer_spawnChance_delta;
 
-    public float object_spawnRate;
+    public int object_spawnRate;
 
     public int pickup_spawnChance_normal;
     private int pickup_spawnChance_current;
     private int pickup_spawnChance_delta;
     private int pickup_spawnChance_bottom;
 
-
+    private IEnumerator wave_coroutine;
+    private bool waving;
+    private bool eventing;
 
     //Function start
 
     private void Awake()
     {
+        eventing = false;
+        waving = false;
+        spawn_multicolor = false;
+
         // Setting fox variables
         fauxCustomer_spawnChance_current = 0;
         fauxCustomer_spawnChance_delta = fauxCustomer_spawnChance_normal / 4;
@@ -57,12 +86,41 @@ public class SpawnManager : MonoBehaviour {
         // Setting tick
         tick_rate = tick_max;
         tick_time = tick_rate;
+        tick_delta = (tick_max - tick_min) / time_maxDifficulty;
 
         spawner_objects = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
         StartCoroutine("tick");
+        StartCoroutine("AdjustTick");
+        StartCoroutine("IncreaseDifficulty");
+    }
+
+    private void Update()
+    {
+        if (difficulty >= difficulty_multicolor)
+            spawn_multicolor = true;
     }
 
     // Change tick over time to tick_min
+    IEnumerator IncreaseDifficulty()
+    {
+        while (difficulty < 100)
+        {
+            difficulty += (100 / time_maxDifficulty) * Time.deltaTime;
+            yield return null;
+        }
+        if (difficulty > 100)
+            difficulty = 100;
+    }
+
+
+    IEnumerator AdjustTick()
+    {
+        while (tick_rate > tick_min)
+        {
+            tick_rate -= tick_delta * Time.deltaTime;
+            yield return null;
+        }
+    }
 
     IEnumerator tick()
     {
@@ -71,24 +129,33 @@ public class SpawnManager : MonoBehaviour {
         bool customerSpawned = false;
         bool objectSpawned = false;
         
+
         while (tick_time > 0)
         {
-            if (customerDelay <= 0 && !customerSpawned)
-            { SpawnCustomer(); customerSpawned = true; }
-            else
-                customerDelay -= Time.deltaTime;
+            if (!waving)
+            {
+                if (customerDelay <= 0 && !customerSpawned)
+                { SpawnCustomer(); customerSpawned = true; }
+                else
+                    customerDelay -= Time.deltaTime;
 
-            if (objectDelay <= 0 && !objectSpawned)
-            { SpawnObject(); objectSpawned = true; }
-            else
-                objectDelay -= Time.deltaTime;
+                if (objectDelay <= 0 && !objectSpawned)
+                { SpawnObject(); objectSpawned = true; }
+                else
+                    objectDelay -= Time.deltaTime;
 
+            }
 
             tick_time -= Time.deltaTime;
             yield return null;
         }
         tick_time = tick_rate;
         StartCoroutine("tick");
+    }
+
+    public bool GetColorMode()
+    {
+        return spawn_multicolor;
     }
 
     float GetDelay()
@@ -113,19 +180,30 @@ public class SpawnManager : MonoBehaviour {
         int spawn = GetPercentage();
         if (spawn <= customer_spawnRate)
         {
-            Transform lane = GetSpawnLane();
-            int fauxChance = GetPercentage();
-            if(fauxChance <= fauxCustomer_spawnChance_current)
+            if (GetPercentage() <= wave_spawnChance && difficulty > wave_difficulty)
             {
-                Instantiate(fauxCustomer_object, lane.position, Quaternion.identity);
-                fauxCustomer_spawnChance_current = 0;
+                wave_coroutine = SpawnWave(Random.Range(wave_minSize, wave_maxSize));
+                StartCoroutine(wave_coroutine);
             }
             else
             {
-                Instantiate(customer_object, lane.position, Quaternion.identity);
-                if (fauxCustomer_spawnChance_current < fauxCustomer_spawnChance_normal * 2)
-                    fauxCustomer_spawnChance_current += fauxCustomer_spawnChance_delta;
+                Transform lane = GetSpawnLane();
+                float y_offset = Random.Range(-.5f, 1f);
+                int fauxChance = GetPercentage();
+                Vector3 spawn_pos = new Vector3(lane.position.x, lane.position.y + y_offset, lane.position.z);
+                if (fauxChance <= fauxCustomer_spawnChance_current)
+                {
+                    Instantiate(fauxCustomer_object, spawn_pos, Quaternion.identity);                
+                    fauxCustomer_spawnChance_current = 0;
+                }
+                else
+                {
+                    Instantiate(customer_object, spawn_pos, Quaternion.identity);
+                    if (fauxCustomer_spawnChance_current < fauxCustomer_spawnChance_normal * 2)
+                        fauxCustomer_spawnChance_current += fauxCustomer_spawnChance_delta;
+                }
             }
+            
         }
     }
 
@@ -172,15 +250,15 @@ public class SpawnManager : MonoBehaviour {
                         randomObstacle -= obstacle_spawnChances[i];
                 }
                 Instantiate(obj, lane.position, Quaternion.identity);
-
             }
-
         }
     }
 
 
     IEnumerator SpawnWave(int size)
     {
+        // Note: Just smile and wave
+        waving = true;
         while (size > 0)
         {
             List<GameObject> spawners = new List<GameObject>();
@@ -188,7 +266,10 @@ public class SpawnManager : MonoBehaviour {
             {
                 spawners.Add(spawner_objects[i]);
             }
-            for (int i = 0; i < spawner_objects.Length; i++)
+
+            int onRow = Random.Range(1, 3);
+
+            for (int i = 0; i < onRow; i++)
             {
                 if (size > 0)
                 {
@@ -212,6 +293,18 @@ public class SpawnManager : MonoBehaviour {
                 row_delay -= Time.deltaTime;
                 yield return null;
             }
+            yield return null;
+        }
+        waving = false;
+    }
+
+    IEnumerator ObstacleCourse()
+    {
+        eventing = true;
+
+
+        while (eventing)
+        {
             yield return null;
         }
     }
