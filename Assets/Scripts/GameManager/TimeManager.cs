@@ -32,6 +32,8 @@ public class TimeManager : MonoBehaviour {
 
     public void AdjustTime(float timeToAdjust)
     {
+        if (timeToAdjust < 0)
+            gameObject.GetComponent<GameManagerScript>().BreakCombo();
         m_currentTime += timeToAdjust;
     }
 }

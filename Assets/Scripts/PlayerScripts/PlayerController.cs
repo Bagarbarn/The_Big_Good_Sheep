@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator SetStunned(float time)
     {
+        gameManager.GetComponent<GameManagerScript>().BreakCombo();
         m_stunned = true;
         float time_left = time;
         while (time_left > 0)
@@ -138,6 +139,7 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator SetSlowed(float time)
     {
+        gameManager.GetComponent<GameManagerScript>().BreakCombo();
         m_currentSpeed = p_speed * (1 - p_slowPercentage/100);
         float time_left = time;
         while (time_left > 0)
