@@ -13,5 +13,6 @@ public class IcePuddleObject : Obstacle {
         Debug.Log("IceHit");
         coroutine = playerObject.GetComponent<PlayerController>().SetStunned(p_stunTime);
         playerObject.GetComponent<PlayerController>().StartCoroutine(coroutine);
+        base.ObstacleEvent(playerObject);
     }
 }

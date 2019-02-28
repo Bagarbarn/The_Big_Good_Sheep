@@ -36,7 +36,8 @@ public class SheepController : MovingObjects {
         p_speed = Random.Range(speedValues.x, speedValues.y) * timeSpeedModifier;
 
         //Gets demanded color
-        m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor();
+        bool multicolor = gameManagerScript.gameObject.GetComponent<SpawnManager>().GetColorMode();
+        m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor(multicolor);
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         demandSprite.color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(m_demandedColor);
 

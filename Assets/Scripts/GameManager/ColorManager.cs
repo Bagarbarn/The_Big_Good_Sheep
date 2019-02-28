@@ -100,12 +100,14 @@ public class ColorManager : MonoBehaviour {
         else return "null";
     }
 
-    public string GetRandomColor()
+    public string GetRandomColor(bool multicolor)
     {
-
-        int rand = Random.Range(0, colorList.Length);
+        int rand = 0;
+        if(!multicolor)
+            rand = Random.Range(0, 3);
+        else
+            rand = Random.Range(0, colorList.Length);
         return colorList[rand];
-
     }
 
 
