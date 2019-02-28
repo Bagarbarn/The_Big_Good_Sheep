@@ -11,7 +11,7 @@ public class ClockPickUp : Obstacle {
     {
 
         GameObject.FindGameObjectWithTag("GameController").GetComponent<TimeManager>().AdjustTime(p_timeToAdd);
-
+        FloatTextController.CreateFloatingText(p_timeToAdd.ToString() + "s", transform, true);
         base.ObstacleEvent(playerObject);
     }
 
