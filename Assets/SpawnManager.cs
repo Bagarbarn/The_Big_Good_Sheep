@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
 
-
     struct Event
     {
+        public Event(float _time, string _name) { time = _time; name = _name; active = true; }
         public float time;
         public string name;
+        public bool active;
     }
 
 
@@ -21,10 +22,10 @@ public class SpawnManager : MonoBehaviour {
 
     private GameObject[] spawner_objects;
 
-    Event[] events =
-        {
-        
-    };
+
+    public float[] event_tsunami;
+
+    Event[] events;
 
 
     public float tick_max;
@@ -74,21 +75,45 @@ public class SpawnManager : MonoBehaviour {
         waving = false;
         spawn_multicolor = false;
 
-        // Setting fox variables
+        // Note: Setting fox variables
         fauxCustomer_spawnChance_current = 0;
         fauxCustomer_spawnChance_delta = fauxCustomer_spawnChance_normal / 4;
 
-        // Setting pickup variables
+        // Note: Setting pickup variables
         pickup_spawnChance_bottom = pickup_spawnChance_normal / 2;
         pickup_spawnChance_current = pickup_spawnChance_bottom;
         pickup_spawnChance_delta = pickup_spawnChance_bottom / 4;
 
-        // Setting tick
+        // Note: Setting tick
         tick_rate = tick_max;
         tick_time = tick_rate;
         tick_delta = (tick_max - tick_min) / time_maxDifficulty;
 
+        // Note: Setting Event list
+        int event_listLength = event_tsunami.Length;
+        events = new Event[event_listLength];
+
+        // Note: Manually add all events
+        int step_current = 0;
+        int step_previous = 0;
+        int step_goal = 0;
+
+        // Note: Add tsunami
+        step_goal += event_tsunami.Length;
+        for ( ; step_current < step_goal; step_current++)
+        { events[step_current] = new Event(event_tsunami[step_current - step_previous], "Tsunami");  }
+        step_previous = step_goal;
+
+        // Note: Add events like this
+
+        step_goal += /*event_name*/ 404;
+        for (; step_current < step_goal; step_current++)
+        { events[step_current] = new Event (404, " "); }
+
+
         spawner_objects = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
+
+        // Note: Game Start Routines
         StartCoroutine("tick");
         StartCoroutine("AdjustTick");
         StartCoroutine("IncreaseDifficulty");
@@ -98,6 +123,17 @@ public class SpawnManager : MonoBehaviour {
     {
         if (difficulty >= difficulty_multicolor)
             spawn_multicolor = true;
+
+        for (int i = 0; i < events.Length; i++)
+        {
+            if (events[i].active)
+            {
+                if (events[i].time > 0)
+                    events[i].time -= Time.deltaTime;
+                else
+                { StartCoroutine(events[i].name); events[i].active = false; }
+            }
+        }
     }
 
     // Change tick over time to tick_min
@@ -132,7 +168,7 @@ public class SpawnManager : MonoBehaviour {
 
         while (tick_time > 0)
         {
-            if (!waving)
+            if (!waving && !eventing)
             {
                 if (customerDelay <= 0 && !customerSpawned)
                 { SpawnCustomer(); customerSpawned = true; }
@@ -175,10 +211,9 @@ public class SpawnManager : MonoBehaviour {
     }
 
     // Note: Spawn Sheep or Fox
-    void SpawnCustomer()
+    void SpawnCustomer(bool spawn = false, bool obstacle = false, bool pickup = false)
     {
-        int spawn = GetPercentage();
-        if (spawn <= customer_spawnRate)
+        if (GetPercentage() <= customer_spawnRate)
         {
             if (GetPercentage() <= wave_spawnChance && difficulty > wave_difficulty)
             {
@@ -189,9 +224,8 @@ public class SpawnManager : MonoBehaviour {
             {
                 Transform lane = GetSpawnLane();
                 float y_offset = Random.Range(-.5f, 1f);
-                int fauxChance = GetPercentage();
                 Vector3 spawn_pos = new Vector3(lane.position.x, lane.position.y + y_offset, lane.position.z);
-                if (fauxChance <= fauxCustomer_spawnChance_current)
+                if (GetPercentage() <= fauxCustomer_spawnChance_current)
                 {
                     Instantiate(fauxCustomer_object, spawn_pos, Quaternion.identity);                
                     fauxCustomer_spawnChance_current = 0;
@@ -209,15 +243,13 @@ public class SpawnManager : MonoBehaviour {
 
 
     // Note: Spawn Pickup or Obstacle
-    void SpawnObject()
+    void SpawnObject(bool spawn = false)
     {
-        int spawn = GetPercentage();
-        if (spawn <= object_spawnRate)
+        if (GetPercentage() <= object_spawnRate || spawn)
         {
             Transform lane = GetSpawnLane();
-            int PoO = GetPercentage();
             // Note: Spawn pickup
-            if (PoO <= pickup_spawnChance_current)
+            if (GetPercentage() <= pickup_spawnChance_current)
             {
                 int randomPickup = GetPercentage();
                 GameObject obj = null;
@@ -300,159 +332,67 @@ public class SpawnManager : MonoBehaviour {
 
     IEnumerator ObstacleCourse()
     {
+        while (waving)
+            yield return null;
+
         eventing = true;
-
-
+        Debug.Log("Running obstacle course");
         while (eventing)
         {
+
+
             yield return null;
         }
+        eventing = false;
     }
 
-    //   public float screenHeight;
-    //   public float screenLow;
+    IEnumerator Tsunami()
+    {
+        while (waving)
+            yield return null;
 
-    //   public int fauxSpawnPercent;
+        eventing = true;
+        float time_waveDelay = 1.0f;
+        float timer;
+        Debug.Log("Tsunami");
 
-    //   public Vector2 customerSpawnTime;
-    //   public Vector2 obstacleSpawnTime;
-    //   public Vector2 spawn_timeModifier_seconds;
+        IEnumerator wave = SpawnWave(2);
+        StartCoroutine(wave);
+        while (waving)
+            yield return null;
+        timer = time_waveDelay;
+        while (timer > 0)
+        { timer -= Time.deltaTime; yield return null; }
 
-    //   public GameObject customerObject;
-    //   public GameObject fauxCustomerObject;
+        wave = SpawnWave(3);
+        StartCoroutine(wave);
+        while (waving)
+            yield return null;
+        timer = time_waveDelay;
+        while (timer > 0)
+        { timer -= Time.deltaTime; yield return null; }
 
-    //   public Vector2 pickUpsVsRoadObstacles;
-    //   public GameObject[] roadObstacles;
-    //   public GameObject[] pickUpObjects;
-    //   public float[] roadObstaclesSpawnChance;
-    //   public float[] pickUpSpawnChance;
+        wave = SpawnWave(5);
+        StartCoroutine(wave);
+        while (waving)
+            yield return null;
+        timer = time_waveDelay;
+        while (timer > 0)
+        { timer -= Time.deltaTime; yield return null; }
 
-    //   private float customerTimeCounter;
-    //   private float obstacleTimeCounter;
+        wave = SpawnWave(3);
+        StartCoroutine(wave);
+        while (waving)
+            yield return null;
+        timer = time_waveDelay;
+        while (timer > 0)
+        { timer -= Time.deltaTime; yield return null; }
 
-    //   private GameObject[] objectSpawners;
+        wave = SpawnWave(2);
+        StartCoroutine(wave);
+        while (waving)
+            yield return null;
 
-    //   private float spawn_timeModifier;
-
-    //   private float game_time = 0;
-    //   [HideInInspector]
-    //   public bool started = false;
-
-    //   private IEnumerator wave_spawn;
-
-    //   void Awake () {
-    //       StartCoroutine("decreaseSpawnTimeModifier");
-
-    //       customerTimeCounter = GetRandomSpawnTime(customerSpawnTime);
-    //       obstacleTimeCounter = GetRandomSpawnTime(obstacleSpawnTime);
-
-    //       objectSpawners = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
-
-    //       wave_spawn = SpawnWave(28);
-    //       StartCoroutine(wave_spawn);
-    //   }
-
-    //void Update () {
-
-    //       if (started)
-    //       {
-    //           game_time += Time.deltaTime;
-
-    //           if (customerTimeCounter <= 0)
-    //               SpawnSheep();
-    //           else
-    //               customerTimeCounter -= Time.deltaTime;
-
-    //           if (obstacleTimeCounter <= 0)
-    //               SpawnRoadObstacle();
-    //           else
-    //               obstacleTimeCounter -= Time.deltaTime;
-
-
-    //           if (Mathf.Abs(obstacleTimeCounter - customerTimeCounter) < 0.25f)
-    //               obstacleTimeCounter += 0.5f;
-    //       }
-    //   }
-
-    //   float GetRandomSpawnTime(Vector2 minMax)
-    //   {
-    //       return Random.Range(minMax.x, minMax.y) * spawn_timeModifier;
-    //   }
-
-    //   void SpawnRoadObstacle()
-    //   {
-    //       float random = Random.Range(1, 101);
-
-    //       if (random <= pickUpsVsRoadObstacles.x)
-    //       {
-    //           float pickUp_choice = Random.Range(1, 101);
-    //           int numberToSpawn = 0;
-    //           for (int i = 0; i < pickUpSpawnChance.Length; i++)
-    //           {
-    //               if (pickUp_choice <= pickUpSpawnChance[i])
-    //               {
-    //                   numberToSpawn = i;
-    //                   break;
-    //               }
-    //               else
-    //                   pickUp_choice -= pickUpSpawnChance[i];
-    //           }
-
-
-
-    //           int spawner_choice = Random.Range(0, objectSpawners.Length);
-
-    //           Instantiate(pickUpObjects[numberToSpawn], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
-    //       }
-    //       else
-    //       {
-
-    //           float object_choice = Random.Range(1, 101);
-    //           int numberToSpawn = 0;
-    //           for (int i = 0; i < roadObstaclesSpawnChance.Length; i++)
-    //           {
-    //               if (object_choice <= roadObstaclesSpawnChance[i])
-    //               {
-    //                   numberToSpawn = i;
-    //                   break;
-    //               }
-    //               else
-    //                   object_choice -= roadObstaclesSpawnChance[i];
-    //           }
-    //           int spawner_choice = Random.Range(0, objectSpawners.Length);
-    //           Instantiate(roadObstacles[numberToSpawn], objectSpawners[spawner_choice].transform.position, Quaternion.identity);
-    //       }
-    //       obstacleTimeCounter = GetRandomSpawnTime(obstacleSpawnTime);
-    //   }
-
-    //   void SpawnSheep()
-    //   {
-
-    //       GameObject gameObjectToSpawn;
-    //       int rand = Random.Range(1, 101);
-    //       if (rand <= fauxSpawnPercent)
-    //           gameObjectToSpawn = fauxCustomerObject;
-    //       else
-    //           gameObjectToSpawn = customerObject;
-
-
-    //       float y_pos = Random.Range(screenLow, screenHeight);
-    //       Vector2 spawnPos = new Vector2(11, y_pos);
-
-    //       Instantiate(gameObjectToSpawn, spawnPos, Quaternion.identity);
-    //       customerTimeCounter = GetRandomSpawnTime(customerSpawnTime);
-    //   }
-
-    //   private IEnumerator decreaseSpawnTimeModifier()
-    //   {
-    //       spawn_timeModifier = 1f;
-    //       while (spawn_timeModifier > spawn_timeModifier_seconds.x)
-    //       {
-    //           spawn_timeModifier -= spawn_timeModifier_seconds.x / spawn_timeModifier_seconds.y;
-
-    //           yield return null;
-    //       }
-    //   }
-
-
+        eventing = false;
+    }
 }
