@@ -9,6 +9,7 @@ public class SheepController : MovingObjects {
     SpriteRenderer demandSprite;
     private SoundScript soundManager;
     public AudioClip satisfiedBleat;
+    public AudioClip satisfiedBleat2;
 
     public float p_timeValue;
     public int p_scoreValue;
@@ -45,6 +46,14 @@ public class SheepController : MovingObjects {
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
     }
 
+    AudioClip RandomizeBleat()
+    {
+        int rand = Random.Range(1, 5);
+        if (rand >= 3)
+            return satisfiedBleat;
+        else return satisfiedBleat2;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Bullet")
@@ -53,7 +62,7 @@ public class SheepController : MovingObjects {
             {
                 gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(p_timeValue);
                 gameManagerScript.AddScore(p_scoreValue);
-                soundManager.PlayAudio(satisfiedBleat);
+                soundManager.PlayAudio(RandomizeBleat());
                 FloatTextController.CreateFloatingText(p_scoreValue.ToString() + "p", transform, true);
                 FloatTextController.CreateFloatingText(p_timeValue.ToString() + "s", transform, true);
 
