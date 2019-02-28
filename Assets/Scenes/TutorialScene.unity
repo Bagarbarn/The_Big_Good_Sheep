@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6929377f556bfa84f8189afcecbb5591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_startEvent: 1
+  t_startEvent: 0
   transitionTime: 2
   tutorial_moveSpeed: 3
   tutorial_inwardMovement: 5
@@ -2393,6 +2393,14 @@ Prefab:
     - target: {fileID: 4309651484433478, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306899682012152, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306899682012152, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}

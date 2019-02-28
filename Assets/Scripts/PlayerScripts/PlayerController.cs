@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
     private bool m_overdrive;
 
     private GameObject invincibilityStar;
-    private PowerBar powerBar;
+    private GameObject powerBar;
 
     //Debug Temp vars
 
@@ -67,14 +67,13 @@ public class PlayerController : MonoBehaviour {
 
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         colorManager = gameManager.GetComponent<ColorManager>();
-
-        powerBar = GameObject.Find("PowerBar").GetComponent<PowerBar>();
+        
         barrelEnd = transform.Find("Barrel");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        powerBar = Resources.Load<GameObject>("PowerBar");
 
         invincibilityStar = transform.GetChild(2).gameObject;
         invincibilityStar.SetActive(false);
-        powerBar.ChangeActive(false);
 
         key_cancelColor = KeyCode.I;
     }
@@ -152,25 +151,36 @@ public class PlayerController : MonoBehaviour {
     public IEnumerator SetBoost(float time)
     {
         m_currentSpeed = p_speed * (1 + p_boostPercentage / 100);
-        powerBar.ChangeActive(true);
-        powerBar.SetColor(colorManager.GetColor("orange"));
+        
+        GameObject newBar = Instantiate(powerBar);
+        newBar.transform.parent = gameObject.transform;
+        PowerBar newBarScript = newBar.GetComponent<PowerBar>();
+        newBarScript.SetPosition();
+
+        newBarScript.ChangeActive(true);
+        newBarScript.SetColor(colorManager.GetColor("orange"));
+
         float time_left = time;
         while (time_left > 0)
         {
             time_left -= Time.deltaTime;
-            powerBar.SetFill(time_left / time);
+            newBarScript.SetFill(time_left / time);
             yield return null;
         }
         m_currentSpeed = p_speed;
-        powerBar.ChangeActive(false);
-        powerBar.SetFill(1);
+        newBarScript.DestroyBar();
     }
 
     public IEnumerator Overdrive(float time)
     {
+        GameObject newBar = Instantiate(powerBar);
+        PowerBar newBarScript = newBar.GetComponent<PowerBar>();
+        newBar.transform.parent = gameObject.transform;
+        newBarScript.SetPosition();
+
         m_overdrive = true;
-        powerBar.ChangeActive(true);
-        powerBar.SetColor(colorManager.GetColor("green"));
+        newBarScript.ChangeActive(true);
+        newBarScript.SetColor(colorManager.GetColor("green"));
         colorManager.Cancel();
         float time_left = time;
         float shotCD = 0;
@@ -179,7 +189,7 @@ public class PlayerController : MonoBehaviour {
         while (time_left > 0)
         {
             time_left -= Time.deltaTime;
-            powerBar.SetFill(time_left / time);
+            newBarScript.SetFill(time_left / time);
             if (shotCD <= 0)
             {
                 Shoot(rainbowScoop);
@@ -190,16 +200,20 @@ public class PlayerController : MonoBehaviour {
             yield return null;
         }
         m_overdrive = false;
-        powerBar.ChangeActive(false);
-        powerBar.SetFill(1);
+        newBarScript.DestroyBar();
     }
 
     public IEnumerator Invincibility(float time)
     {
         invincible = true;
+        GameObject newBar = Instantiate(powerBar);
+        PowerBar newBarScript = newBar.GetComponent<PowerBar>();
+        newBar.transform.parent = gameObject.transform;
+        newBarScript.SetPosition();
+
         invincibilityStar.SetActive(true);
-        powerBar.ChangeActive(true);
-        powerBar.SetColor(colorManager.GetColor("purple"));
+        newBarScript.SetColor(colorManager.GetColor("purple"));
+
         float time_left = time;
         float blink_start = time / 5;
         float blink_interval = .5f;
@@ -227,15 +241,13 @@ public class PlayerController : MonoBehaviour {
                 }
                 blink_timer -= Time.deltaTime;
             }
-
             time_left -= Time.deltaTime;
-            powerBar.SetFill(time_left / time);
+            newBarScript.SetFill(time_left / time);
             yield return null;
         }
         invincible = false;
         invincibilityStar.SetActive(false);
-        powerBar.ChangeActive(false);
-        powerBar.SetFill(1);
+        newBarScript.DestroyBar();
     }
 
 }
