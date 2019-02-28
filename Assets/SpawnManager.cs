@@ -24,6 +24,7 @@ public class SpawnManager : MonoBehaviour {
 
 
     public float[] event_tsunami;
+    public float[] event_obstacleCourse;
 
     Event[] events;
 
@@ -34,7 +35,7 @@ public class SpawnManager : MonoBehaviour {
     public float tick_rate;
     private float tick_delta;
     private float tick_time;
-    private int tick_count;
+    //private int tick_count;
 
     public float time_maxDifficulty;
     public float difficulty;
@@ -48,9 +49,9 @@ public class SpawnManager : MonoBehaviour {
     public int wave_maxSize;
 
     public int customer_spawnRate;
-    private int customer_spawnRate_current;
-    private int customer_spawnRate_bottom;
-    private int customer_spawnRate_delta;
+    //private int customer_spawnRate_current;
+    //private int customer_spawnRate_bottom;
+    //private int customer_spawnRate_delta;
 
     public int fauxCustomer_spawnChance_normal;
     private int fauxCustomer_spawnChance_current;
@@ -90,7 +91,7 @@ public class SpawnManager : MonoBehaviour {
         tick_delta = (tick_max - tick_min) / time_maxDifficulty;
 
         // Note: Setting Event list
-        int event_listLength = event_tsunami.Length;
+        int event_listLength = event_tsunami.Length + event_obstacleCourse.Length;
         events = new Event[event_listLength];
 
         // Note: Manually add all events
@@ -106,9 +107,10 @@ public class SpawnManager : MonoBehaviour {
 
         // Note: Add events like this
 
-        step_goal += /*event_name*/ 404;
-        //for (; step_current < step_goal; step_current++)
-        //{ events[step_current] = new Event (404, " "); }
+        step_goal += event_obstacleCourse.Length;
+        for (; step_current < step_goal; step_current++)
+        { events[step_current] = new Event (event_obstacleCourse[step_current - step_previous], "SpawnObstacleWave"); }
+        step_previous = step_goal;
 
 
         spawner_objects = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
@@ -117,6 +119,7 @@ public class SpawnManager : MonoBehaviour {
         StartCoroutine("tick");
         StartCoroutine("AdjustTick");
         StartCoroutine("IncreaseDifficulty");
+        //StartCoroutine("SpawnObstacleWave");
     }
 
     private void Update()
@@ -217,7 +220,7 @@ public class SpawnManager : MonoBehaviour {
         {
             if (GetPercentage() <= wave_spawnChance && difficulty > wave_difficulty)
             {
-                wave_coroutine = SpawnWave(Random.Range(wave_minSize, wave_maxSize));
+                wave_coroutine = SpawnWave(Random.Range(wave_minSize, wave_maxSize + 1));
                 StartCoroutine(wave_coroutine);
             }
             else
@@ -236,8 +239,7 @@ public class SpawnManager : MonoBehaviour {
                     if (fauxCustomer_spawnChance_current < fauxCustomer_spawnChance_normal * 2)
                         fauxCustomer_spawnChance_current += fauxCustomer_spawnChance_delta;
                 }
-            }
-            
+            }           
         }
     }
 
@@ -286,6 +288,50 @@ public class SpawnManager : MonoBehaviour {
         }
     }
 
+    IEnumerator SpawnObstacleWave()
+    {
+        int size = Random.Range(wave_minSize * 3, wave_maxSize * 3 + 1);
+        waving = true;
+        Debug.Log("Start obstacle course");
+        while (size > 0)
+        {
+            List<GameObject> spawners = new List<GameObject>();
+            for (int i = 0; i < spawner_objects.Length; i++)
+                spawners.Add(spawner_objects[i]);
+
+            int onRow = Random.Range(1, 3);
+            Debug.Log(onRow);
+
+            for (int i = 0; i < onRow; i++)
+            {
+                if (size > 0)
+                {
+                    int spawner = Random.Range(0, spawners.Count);
+                    Instantiate(obstacle_objects[Random.Range(0, obstacle_objects.Length)], spawners[spawner].transform.position, Quaternion.identity);
+                    spawners.RemoveAt(spawner);
+                    size--;
+                }
+            }
+
+            float delay = Random.Range(0, .2f);
+            while (delay > 0)
+            { delay -= Time.deltaTime; yield return null; }
+
+
+            int row = Random.Range(0, spawners.Count);
+            Instantiate(customer_object, spawners[row].transform.position, Quaternion.identity);
+
+            float row_delay = 5.0f;
+            while (row_delay > 0)
+            {
+                row_delay -= Time.deltaTime;
+                yield return null;
+            }
+
+            yield return null;
+        }
+        waving = false;
+    }
 
     IEnumerator SpawnWave(int size)
     {
@@ -295,11 +341,9 @@ public class SpawnManager : MonoBehaviour {
         {
             List<GameObject> spawners = new List<GameObject>();
             for (int i = 0; i < spawner_objects.Length; i++)
-            {
                 spawners.Add(spawner_objects[i]);
-            }
 
-            int onRow = Random.Range(1, 3);
+            int onRow = Random.Range(1, 4);
 
             for (int i = 0; i < onRow; i++)
             {

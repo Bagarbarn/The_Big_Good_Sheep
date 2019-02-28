@@ -17,7 +17,6 @@ public class FluidAsphaltObstacle : Obstacle {
 
     public override void ObstacleEvent(GameObject playerObject)
     {
-        Debug.Log("Asphalt hit");
         playerObject.GetComponent<PlayerController>().p_slowPercentage = this.p_slowPercentage;
         coroutine = playerObject.GetComponent<PlayerController>().SetSlowed(p_effectTime);
         playerObject.GetComponent<PlayerController>().StartCoroutine(coroutine);
