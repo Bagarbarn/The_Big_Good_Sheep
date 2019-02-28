@@ -10,7 +10,7 @@ public class ConeObstacle : Obstacle {
     {
 
         GameObject.FindGameObjectWithTag("GameController").GetComponent<TimeManager>().AdjustTime(-p_timeToSubstract);
-
+        FloatTextController.CreateFloatingText(p_timeToSubstract.ToString() + "s", transform, false);
         base.ObstacleEvent(playerObject);
 
     }

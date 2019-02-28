@@ -7,7 +7,7 @@ public class PowerBar : MonoBehaviour {
     public GameObject spriteObj;
     private SpriteRenderer sprite;
 
-    void Start()
+    void Awake()
     {
         sprite = spriteObj.GetComponent<SpriteRenderer>();
     }

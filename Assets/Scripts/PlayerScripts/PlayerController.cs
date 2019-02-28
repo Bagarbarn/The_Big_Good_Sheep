@@ -64,14 +64,18 @@ public class PlayerController : MonoBehaviour {
         m_overdrive = false;
         started = false;
         m_currentSpeed = p_speed;
+
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         colorManager = gameManager.GetComponent<ColorManager>();
+
         powerBar = GameObject.Find("PowerBar").GetComponent<PowerBar>();
         barrelEnd = transform.Find("Barrel");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
         invincibilityStar = transform.GetChild(2).gameObject;
         invincibilityStar.SetActive(false);
         powerBar.ChangeActive(false);
+
         key_cancelColor = KeyCode.I;
     }
 
@@ -79,7 +83,6 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         if (!m_stunned && started)
             GetInput();
-
         spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
     }
 
