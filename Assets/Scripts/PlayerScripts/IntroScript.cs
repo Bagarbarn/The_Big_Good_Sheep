@@ -18,7 +18,7 @@ public class IntroScript : MonoBehaviour {
 
 	void Start () {
 
-        
+        introObject = GameObject.FindGameObjectWithTag("Player").transform.Find("StartUI").gameObject;
         coroutine = SetIntro(introObject);
         if (!testing)
             StartCoroutine(coroutine);

@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1248940581301486
 GameObject:
   m_ObjectHideFlags: 1
@@ -136,7 +136,7 @@ GameObject:
   m_Layer: 0
   m_Name: PowerBarSprite
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359419ad5ccfa66488dc79d8a7d17a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObj: {fileID: 1600347964445120}
+  spriteObj: {fileID: 0}
 --- !u!114 &114868893526194704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -465,7 +465,7 @@ MonoBehaviour:
   key_colorOne: 106
   key_colorTwo: 107
   key_colorThree: 108
-  key_cancelColor: 99
+  key_cancelColor: 105
   shootAudio: {fileID: 82509582537904552}
   p_speed: 7
   bullet_speed: 6
@@ -640,7 +640,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: -33
   m_Sprite: {fileID: 21300000, guid: 32db03b309649954abbe71e2ec518276, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

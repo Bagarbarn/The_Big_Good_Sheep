@@ -107,8 +107,8 @@ public class SpawnManager : MonoBehaviour {
         // Note: Add events like this
 
         step_goal += /*event_name*/ 404;
-        for (; step_current < step_goal; step_current++)
-        { events[step_current] = new Event (404, " "); }
+        //for (; step_current < step_goal; step_current++)
+        //{ events[step_current] = new Event (404, " "); }
 
 
         spawner_objects = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
