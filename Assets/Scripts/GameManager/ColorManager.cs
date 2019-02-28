@@ -67,7 +67,6 @@ public class ColorManager : MonoBehaviour {
 
     public GameObject GetScoop()
     {
-        Debug.Log("Getting Scoop");
         string end_color;
         if ((player_firstColor != null && player_secondColor != null) && player_firstColor != player_secondColor)
             end_color = BaseToMixed(player_firstColor, player_secondColor);
@@ -78,8 +77,6 @@ public class ColorManager : MonoBehaviour {
 
         player_firstColor = null;
         player_secondColor = null;
-
-        Debug.Log(end_color);
 
         return GetBullet(end_color);
 
@@ -109,9 +106,6 @@ public class ColorManager : MonoBehaviour {
             rand = Random.Range(0, colorList.Length);
         return colorList[rand];
     }
-
-
-
 
     public Sprite GetSprite(string color)
     {
