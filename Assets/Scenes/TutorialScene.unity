@@ -2044,7 +2044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6929377f556bfa84f8189afcecbb5591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_startEvent: 4
+  t_startEvent: 0
   transitionTime: 2
   tutorial_moveSpeed: 3
   tutorial_inwardMovement: 5
