@@ -18,11 +18,15 @@ public class PlayerController : MonoBehaviour {
     public KeyCode key_colorThree = KeyCode.L;
     [HideInInspector]
     public KeyCode key_cancelColor = KeyCode.C;
-
+    [HideInInspector]
+    private KeyCode key_moveLeft = KeyCode.A;
+    [HideInInspector]
+    private KeyCode key_moveRight = KeyCode.D;
 
     public AudioSource shootAudio;
 
-    public float p_speed;
+    public float p_speed_y;
+    public float p_speed_x;
     public float bullet_speed;
 
 
@@ -30,7 +34,8 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector]
     public bool invincible;
 
-    private float m_currentSpeed;
+    private float m_currentSpeed_y;
+    private float m_currentSpeed_x;
 
     private GameObject gameManager;
     private ColorManager colorManager;
@@ -63,7 +68,8 @@ public class PlayerController : MonoBehaviour {
         m_stunned = false;
         m_overdrive = false;
         started = false;
-        m_currentSpeed = p_speed;
+        m_currentSpeed_y = p_speed_y;
+        m_currentSpeed_x = p_speed_x;
 
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         colorManager = gameManager.GetComponent<ColorManager>();
@@ -89,10 +95,16 @@ public class PlayerController : MonoBehaviour {
     {
         if (transform.position.y < 3.5)
             if (Input.GetKey(key_moveUp))
-                transform.Translate(Vector2.up * m_currentSpeed * Time.deltaTime);
+                transform.Translate(Vector2.up * m_currentSpeed_y* Time.deltaTime);
         if (transform.position.y > -2.1)
             if (Input.GetKey(key_moveDown))
-                transform.Translate(-Vector2.up * m_currentSpeed * Time.deltaTime);
+                transform.Translate(-Vector2.up * m_currentSpeed_y * Time.deltaTime);
+        if (transform.position.x < 3.5)
+            if (Input.GetKey(key_moveRight))
+                transform.Translate(Vector2.right * m_currentSpeed_x * Time.deltaTime);
+        if(transform.position.x > -7.25)
+            if (Input.GetKey(key_moveLeft))
+                transform.Translate(Vector2.left * m_currentSpeed_x * Time.deltaTime);
 
         if (!m_overdrive)
         {
@@ -139,19 +151,23 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator SetSlowed(float time)
     {
-        m_currentSpeed = p_speed * (1 - p_slowPercentage/100);
+        gameManager.GetComponent<GameManagerScript>().BreakCombo();
+        m_currentSpeed_y = p_speed_y * (1 - p_slowPercentage/100);
+        m_currentSpeed_x = p_speed_x * (1 - p_slowPercentage/100);
         float time_left = time;
         while (time_left > 0)
         {
             time_left -= Time.deltaTime;
             yield return null;
         }
-        m_currentSpeed = p_speed;
+        m_currentSpeed_y = p_speed_y;
+        m_currentSpeed_x = p_speed_x;
     }
 
     public IEnumerator SetBoost(float time)
     {
-        m_currentSpeed = p_speed * (1 + p_boostPercentage / 100);
+        m_currentSpeed_y = p_speed_y * (1 + p_boostPercentage / 100);
+        m_currentSpeed_x = p_speed_x * (1 + p_boostPercentage / 100);
         
         GameObject newBar = Instantiate(powerBar);
         newBar.transform.parent = gameObject.transform;
@@ -168,7 +184,8 @@ public class PlayerController : MonoBehaviour {
             newBarScript.SetFill(time_left / time);
             yield return null;
         }
-        m_currentSpeed = p_speed;
+        m_currentSpeed_y = p_speed_y;
+        m_currentSpeed_x = p_speed_x;
         newBarScript.DestroyBar();
     }
 

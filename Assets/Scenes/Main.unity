@@ -2387,6 +2387,16 @@ Prefab:
       propertyPath: m_Size.x
       value: 1.3962173
       objectReference: {fileID: 0}
+    - target: {fileID: 114868893526194704, guid: c0424c22fd7c5bf4dac718f7a11551d1,
+        type: 2}
+      propertyPath: p_speed_y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868893526194704, guid: c0424c22fd7c5bf4dac718f7a11551d1,
+        type: 2}
+      propertyPath: p_speed_x
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114529237953857696, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}

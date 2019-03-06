@@ -68,6 +68,11 @@ public class SpawnManager : MonoBehaviour {
     private bool waving;
     private bool eventing;
 
+    private int withoutSheep;
+    private int obstaclesInARow;
+    private int withoutObstacles;
+    private bool cantSpawn;
+
     //Function start
 
     private void Awake()
@@ -75,6 +80,7 @@ public class SpawnManager : MonoBehaviour {
         eventing = false;
         waving = false;
         spawn_multicolor = false;
+        cantSpawn = false;
 
         // Note: Setting fox variables
         fauxCustomer_spawnChance_current = 0;
@@ -216,8 +222,9 @@ public class SpawnManager : MonoBehaviour {
     // Note: Spawn Sheep or Fox
     void SpawnCustomer(bool spawn = false, bool obstacle = false, bool pickup = false)
     {
-        if (GetPercentage() <= customer_spawnRate)
+        if (GetPercentage() <= customer_spawnRate || withoutSheep >= 3)
         {
+            withoutSheep = 0;
             if (GetPercentage() <= wave_spawnChance && difficulty > wave_difficulty)
             {
                 wave_coroutine = SpawnWave(Random.Range(wave_minSize, wave_maxSize + 1));
@@ -230,7 +237,7 @@ public class SpawnManager : MonoBehaviour {
                 Vector3 spawn_pos = new Vector3(lane.position.x, lane.position.y + y_offset, lane.position.z);
                 if (GetPercentage() <= fauxCustomer_spawnChance_current)
                 {
-                    Instantiate(fauxCustomer_object, spawn_pos, Quaternion.identity);                
+                    Instantiate(fauxCustomer_object, spawn_pos, Quaternion.identity);
                     fauxCustomer_spawnChance_current = 0;
                 }
                 else
@@ -239,16 +246,21 @@ public class SpawnManager : MonoBehaviour {
                     if (fauxCustomer_spawnChance_current < fauxCustomer_spawnChance_normal * 2)
                         fauxCustomer_spawnChance_current += fauxCustomer_spawnChance_delta;
                 }
-            }           
+            }
         }
+        else withoutSheep++;
     }
 
 
     // Note: Spawn Pickup or Obstacle
     void SpawnObject(bool spawn = false)
     {
-        if (GetPercentage() <= object_spawnRate || spawn)
+        if ((GetPercentage() <= object_spawnRate && !cantSpawn) || spawn) 
         {
+            withoutObstacles = 0;
+            obstaclesInARow++;
+            if (obstaclesInARow >= 3)
+                cantSpawn = true;
             Transform lane = GetSpawnLane();
             // Note: Spawn pickup
             if (GetPercentage() <= pickup_spawnChance_current)
@@ -286,6 +298,10 @@ public class SpawnManager : MonoBehaviour {
                 Instantiate(obj, lane.position, Quaternion.identity);
             }
         }
+        obstaclesInARow = 0;
+        withoutObstacles++;
+        if (withoutObstacles >= 2)
+            cantSpawn = false;
     }
 
     IEnumerator SpawnObstacleWave()
@@ -321,7 +337,7 @@ public class SpawnManager : MonoBehaviour {
             int row = Random.Range(0, spawners.Count);
             Instantiate(customer_object, spawners[row].transform.position, Quaternion.identity);
 
-            float row_delay = 5.0f;
+            float row_delay = 2.5f;
             while (row_delay > 0)
             {
                 row_delay -= Time.deltaTime;
