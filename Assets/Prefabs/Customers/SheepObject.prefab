@@ -39,6 +39,8 @@ GameObject:
   - component: {fileID: 114167505625233380}
   - component: {fileID: 61861839888241492}
   - component: {fileID: 50967079022367368}
+  - component: {fileID: 111730389843389370}
+  - component: {fileID: 95021679580932928}
   m_Layer: 0
   m_Name: SheepObject
   m_TagString: Untagged
@@ -148,6 +150,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7126311, y: 1.1979575}
   m_EdgeRadius: 0
+--- !u!95 &95021679580932928
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892643202498942}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54d6f9b5733dbc44f937ead07f60069d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!111 &111730389843389370
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892643202498942}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f526bbe205473ee4594dd7cf89271e50, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b6f09e1c0ffd16c41a23004d8b2408af, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114167505625233380
 MonoBehaviour:
   m_ObjectHideFlags: 1

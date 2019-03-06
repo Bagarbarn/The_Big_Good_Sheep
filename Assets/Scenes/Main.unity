@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65753d270d320944db9cd24d042d9863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_gameEnd: 0
+  t_gameEnd: 1
   p_startTimer: 3
   countdownImage: {fileID: 364409125}
   countdownSprites:
