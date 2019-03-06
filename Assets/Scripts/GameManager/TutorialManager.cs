@@ -46,6 +46,7 @@ public class TutorialManager : MonoBehaviour {
     public GameObject[] backgrounds;
 
     private int fuck_ups;
+    bool cancelInfoReceived = false;
 
     public void Awake()
     {
@@ -181,16 +182,22 @@ public class TutorialManager : MonoBehaviour {
         tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
 
-        tutorialUI.ChangeActive(tutorialUI.shootSprite, true);
-
         while (currentSheep != null)
         {
             //if (Input.GetKeyDown(key_colorOne))
             //    tutorialUI.ChangeActive(tutorialUI.keyRed, false);
-            /*else*/ if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorThree))
+            /*else*/
+            if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorThree)){
                 tutorialUI.infoText.text = "Press I to cancel your color selection";
-            else if (Input.GetKeyDown(key_cancelColor))
+            }
+            else if (Input.GetKeyDown(key_cancelColor)){
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+                cancelInfoReceived = true;
+            }
+            else if (Input.GetKeyDown(key_colorOne)){
+                tutorialUI.infoText.text = "Press Spacebar to shoot your ice cream!";
+                tutorialUI.BlinkObject(tutorialUI.shootSprite, 0.5f, 4.0f);
+            }
             else if (Input.GetKeyDown(key_shoot))
                 tutorialUI.ChangeActive(tutorialUI.shootSprite, false);
 
@@ -214,12 +221,19 @@ public class TutorialManager : MonoBehaviour {
         {
             //if (Input.GetKeyDown(key_colorTwo))
             //    tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
-            /*else*/ if (Input.GetKeyDown(key_colorOne) || Input.GetKeyDown(key_colorThree))
+            /*else*/
+            if (Input.GetKeyDown(key_colorOne) || Input.GetKeyDown(key_colorThree)){
                 tutorialUI.infoText.text = "Press I to cancel your color selection";
-            else if (Input.GetKeyDown(key_cancelColor))
+            }
+            else if (Input.GetKeyDown(key_cancelColor)){
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
-
-
+                cancelInfoReceived = true;
+            }
+            else if (Input.GetKeyDown(key_colorTwo)){
+                tutorialUI.infoText.text = "Press Spacebar to shoot your ice cream!";
+                tutorialUI.BlinkObject(tutorialUI.shootSprite, 0.1f, 2.0f);
+            }
+            
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
@@ -240,10 +254,19 @@ public class TutorialManager : MonoBehaviour {
         {
             //if (Input.GetKeyDown(key_colorThree))
             //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
-            /*else*/ if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorOne))
+            /*else*/
+            if (Input.GetKeyDown(key_colorTwo) || Input.GetKeyDown(key_colorOne)) {
                 tutorialUI.infoText.text = "Press I to cancel your color selection";
-            else if (Input.GetKeyDown(key_cancelColor))
+            }
+            else if (Input.GetKeyDown(key_cancelColor)) {
                 tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+                cancelInfoReceived = true;
+            }
+            else if (Input.GetKeyDown(key_colorThree))
+            {
+                tutorialUI.infoText.text = "Press Spacebar to shoot your ice cream!";
+                tutorialUI.BlinkObject(tutorialUI.shootSprite, 0.1f, 2.0f);
+            }
 
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
@@ -251,8 +274,23 @@ public class TutorialManager : MonoBehaviour {
         }
 
         tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
-        tutorialUI.ChangeActive(tutorialUI.infoText, false);
         tutorialUI.ChangeActive(tutorialUI.shootSprite, false);
+
+        if (cancelInfoReceived == false)
+        {
+            tutorialUI.infoText.text = "You can cancel your color selection by pressing I";
+            tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
+            bool pressed = false;
+            while (!pressed)
+            {
+                if (Input.GetKeyDown(key_shoot))
+                    pressed = true;
+                MoveBackgrounds();
+                yield return null;
+            }
+            tutorialUI.ChangeActive(tutorialUI.spacebarText, false);
+        }
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
 
         StartCoroutine("EventZero");
     }
