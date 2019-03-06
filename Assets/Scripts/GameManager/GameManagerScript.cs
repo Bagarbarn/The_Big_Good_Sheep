@@ -17,11 +17,13 @@ public class GameManagerScript : MonoBehaviour {
     public float p_minSpeed;
     public float p_maxSpeed;
     public float p_maxTimer;
-    public int m_comboBonus;
 
     public Text p_scoreText;
     public Text p_comboText;
+    public Text p_multiplyText;
 
+    [HideInInspector]
+    public float m_multiplier;
     private int m_score;
     private int m_comboCount;
     private float m_acceleration;
@@ -38,6 +40,8 @@ public class GameManagerScript : MonoBehaviour {
         m_currentSpeed = p_minSpeed;
 
         p_scoreText.text = "Score: " + m_score;
+        m_multiplier = 1.0f;
+        p_multiplyText.text = "Score x" + m_multiplier;
         started = false;
         StartCoroutine("StartGameCountdown");
     }
@@ -88,11 +92,19 @@ public class GameManagerScript : MonoBehaviour {
             BreakCombo();
         }
 
-        int extraScore = 0;
-        if (m_comboCount > 1) {
-            extraScore = m_comboBonus * (m_comboCount - 1);
-            scoreToAdd += extraScore;}
-        
+        if (m_comboCount == 10)
+            m_multiplier = 1.5f;
+        else if (m_comboCount % 10 == 0 && m_comboCount > 10)
+            m_multiplier = m_comboCount / 10;
+        else if (m_multiplier >= 10)
+            m_multiplier = 10;
+        p_multiplyText.text = "Score x" + m_multiplier;
+
+        if (scoreToAdd >= 10 || m_multiplier >= 2.0f){
+            float multipliedScore = (float)scoreToAdd * m_multiplier;
+            scoreToAdd = (int)multipliedScore;
+        }
+
         m_score += scoreToAdd;
         p_scoreText.text = "Score: " + m_score;
     }
@@ -100,6 +112,14 @@ public class GameManagerScript : MonoBehaviour {
     public void BreakCombo()
     {
         m_comboCount = 0;
+
+        if (m_multiplier > 3.0f)
+            m_multiplier -= 2.0f;
+        else if (m_multiplier == 3.0f)
+            m_multiplier = 1.5f;
+        else m_multiplier = 1.0f;
+
+        p_multiplyText.text = "Score x" + m_multiplier;
         p_comboText.gameObject.SetActive(false);
     }
 

@@ -41,7 +41,12 @@ public class FauxCustomerController : MovingObjects {
         {
             //They can die
             gameManagerScript.AddScore(p_increasePoints);
-            FloatTextController.CreateFloatingText(p_increasePoints.ToString()+"p", transform, true);
+
+            int multiplier = 1;
+            if (gameManagerScript.m_multiplier >= 2)
+                multiplier = (int)gameManagerScript.m_multiplier;
+
+            FloatTextController.CreateFloatingText((multiplier * p_increasePoints).ToString()+"p", transform, true);
             Destroy(this.gameObject);
         }
     }
