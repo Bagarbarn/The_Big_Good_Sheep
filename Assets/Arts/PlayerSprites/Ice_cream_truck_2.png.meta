@@ -1,30 +1,43 @@
 fileFormatVersion: 2
-guid: f6546f50a7a124d4c9ba7b370555c3e1
+guid: b87a338069595314ea9b46717e765884
 TextureImporter:
   fileIDToRecycleName:
-    21300000: smalltruckanimation_0
-    21300002: smalltruckanimation_1
-    21300004: smalltruckanimation_2
-    21300006: smalltruckanimation_3
-    21300008: smalltruckanimation_4
-    21300010: smalltruckanimation_5
-    21300012: smalltruckanimation_6
-    21300014: smalltruckanimation_7
-    21300016: smalltruckanimation_8
-    21300018: smalltruckanimation_9
-    21300020: smalltruckanimation_10
-    21300022: smalltruckanimation_11
-    21300024: smalltruckanimation_12
-    21300026: smalltruckanimation_13
-    21300028: smalltruckanimation_14
-    21300030: smalltruckanimation_15
-    21300032: smalltruckanimation_16
-    21300034: smalltruckanimation_17
+    21300000: Ice_cream_truck_2_0
+    21300002: Ice_cream_truck_2_1
+    21300004: Ice_cream_truck_2_2
+    21300006: Ice_cream_truck_2_3
+    21300008: Ice_cream_truck_2_4
+    21300010: Ice_cream_truck_2_5
+    21300012: Ice_cream_truck_2_6
+    21300014: Ice_cream_truck_2_7
+    21300016: Ice_cream_truck_2_8
+    21300018: Ice_cream_truck_2_9
+    21300020: Ice_cream_truck_2_10
+    21300022: Ice_cream_truck_2_11
+    21300024: Ice_cream_truck_2_12
+    21300026: Ice_cream_truck_2_13
+    21300028: Ice_cream_truck_2_14
+    21300030: Ice_cream_truck_2_15
+    21300032: Ice_cream_truck_2_16
+    21300034: Ice_cream_truck_2_17
+    21300036: Ice_cream_truck_2_18
+    21300038: Ice_cream_truck_2_19
+    21300040: Ice_cream_truck_2_20
+    21300042: Ice_cream_truck_2_21
+    21300044: Ice_cream_truck_2_22
+    21300046: Ice_cream_truck_2_23
+    21300048: Ice_cream_truck_2_24
+    21300050: Ice_cream_truck_2_25
+    21300052: Ice_cream_truck_2_26
+    21300054: Ice_cream_truck_2_27
+    21300056: Ice_cream_truck_2_28
+    21300058: Ice_cream_truck_2_29
+    21300060: Ice_cream_truck_2_30
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -47,7 +60,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -58,7 +71,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -74,40 +87,40 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
   - buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
   - buildTarget: Android
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
   - buildTarget: WebGL
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,257 +130,257 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: smalltruckanimation_0
+      name: Ice_cream_truck_2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 933
-        width: 440
-        height: 311
+        y: 558
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_1
+      name: Ice_cream_truck_2_1
       rect:
         serializedVersion: 2
-        x: 440
-        y: 933
-        width: 440
-        height: 311
+        x: 395
+        y: 558
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_2
+      name: Ice_cream_truck_2_2
       rect:
         serializedVersion: 2
-        x: 880
-        y: 933
-        width: 440
-        height: 311
+        x: 790
+        y: 558
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_3
+      name: Ice_cream_truck_2_3
       rect:
         serializedVersion: 2
-        x: 1320
-        y: 933
-        width: 440
-        height: 311
+        x: 1185
+        y: 558
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_4
+      name: Ice_cream_truck_2_4
       rect:
         serializedVersion: 2
-        x: 1760
-        y: 933
-        width: 440
-        height: 311
+        x: 1580
+        y: 558
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_5
+      name: Ice_cream_truck_2_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 622
-        width: 440
-        height: 311
+        x: 1975
+        y: 558
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_6
-      rect:
-        serializedVersion: 2
-        x: 440
-        y: 622
-        width: 440
-        height: 311
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: smalltruckanimation_7
-      rect:
-        serializedVersion: 2
-        x: 880
-        y: 622
-        width: 440
-        height: 311
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: smalltruckanimation_8
-      rect:
-        serializedVersion: 2
-        x: 1320
-        y: 622
-        width: 440
-        height: 311
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: smalltruckanimation_9
-      rect:
-        serializedVersion: 2
-        x: 1760
-        y: 622
-        width: 440
-        height: 311
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: smalltruckanimation_10
+      name: Ice_cream_truck_2_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 311
-        width: 440
-        height: 311
+        y: 279
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_11
+      name: Ice_cream_truck_2_7
       rect:
         serializedVersion: 2
-        x: 440
-        y: 311
-        width: 440
-        height: 311
+        x: 395
+        y: 279
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_12
+      name: Ice_cream_truck_2_8
       rect:
         serializedVersion: 2
-        x: 880
-        y: 311
-        width: 440
-        height: 311
+        x: 790
+        y: 279
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_13
+      name: Ice_cream_truck_2_9
       rect:
         serializedVersion: 2
-        x: 1320
-        y: 311
-        width: 440
-        height: 311
+        x: 1185
+        y: 279
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_14
+      name: Ice_cream_truck_2_10
       rect:
         serializedVersion: 2
-        x: 1760
-        y: 311
-        width: 440
-        height: 311
+        x: 1580
+        y: 279
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_15
+      name: Ice_cream_truck_2_11
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 279
+        width: 395
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ice_cream_truck_2_12
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 440
-        height: 311
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_16
+      name: Ice_cream_truck_2_13
       rect:
         serializedVersion: 2
-        x: 440
+        x: 395
         y: 0
-        width: 440
-        height: 311
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: smalltruckanimation_17
+      name: Ice_cream_truck_2_14
       rect:
         serializedVersion: 2
-        x: 880
+        x: 790
         y: 0
-        width: 440
-        height: 311
+        width: 395
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ice_cream_truck_2_15
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 0
+        width: 395
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ice_cream_truck_2_16
+      rect:
+        serializedVersion: 2
+        x: 1580
+        y: 0
+        width: 395
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ice_cream_truck_2_17
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 0
+        width: 395
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
