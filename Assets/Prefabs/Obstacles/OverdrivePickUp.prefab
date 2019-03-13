@@ -76,6 +76,7 @@ MonoBehaviour:
   speed_addition: 0.75
   overdriveTime: 4
   overdriveShotSpeed: 0.3
+  OverDriveSound: {fileID: 8300000, guid: 9d739e69ea8379a4e88d0936f2643cf3, type: 3}
 --- !u!212 &212308243234885362
 SpriteRenderer:
   m_ObjectHideFlags: 1

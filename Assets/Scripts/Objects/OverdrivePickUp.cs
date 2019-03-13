@@ -6,6 +6,8 @@ public class OverdrivePickUp : Obstacle {
 
     public float overdriveTime;
     public float overdriveShotSpeed;
+    SoundScript soundManager;
+    public AudioClip OverDriveSound;
 
     private IEnumerator coroutine;
 
@@ -16,6 +18,8 @@ public class OverdrivePickUp : Obstacle {
         pc.p_overdriveShotInterval = overdriveShotSpeed;
         pc.StartCoroutine(coroutine);
         base.ObstacleEvent(playerObject);
+        soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        soundManager.PlayAudio(OverDriveSound);
     }
 
 
