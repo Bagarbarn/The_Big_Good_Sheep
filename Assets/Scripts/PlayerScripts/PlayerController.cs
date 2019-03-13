@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour {
 
     public string currentColor;
 
+    [HideInInspector]
+    public ScreenShake cameraScript;
 
     [HideInInspector]
     public float p_slowPercentage;
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour {
 
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         colorManager = gameManager.GetComponent<ColorManager>();
+
+        cameraScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>();
         
         barrelEnd = transform.Find("Barrel");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -151,7 +155,6 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator SetSlowed(float time)
     {
-        gameManager.GetComponent<GameManagerScript>().BreakCombo();
         m_currentSpeed_y = p_speed_y * (1 - p_slowPercentage/100);
         m_currentSpeed_x = p_speed_x * (1 - p_slowPercentage/100);
         float time_left = time;

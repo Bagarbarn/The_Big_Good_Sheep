@@ -19,8 +19,12 @@ public class SheepController : MovingObjects {
     public Vector2 speedValues;
     public Vector2 modifier_SpeedModifier_secondsToMax;
 
+    private Animator m_animator;
+    private BoxCollider2D m_collider;
     private float timeSpeedModifier;
     private float time;
+
+    private ScreenShake ss;
 
     override public void Start()
     {
@@ -31,6 +35,8 @@ public class SheepController : MovingObjects {
             time = modifier_SpeedModifier_secondsToMax.y;
 
         soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        m_animator = gameObject.GetComponent<Animator>();
+        m_collider = gameObject.GetComponent<BoxCollider2D>();
 
         //Gets modifier for speed increase
         timeSpeedModifier = modifier_SpeedModifier_secondsToMax.x * (time / modifier_SpeedModifier_secondsToMax.y);
@@ -41,6 +47,10 @@ public class SheepController : MovingObjects {
         m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor(multicolor);
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         demandSprite.color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(m_demandedColor);
+
+        //Get Camera script
+
+        ss = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>();
 
         //Destroys sheep outside screen
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
@@ -67,8 +77,14 @@ public class SheepController : MovingObjects {
                 FloatTextController.CreateFloatingText((gameManagerScript.m_multiplier*p_scoreValue).ToString() + "p", transform, true);
                 FloatTextController.CreateFloatingText(p_timeValue.ToString() + "s", transform, true);
 
+                m_animator.SetBool("isSatisfied", true);
+                m_collider.enabled = false;
+                foreach (Transform child in transform)
+                {
+                    Destroy(child.gameObject);
+                }
                 Destroy(other.gameObject);
-                Destroy(gameObject);
+                Destroy(gameObject, 0.7f);
             }
             else
             {
@@ -81,6 +97,7 @@ public class SheepController : MovingObjects {
         {
             gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_timeWhenHit);
             FloatTextController.CreateFloatingText("-"+p_timeWhenHit.ToString()+"s", transform, false);
+            ss.ShakeScreen();
             //Debug.Log("Sheep Hit");
             Destroy(this.gameObject);
         }

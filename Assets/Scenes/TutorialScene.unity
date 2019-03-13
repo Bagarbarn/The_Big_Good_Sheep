@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 390559482}
   - component: {fileID: 390559483}
   m_Layer: 0
-  m_Name: UI_aJ
+  m_Name: MoveBackSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -888,7 +888,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1928b27c59d56284192e4d88c72644ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf4e21ddb6ef5464e88438ea59bd2649, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2473,7 +2473,7 @@ GameObject:
   - component: {fileID: 1551650146}
   - component: {fileID: 1551650147}
   m_Layer: 0
-  m_Name: UI_aL
+  m_Name: MoveForwardSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2526,7 +2526,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ac282e65d7cb85543996aef595bb9da9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f3ebe8eb5089574489b94abd00ae5d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2920,7 +2920,7 @@ Transform:
   m_GameObject: {fileID: 1842606554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.45, y: 0.33, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 350146950}
   - {fileID: 266554203}
