@@ -10,11 +10,14 @@ public class Tutorial_FoxScript : MonoBehaviour {
     private SpriteRenderer demandSprite;
     public AudioClip evilLaughter;
     private SoundScript soundManager;
+    [HideInInspector]
+    public bool canBeCollided;
 
     private void Awake()
     {
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        canBeCollided = false;
     }
 
 
@@ -34,7 +37,7 @@ public class Tutorial_FoxScript : MonoBehaviour {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
-        else if (other.tag == "Player")
+        else if (other.tag == "Player" && canBeCollided)
         {
             Destroy(this.gameObject);
         }

@@ -10,11 +10,14 @@ public class Tutorial_SheepScript : MonoBehaviour {
     private SpriteRenderer demandSprite;
     public AudioClip satisfiedBleat;
     private SoundScript soundManager;
+    [HideInInspector]
+    public bool canBeCollided;
 
     private void Awake()
     {
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        canBeCollided = false;
     }
 
 
@@ -40,7 +43,7 @@ public class Tutorial_SheepScript : MonoBehaviour {
             {
                 Destroy(other.gameObject);
             }
-        } else if (other.tag == "Player")
+        } else if (other.tag == "Player" && canBeCollided)
         {
             Destroy(this.gameObject);
         }
