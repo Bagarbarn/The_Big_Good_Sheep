@@ -13,6 +13,8 @@ public class FauxCustomerController : MovingObjects {
     SoundScript soundManager;
     public AudioClip evilLaughter;
 
+    ScreenShake ss;
+
     // Use this for initialization
     override public void Start()
     {
@@ -23,6 +25,7 @@ public class FauxCustomerController : MovingObjects {
         demandSprite.color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(m_demandedColor);
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
         soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        ss = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>();
     }
 
 
@@ -47,6 +50,7 @@ public class FauxCustomerController : MovingObjects {
                 multiplier = (int)gameManagerScript.m_multiplier;
 
             FloatTextController.CreateFloatingText((multiplier * p_increasePoints).ToString()+"p", transform, true);
+            ss.ShakeScreen();
             Destroy(this.gameObject);
         }
     }

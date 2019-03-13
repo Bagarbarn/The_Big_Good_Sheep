@@ -1809,6 +1809,7 @@ GameObject:
   - component: {fileID: 1320962608}
   - component: {fileID: 1320962607}
   - component: {fileID: 1320962606}
+  - component: {fileID: 1320962610}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1879,6 +1880,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1320962610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320962605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a31889569a6854c81eb17bc8804f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_delta: 0.075
+  duration_total: 0.44
+  duration_delay: 0.02
+  speed: 0
 --- !u!1 &1581504395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,7 +1967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65753d270d320944db9cd24d042d9863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_gameEnd: 1
+  t_gameEnd: 0
   p_startTimer: 3
   countdownImage: {fileID: 364409125}
   countdownSprites:
