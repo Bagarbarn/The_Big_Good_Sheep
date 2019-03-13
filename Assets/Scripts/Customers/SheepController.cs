@@ -22,6 +22,8 @@ public class SheepController : MovingObjects {
     private float timeSpeedModifier;
     private float time;
 
+    private ScreenShake ss;
+
     override public void Start()
     {
         base.Start();
@@ -41,6 +43,10 @@ public class SheepController : MovingObjects {
         m_demandedColor = gameManagerScript.gameObject.GetComponent<ColorManager>().GetRandomColor(multicolor);
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         demandSprite.color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(m_demandedColor);
+
+        //Get Camera script
+
+        ss = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>();
 
         //Destroys sheep outside screen
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
@@ -81,6 +87,7 @@ public class SheepController : MovingObjects {
         {
             gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_timeWhenHit);
             FloatTextController.CreateFloatingText("-"+p_timeWhenHit.ToString()+"s", transform, false);
+            ss.ShakeScreen();
             //Debug.Log("Sheep Hit");
             Destroy(this.gameObject);
         }

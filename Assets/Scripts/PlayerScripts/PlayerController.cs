@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour {
 
     public string currentColor;
 
+    [HideInInspector]
+    public ScreenShake cameraScript;
 
     [HideInInspector]
     public float p_slowPercentage;
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour {
 
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         colorManager = gameManager.GetComponent<ColorManager>();
+
+        cameraScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>();
         
         barrelEnd = transform.Find("Barrel");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
