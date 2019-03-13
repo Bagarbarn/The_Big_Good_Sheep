@@ -74,7 +74,7 @@ MonoBehaviour:
   pickup: 1
   speed_max: 0.5
   speed_addition: 0.75
-  overdriveTime: 3
+  overdriveTime: 4
   overdriveShotSpeed: 0.3
 --- !u!212 &212308243234885362
 SpriteRenderer:
