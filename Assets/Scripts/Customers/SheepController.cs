@@ -19,6 +19,8 @@ public class SheepController : MovingObjects {
     public Vector2 speedValues;
     public Vector2 modifier_SpeedModifier_secondsToMax;
 
+    private Animator m_animator;
+    private BoxCollider2D m_collider;
     private float timeSpeedModifier;
     private float time;
 
@@ -31,6 +33,8 @@ public class SheepController : MovingObjects {
             time = modifier_SpeedModifier_secondsToMax.y;
 
         soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        m_animator = gameObject.GetComponent<Animator>();
+        m_collider = gameObject.GetComponent<BoxCollider2D>();
 
         //Gets modifier for speed increase
         timeSpeedModifier = modifier_SpeedModifier_secondsToMax.x * (time / modifier_SpeedModifier_secondsToMax.y);
@@ -67,8 +71,14 @@ public class SheepController : MovingObjects {
                 FloatTextController.CreateFloatingText((gameManagerScript.m_multiplier*p_scoreValue).ToString() + "p", transform, true);
                 FloatTextController.CreateFloatingText(p_timeValue.ToString() + "s", transform, true);
 
+                m_animator.SetBool("isSatisfied", true);
+                m_collider.enabled = false;
+                foreach (Transform child in transform)
+                {
+                    Destroy(child.gameObject);
+                }
                 Destroy(other.gameObject);
-                Destroy(gameObject);
+                Destroy(gameObject, 0.7f);
             }
             else
             {

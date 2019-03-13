@@ -151,7 +151,6 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator SetSlowed(float time)
     {
-        gameManager.GetComponent<GameManagerScript>().BreakCombo();
         m_currentSpeed_y = p_speed_y * (1 - p_slowPercentage/100);
         m_currentSpeed_x = p_speed_x * (1 - p_slowPercentage/100);
         float time_left = time;
