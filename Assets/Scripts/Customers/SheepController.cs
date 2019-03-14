@@ -7,6 +7,10 @@ public class SheepController : MovingObjects {
     private string m_demandedColor;
 
     SpriteRenderer demandSprite;
+
+    private ParticleManager particleScript;
+    public GameObject iceCreamParticles;
+
     private SoundScript soundManager;
     public AudioClip satisfiedBleat;
     public AudioClip satisfiedBleat2;
@@ -15,6 +19,8 @@ public class SheepController : MovingObjects {
     public int p_scoreValue;
     public int p_scoreFailure;
     public int p_timeWhenHit;
+
+
 
     public Vector2 speedValues;
     public Vector2 modifier_SpeedModifier_secondsToMax;
@@ -52,6 +58,8 @@ public class SheepController : MovingObjects {
 
         ss = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>();
 
+        particleScript = gameManagerScript.gameObject.GetComponent<ParticleManager>();
+
         //Destroys sheep outside screen
         Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
     }
@@ -68,7 +76,11 @@ public class SheepController : MovingObjects {
     {
         if (other.tag == "Bullet")
         {
-            if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor || other.gameObject.GetComponent<BulletScript>().p_color == "Rainbow")
+            string bullet_color = other.gameObject.GetComponent<BulletScript>().p_color;
+            Color color_color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(bullet_color);
+            particleScript.SpawnParticleSystem(iceCreamParticles, transform.position, color_color);
+
+            if (bullet_color == m_demandedColor || bullet_color == "Rainbow")
             {
                 gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(p_timeValue);
                 gameManagerScript.AddScore(p_scoreValue);
