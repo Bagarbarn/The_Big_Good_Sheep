@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RoadBlockObstacle : Obstacle {
 
-
+    SoundScript soundManager;
+    public AudioClip RoadBlockSound;
 
     public override void ObstacleEvent(GameObject playerObject)
     {
@@ -12,6 +13,8 @@ public class RoadBlockObstacle : Obstacle {
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>().EndGame();
 
         base.ObstacleEvent(playerObject);
+        soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        soundManager.PlayAudio(RoadBlockSound);
     }
 
 
