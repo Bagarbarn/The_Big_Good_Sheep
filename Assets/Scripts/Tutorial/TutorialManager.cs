@@ -7,6 +7,8 @@ public class TutorialManager : MonoBehaviour {
 
     KeyCode key_moveUp;
     KeyCode key_moveDown;
+    KeyCode key_moveRight;
+    KeyCode key_moveLeft;
     KeyCode key_shoot;
     KeyCode key_colorOne;
     KeyCode key_colorTwo;
@@ -43,6 +45,7 @@ public class TutorialManager : MonoBehaviour {
 
     private Vector2 topSpawn;
     private Vector2 bottomSpawn;
+    private Vector2 playerStartPos;
     public GameObject[] backgrounds;
 
     private int fuck_ups;
@@ -52,19 +55,26 @@ public class TutorialManager : MonoBehaviour {
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         playerController = playerObject.GetComponent<PlayerController>();
+        playerStartPos = playerObject.transform.position;
         
         tutorialUI = this.GetComponent<TutorialUIScript>();
+
         this.key_moveUp = playerController.key_moveUp;
         this.key_moveDown = playerController.key_moveDown;
+        this.key_moveRight = playerController.key_moveRight;
+        this.key_moveLeft = playerController.key_moveLeft;
+
         this.key_colorOne = playerController.key_colorOne;
         this.key_colorTwo = playerController.key_colorTwo;
         this.key_colorThree = playerController.key_colorThree;
+
         this.key_shoot = playerController.key_shoot;
         this.key_cancelColor = playerController.key_cancelColor;
 
         spawnPoint = GameObject.FindGameObjectWithTag("ObjectSpawner").transform;
         offScreenPoint = GameObject.FindGameObjectWithTag("Offscreen").transform;
         backgrounds = GameObject.FindGameObjectsWithTag("Background");
+        tutorialUI.ChangeActive(tutorialUI.moveSprites, false);
 
         topSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y + spawnHeightDifference);
         bottomSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y - spawnHeightDifference);
@@ -142,9 +152,11 @@ public class TutorialManager : MonoBehaviour {
         t_startEvent = 1;
         bool movedUp = false;
         bool movedDown = false;
+        bool movedForward = false;
+        bool movedBackward = false;
 
         tutorialUI.ChangeActive(tutorialUI.moveSprites, true);
-        tutorialUI.infoText.text = "Move up and down with the displayed keys";
+        tutorialUI.infoText.text = "Move up and down by pressing W and S";
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
         
         while (!movedDown || !movedUp)
@@ -153,15 +165,20 @@ public class TutorialManager : MonoBehaviour {
                 movedDown = true;
             if (Input.GetKeyDown(key_moveUp))
                 movedUp = true;
-
-
             yield return null;
         }
 
+        tutorialUI.infoText.text = "Move forward and backward by pressing D and A";
+        while (!movedForward || !movedBackward)
+        {
+            if (Input.GetKeyDown(key_moveRight))
+                movedForward = true;
+            if (Input.GetKeyDown(key_moveLeft))
+                movedBackward = true;
+            yield return null;
+        }
         tutorialUI.ChangeActive(tutorialUI.infoText, false);
         tutorialUI.ChangeActive(tutorialUI.moveSprites, false);
-
-        //tutorialUI.ChangeActive(tutorialUI.moveSprites, false);
         StartCoroutine("EventZero");
     }
 
@@ -452,6 +469,7 @@ public class TutorialManager : MonoBehaviour {
                 Debug.Log("Roadblock hit");
                 tutorialUI.infoText.text = "You hit the roadblock, please try again";
                 roadblock.transform.position = lastPosrb;
+                playerObject.transform.position = playerStartPos;
                 float retime = tutorial_waitTime;
                 while (retime > 0)
                 {
@@ -512,6 +530,7 @@ public class TutorialManager : MonoBehaviour {
         playerController.started = true;
         GameObject pickup;
         pickup = Instantiate(overdriveObject, topSpawn, Quaternion.identity);
+        pickup.GetComponent<CircleCollider2D>().enabled = false;
         while (pickup.transform.position.x > tutorial_inwardMovement)
         {
             pickup.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
@@ -521,19 +540,17 @@ public class TutorialManager : MonoBehaviour {
 
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
         tutorialUI.infoText.text = "A pickup! Try to run it over.";
+        bool pickedUp = false;
 
         float time = tutorial_waitTime;
-
         while (time > 0)
         {
             time -= Time.deltaTime;
             yield return null;
         }
 
-        bool pickedUp = false;
-
+        pickup.GetComponent<CircleCollider2D>().enabled = true;
         Vector2 lastPospu = pickup.transform.position;
-
 
         while (!pickedUp)
         {

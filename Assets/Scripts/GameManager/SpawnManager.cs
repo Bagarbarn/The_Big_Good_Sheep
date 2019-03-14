@@ -222,7 +222,7 @@ public class SpawnManager : MonoBehaviour {
     // Note: Spawn Sheep or Fox
     void SpawnCustomer(bool spawn = false, bool obstacle = false, bool pickup = false)
     {
-        if (GetPercentage() <= customer_spawnRate || withoutSheep >= 3)
+        if (GetPercentage() <= customer_spawnRate || withoutSheep >= 2)
         {
             withoutSheep = 0;
             if (GetPercentage() <= wave_spawnChance && difficulty > wave_difficulty)
