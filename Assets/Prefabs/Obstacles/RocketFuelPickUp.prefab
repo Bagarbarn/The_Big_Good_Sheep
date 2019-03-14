@@ -86,6 +86,7 @@ MonoBehaviour:
   speed_addition: 0.75
   p_effectTime: 5
   p_boostPercentage: 40
+  RocketFuelSound: {fileID: 8300000, guid: 8c287f25bbea84c0588789c62f6fb47d, type: 3}
 --- !u!212 &212050266513460412
 SpriteRenderer:
   m_ObjectHideFlags: 1

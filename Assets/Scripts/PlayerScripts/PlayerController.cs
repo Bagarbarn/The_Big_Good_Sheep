@@ -19,9 +19,9 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector]
     public KeyCode key_cancelColor = KeyCode.C;
     [HideInInspector]
-    private KeyCode key_moveLeft = KeyCode.A;
+    public KeyCode key_moveLeft = KeyCode.A;
     [HideInInspector]
-    private KeyCode key_moveRight = KeyCode.D;
+    public KeyCode key_moveRight = KeyCode.D;
 
     public AudioSource shootAudio;
 
