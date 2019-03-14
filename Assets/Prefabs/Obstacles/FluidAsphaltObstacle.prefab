@@ -173,8 +173,12 @@ MonoBehaviour:
   p_speed: 0
   gameManagerScript: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  pickup: 0
+  speed_max: 0.2
+  speed_addition: 0.05
   p_effectTime: 5
   p_slowPercentage: 50
+  FluidAsphaltSound: {fileID: 8300000, guid: 6f2c7369a8043470dbaa136a48dbee54, type: 3}
 --- !u!212 &212963768457932772
 SpriteRenderer:
   m_ObjectHideFlags: 1

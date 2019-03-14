@@ -6,6 +6,9 @@ public class FluidAsphaltObstacle : Obstacle {
 
     public int p_effectTime;
     public float p_slowPercentage;
+    SoundScript soundManager;
+    public AudioClip FluidAsphaltSound;
+    
 
     private IEnumerator coroutine;
 
@@ -20,7 +23,8 @@ public class FluidAsphaltObstacle : Obstacle {
         playerObject.GetComponent<PlayerController>().p_slowPercentage = this.p_slowPercentage;
         coroutine = playerObject.GetComponent<PlayerController>().SetSlowed(p_effectTime);
         playerObject.GetComponent<PlayerController>().StartCoroutine(coroutine);
-
+        soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        soundManager.PlayAudio(FluidAsphaltSound);
     }
 }
 
