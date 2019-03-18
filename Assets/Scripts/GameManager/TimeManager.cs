@@ -21,7 +21,7 @@ public class TimeManager : MonoBehaviour {
 	void Update () {
         if (started)
             m_currentTime -= Time.deltaTime;
-        p_timeText.text = "Time left: " + m_currentTime.ToString("F1");
+        p_timeText.text =  m_currentTime.ToString("F1");
 
         if (m_currentTime < 0)
         {
