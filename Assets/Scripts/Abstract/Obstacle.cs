@@ -9,6 +9,9 @@ public abstract class Obstacle : MovingObjects {
     public float speed_max = .2f;
     public float speed_addition = 0.05f;
 
+    [HideInInspector]
+    public int lane;
+
     public override void Start()
     {
         base.Start();

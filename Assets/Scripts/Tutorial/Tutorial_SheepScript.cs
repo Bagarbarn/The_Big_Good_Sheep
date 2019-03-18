@@ -13,6 +13,10 @@ public class Tutorial_SheepScript : MonoBehaviour {
     [HideInInspector]
     public bool canBeCollided;
 
+    private ParticleManager particleScript;
+
+    public GameObject particleSystem;
+
     private Animator m_animator;
     private BoxCollider2D m_collider;
 
@@ -24,6 +28,7 @@ public class Tutorial_SheepScript : MonoBehaviour {
         m_collider = gameObject.GetComponent<BoxCollider2D>();
 
         canBeCollided = false;
+        particleScript = GameObject.FindWithTag("GameController").GetComponent<ParticleManager>();
     }
 
 
@@ -44,6 +49,10 @@ public class Tutorial_SheepScript : MonoBehaviour {
     {
         if (other.tag == "Bullet")
         {
+            string color = other.GetComponent<BulletScript>().p_color;
+            Color color_color = GameObject.FindGameObjectWithTag("GameController").GetComponent<ColorManager>().GetColor(color);
+            particleScript.SpawnParticleSystem(particleSystem, transform.position, color_color);
+
             if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor ||
                 other.gameObject.GetComponent<BulletScript>().p_color == "Rainbow")
             {
