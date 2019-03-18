@@ -158,7 +158,7 @@ public class SheepController : MovingObjects {
         while (timer > 0)
         {
             transform.Translate(dir * speed * Time.deltaTime);
-
+            spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
             timer -= Time.deltaTime;
             yield return null;
         }

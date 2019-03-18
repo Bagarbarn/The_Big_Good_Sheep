@@ -2124,6 +2124,7 @@ GameObject:
   - component: {fileID: 1017053777}
   - component: {fileID: 1017053780}
   - component: {fileID: 1017053781}
+  - component: {fileID: 1017053782}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: GameController
@@ -2257,6 +2258,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1017053782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1017053776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1510436b43d54d8c1b0c5ce96dbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1077611005
 GameObject:
   m_ObjectHideFlags: 0

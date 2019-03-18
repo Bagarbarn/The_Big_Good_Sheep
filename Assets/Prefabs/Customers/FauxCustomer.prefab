@@ -164,6 +164,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   p_decreaseTime: 5
   p_increasePoints: 5
+  iceCreamParticles: {fileID: 1500438419957900, guid: 1e7dabc23c0cacb42b8be6527eb49a81,
+    type: 2}
   evilLaughter: {fileID: 8300000, guid: 9bcace641bea5824a896f914fbaa81ad, type: 3}
 --- !u!212 &212015816446376900
 SpriteRenderer:

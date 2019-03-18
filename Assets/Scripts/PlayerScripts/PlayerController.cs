@@ -100,13 +100,13 @@ public class PlayerController : MonoBehaviour {
         if (transform.position.y < 3.5)
             if (Input.GetKey(key_moveUp))
                 transform.Translate(Vector2.up * m_currentSpeed_y* Time.deltaTime);
-        if (transform.position.y > -2.1)
+        if (transform.position.y > -1.35)
             if (Input.GetKey(key_moveDown))
                 transform.Translate(-Vector2.up * m_currentSpeed_y * Time.deltaTime);
         if (transform.position.x < 3.5)
             if (Input.GetKey(key_moveRight))
                 transform.Translate(Vector2.right * m_currentSpeed_x * Time.deltaTime);
-        if(transform.position.x > -7.25)
+        if(transform.position.x > -6.5)
             if (Input.GetKey(key_moveLeft))
                 transform.Translate(Vector2.left * m_currentSpeed_x * Time.deltaTime);
 
@@ -155,11 +155,11 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator SetSlowed(float time)
     {
-        m_currentSpeed_y = p_speed_y * (1 - p_slowPercentage/100);
-        m_currentSpeed_x = p_speed_x * (1 - p_slowPercentage/100);
         float time_left = time;
         while (time_left > 0)
         {
+            m_currentSpeed_y = p_speed_y * (1 - p_slowPercentage / 100);
+            m_currentSpeed_x = p_speed_x * (1 - p_slowPercentage / 100);
             time_left -= Time.deltaTime;
             yield return null;
         }
@@ -169,8 +169,6 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator SetBoost(float time)
     {
-        m_currentSpeed_y = p_speed_y * (1 + p_boostPercentage / 100);
-        m_currentSpeed_x = p_speed_x * (1 + p_boostPercentage / 100);
         
         GameObject newBar = Instantiate(powerBar);
         newBar.transform.parent = gameObject.transform;
@@ -183,6 +181,8 @@ public class PlayerController : MonoBehaviour {
         float time_left = time;
         while (time_left > 0)
         {
+            m_currentSpeed_y = p_speed_y * (1 + p_boostPercentage / 100);
+            m_currentSpeed_x = p_speed_x * (1 + p_boostPercentage / 100);
             time_left -= Time.deltaTime;
             newBarScript.SetFill(time_left / time);
             yield return null;
@@ -209,6 +209,7 @@ public class PlayerController : MonoBehaviour {
         GameObject rainbowScoop =  colorManager.GetRainbowScoop();
         while (time_left > 0)
         {
+            m_overdrive = true;
             time_left -= Time.deltaTime;
             newBarScript.SetFill(time_left / time);
             if (shotCD <= 0)
@@ -243,6 +244,7 @@ public class PlayerController : MonoBehaviour {
 
         while (time_left > 0)
         {
+            invincible = true;
             if (time_left <= blink_start)
             {
                 if (blink_timer <= 0)

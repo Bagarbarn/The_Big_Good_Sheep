@@ -71,6 +71,7 @@ public class GameManagerScript : MonoBehaviour {
         countdownImage.sprite = countdownSprites[0];
         gameObject.GetComponent<TimeManager>().started = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().started = true;
+        gameObject.GetComponent<SpawnManager>().StartGame();
         //gameObject.GetComponent<SpawnManager>().started = true;
         started = true;
         while(p_startTimer >= -1)
