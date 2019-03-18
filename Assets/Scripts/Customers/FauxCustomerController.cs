@@ -37,16 +37,21 @@ public class FauxCustomerController : MovingObjects {
     {
         if (other.tag == "Bullet")
         {
-            gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_decreaseTime);
-            FloatTextController.CreateFloatingText("-"+p_decreaseTime.ToString()+"s", transform, false);
 
             //Spawn Particle
             string bullet_color = other.gameObject.GetComponent<BulletScript>().p_color;
             Color color_color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(bullet_color);
             particleScript.SpawnParticleSystem(iceCreamParticles, transform.position, color_color);
 
-            //Cool smoke bomb animation
-            soundManager.PlayAudio(evilLaughter);
+
+            if (other.gameObject.GetComponent<BulletScript>().p_color != "Rainbow")
+            {
+                gameManagerScript.gameObject.GetComponent<TimeManager>().AdjustTime(-p_decreaseTime);
+                FloatTextController.CreateFloatingText("-" + p_decreaseTime.ToString() + "s", transform, false);
+
+                //Cool smoke bomb animation
+                soundManager.PlayAudio(evilLaughter);
+            }
             Destroy(other.gameObject);
             Destroy(this.gameObject);
 
