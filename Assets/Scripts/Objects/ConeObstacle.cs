@@ -6,6 +6,7 @@ public class ConeObstacle : Obstacle {
 
     public float p_timeToSubstract;
 
+
     public override void ObstacleEvent(GameObject playerObject)
     {
 

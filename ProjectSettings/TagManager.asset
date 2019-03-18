@@ -15,6 +15,7 @@ TagManager:
   - Obstacle
   - FloatingText
   - PowerBar
+  - Customer
   layers:
   - Default
   - TransparentFX
