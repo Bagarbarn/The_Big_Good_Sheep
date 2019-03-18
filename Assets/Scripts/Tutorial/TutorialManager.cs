@@ -45,6 +45,7 @@ public class TutorialManager : MonoBehaviour {
 
     private Vector2 topSpawn;
     private Vector2 bottomSpawn;
+    private Vector2 playerStartPos;
     public GameObject[] backgrounds;
 
     private int fuck_ups;
@@ -54,6 +55,7 @@ public class TutorialManager : MonoBehaviour {
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         playerController = playerObject.GetComponent<PlayerController>();
+        playerStartPos = playerObject.transform.position;
         
         tutorialUI = this.GetComponent<TutorialUIScript>();
 
@@ -72,6 +74,7 @@ public class TutorialManager : MonoBehaviour {
         spawnPoint = GameObject.FindGameObjectWithTag("ObjectSpawner").transform;
         offScreenPoint = GameObject.FindGameObjectWithTag("Offscreen").transform;
         backgrounds = GameObject.FindGameObjectsWithTag("Background");
+        tutorialUI.ChangeActive(tutorialUI.moveSprites, false);
 
         topSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y + spawnHeightDifference);
         bottomSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y - spawnHeightDifference);
@@ -466,6 +469,7 @@ public class TutorialManager : MonoBehaviour {
                 Debug.Log("Roadblock hit");
                 tutorialUI.infoText.text = "You hit the roadblock, please try again";
                 roadblock.transform.position = lastPosrb;
+                playerObject.transform.position = playerStartPos;
                 float retime = tutorial_waitTime;
                 while (retime > 0)
                 {
@@ -526,6 +530,7 @@ public class TutorialManager : MonoBehaviour {
         playerController.started = true;
         GameObject pickup;
         pickup = Instantiate(overdriveObject, topSpawn, Quaternion.identity);
+        pickup.GetComponent<CircleCollider2D>().enabled = false;
         while (pickup.transform.position.x > tutorial_inwardMovement)
         {
             pickup.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
@@ -535,19 +540,17 @@ public class TutorialManager : MonoBehaviour {
 
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
         tutorialUI.infoText.text = "A pickup! Try to run it over.";
+        bool pickedUp = false;
 
         float time = tutorial_waitTime;
-
         while (time > 0)
         {
             time -= Time.deltaTime;
             yield return null;
         }
 
-        bool pickedUp = false;
-
+        pickup.GetComponent<CircleCollider2D>().enabled = true;
         Vector2 lastPospu = pickup.transform.position;
-
 
         while (!pickedUp)
         {
