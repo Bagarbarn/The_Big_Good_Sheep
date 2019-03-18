@@ -31,7 +31,7 @@ public class Tutorial_FoxScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Bullet")
+        if (other.tag == "Bullet" && !canBeCollided)
         {
             soundManager.PlayAudio(evilLaughter);
             Destroy(other.gameObject);

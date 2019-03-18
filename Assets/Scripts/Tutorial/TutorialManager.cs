@@ -191,14 +191,14 @@ public class TutorialManager : MonoBehaviour {
 
         //red sheep;
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
-
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("red");
-
         tutorialUI.ChangeActive(tutorialUI.keyRed, true);
 
         tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
 
+        //red sheep loop
+        bool stoppedAnim = false;
         while (currentSheep != null)
         {
             //if (Input.GetKeyDown(key_colorOne))
@@ -217,23 +217,30 @@ public class TutorialManager : MonoBehaviour {
             }
             else if (Input.GetKeyDown(key_shoot))
                 tutorialUI.ChangeActive(tutorialUI.shootSprite, false);
-
-
+            
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+
+            //pausing the sheep animation
+            else if (stoppedAnim == false) {
+                currentSheep.GetComponent<Tutorial_SheepScript>().StopAnimation();
+                stoppedAnim = true;
+            }
             yield return null;
         }
 
         tutorialUI.ChangeActive(tutorialUI.keyRed, false);
 
+
         //blue sheep
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
-
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("blue");
-
         tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
+
         tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
 
+        //blue sheep loop
+        stoppedAnim = false;
         while (currentSheep != null)
         {
             //if (Input.GetKeyDown(key_colorTwo))
@@ -250,23 +257,30 @@ public class TutorialManager : MonoBehaviour {
                 tutorialUI.infoText.text = "Press Spacebar to shoot your ice cream!";
                 tutorialUI.BlinkObject(tutorialUI.shootSprite, 0.1f, 2.0f);
             }
-            
+
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+
+            //pausing the sheep animation
+            else if (stoppedAnim == false) {
+                currentSheep.GetComponent<Tutorial_SheepScript>().StopAnimation();
+                stoppedAnim = true;
+            }
             yield return null;
         }
 
         tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
 
-        tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
+
         //yellow sheep
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
-
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("yellow");
-
-        tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
         tutorialUI.ChangeActive(tutorialUI.keyYellow, true);
 
+        tutorialUI.infoText.text = "Use the J, K and L button to select base colors";
+
+        //yellow sheep loop
+        stoppedAnim = false;
         while (currentSheep != null)
         {
             //if (Input.GetKeyDown(key_colorThree))
@@ -287,12 +301,20 @@ public class TutorialManager : MonoBehaviour {
 
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+
+            //pausing the sheep animation
+            else if (stoppedAnim == false){
+                currentSheep.GetComponent<Tutorial_SheepScript>().StopAnimation();
+                stoppedAnim = true;
+            }
             yield return null;
         }
 
         tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
         tutorialUI.ChangeActive(tutorialUI.shootSprite, false);
 
+        
+        //color cancel info
         if (cancelInfoReceived == false)
         {
             tutorialUI.infoText.text = "You can cancel your color selection by pressing I";
@@ -323,72 +345,78 @@ public class TutorialManager : MonoBehaviour {
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
         tutorialUI.infoText.text = "You can mix two base colors to make a new color";
 
+
         //Purple sheep;
         currentSheep = Instantiate(sheepObject, spawnPoint.position, Quaternion.identity);
-
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("purple");
 
         tutorialUI.ChangeActive(tutorialUI.keyRed, true);
         tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
 
-
+        //Purple sheep loop
+        bool stoppedAnim = false;
         while (currentSheep != null)
         {
-            //if (Input.GetKeyDown(key_colorOne))
-            //    tutorialUI.ChangeActive(tutorialUI.keyRed, false);
-            //else if (Input.GetKeyDown(key_colorTwo))
-            //    tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
-            /*else*/ if (Input.GetKeyDown(key_colorThree))
+            if (Input.GetKeyDown(key_colorThree))
                 tutorialUI.infoText.text = "Press I to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color";
 
-
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+
+            //pausing the sheep animation
+            else if (stoppedAnim == false){
+                currentSheep.GetComponent<Tutorial_SheepScript>().StopAnimation();
+                stoppedAnim = true;
+            }
             yield return null;
         }
 
         tutorialUI.ChangeActive(tutorialUI.keyRed, false);
         tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
 
+
         //Orange sheep
         currentSheep = Instantiate(sheepObject, bottomSpawn, Quaternion.identity);
+        currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("orange");
 
         tutorialUI.ChangeActive(tutorialUI.keyRed, true);
         tutorialUI.ChangeActive(tutorialUI.keyYellow, true);
 
-
-        currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("orange");
+        //Orange sheep loop
+        stoppedAnim = false;
         while (currentSheep != null)
         {
-            //if (Input.GetKeyDown(key_colorOne))
-            //    tutorialUI.ChangeActive(tutorialUI.keyRed, false);
-            //else if (Input.GetKeyDown(key_colorThree))
-            //    tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
-            /*else*/ if (Input.GetKeyDown(key_colorTwo))
+            if (Input.GetKeyDown(key_colorTwo))
                 tutorialUI.infoText.text = "Press I to cancel your color selection";
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color";
 
-
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+
+            //pausing the sheep animation
+            else if (stoppedAnim == false){
+                currentSheep.GetComponent<Tutorial_SheepScript>().StopAnimation();
+                stoppedAnim = true;
+            }
             yield return null;
         }
-
-
+        
         tutorialUI.ChangeActive(tutorialUI.keyRed, false);
         tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
 
+
         //Green sheep
         currentSheep = Instantiate(sheepObject, topSpawn, Quaternion.identity);
-
         currentSheep.GetComponent<Tutorial_SheepScript>().ObtainColor("green");
 
         tutorialUI.ChangeActive(tutorialUI.keyBlue, true);
         tutorialUI.ChangeActive(tutorialUI.keyYellow, true);
 
+        //Green sheep loop
+        stoppedAnim = false;
         while (currentSheep != null)
         {
             //if (Input.GetKeyDown(key_colorTwo))
@@ -400,14 +428,20 @@ public class TutorialManager : MonoBehaviour {
             else if (Input.GetKeyDown(key_cancelColor))
                 tutorialUI.infoText.text = "You can mix two base colors to make a new color.";
 
-
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+
+            //pausing the sheep animation
+            else if (stoppedAnim == false){
+                currentSheep.GetComponent<Tutorial_SheepScript>().StopAnimation();
+                stoppedAnim = true;
+            }
             yield return null;
         }
 
         tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
         tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+
 
         //Fox customer
         currentSheep = Instantiate(foxObject, spawnPoint.position, Quaternion.identity);
@@ -420,22 +454,52 @@ public class TutorialManager : MonoBehaviour {
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
             yield return null;
         }
-
         tutorialUI.infoText.text = "Oh no, it was a fox! It just wasted your time.";
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
+        bool pressed = false;
+        while (!pressed)
+        {
+            if (Input.GetKeyDown(key_shoot))
+                pressed = true;
+            yield return null;
+        }
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, false);
+        tutorialUI.ChangeActive(tutorialUI.infoText, false);
 
         float time = tutorial_waitTime;
-        while(time > 0f)
+        while (time > 0)
         {
             time -= Time.deltaTime;
+            MoveBackgrounds();
             yield return null;
         }
 
-        tutorialUI.ChangeActive(tutorialUI.keyBlue, false);
-        tutorialUI.ChangeActive(tutorialUI.keyYellow, false);
+        //Fox to run over
+        currentSheep = Instantiate(foxObject, spawnPoint.position, Quaternion.identity);
+        currentSheep.GetComponent<Tutorial_FoxScript>().ObtainColor("red");
+
+        tutorialUI.infoText.text = "It's another fox! Try to collide with it this time";
+        tutorialUI.ChangeActive(tutorialUI.infoText, true);
+        currentSheep.GetComponent<Tutorial_FoxScript>().canBeCollided = true;
+
+        while (currentSheep != null)
+        {
+            if (currentSheep.transform.position.x > (tutorial_inwardMovement/2))
+                currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        tutorialUI.infoText.text = "Nice! That's one less predator to compete with.";
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
+        pressed = false;
+        while (!pressed)
+        {
+            if (Input.GetKeyDown(key_shoot))
+                pressed = true;
+            yield return null;
+        }
+        tutorialUI.ChangeActive(tutorialUI.spacebarText, false);
         tutorialUI.ChangeActive(tutorialUI.infoText, false);
-
-
-
+        
         StartCoroutine("EventZero");
     }
 

@@ -1368,12 +1368,12 @@ Prefab:
     - target: {fileID: 224761822405059982, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224304872326071656, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224857634874401986, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
@@ -2119,13 +2119,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6929377f556bfa84f8189afcecbb5591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_startEvent: 5
+  t_startEvent: 2
   transitionTime: 2
   tutorial_moveSpeed: 3
   tutorial_inwardMovement: 5
   spawnHeightDifference: 2
   background: {fileID: 0}
-  sheepObject: {fileID: 1686278885912106, guid: 2f8b2550a580e374db7767c6d4a05abe,
+  sheepObject: {fileID: 1253194464881240, guid: 074954b93f76034489513872e158bd76,
     type: 2}
   foxObject: {fileID: 1924455352077484, guid: 55cdfa85ef8dd204096f1ea74af5c5a1, type: 2}
   roadblockObject: {fileID: 1043219599849920, guid: fede9fa04f5f22a448e2f72cfb6d144b,

@@ -13,10 +13,16 @@ public class Tutorial_SheepScript : MonoBehaviour {
     [HideInInspector]
     public bool canBeCollided;
 
+    private Animator m_animator;
+    private BoxCollider2D m_collider;
+
     private void Awake()
     {
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        m_animator = gameObject.GetComponent<Animator>();
+        m_collider = gameObject.GetComponent<BoxCollider2D>();
+
         canBeCollided = false;
     }
 
@@ -29,6 +35,11 @@ public class Tutorial_SheepScript : MonoBehaviour {
 
     }
 
+    public void StopAnimation()
+    {
+        m_animator.speed = 0.0f;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Bullet")
@@ -37,8 +48,18 @@ public class Tutorial_SheepScript : MonoBehaviour {
                 other.gameObject.GetComponent<BulletScript>().p_color == "Rainbow")
             {
                 soundManager.PlayAudio(satisfiedBleat);
+
+                m_animator.speed = 1.0f;
+                m_animator.SetBool("isSatisfied", true);
+                m_collider.enabled = false;
+
+                foreach (Transform child in transform)
+                {
+                    Destroy(child.gameObject);
+                }
                 Destroy(other.gameObject);
-                Destroy(this.gameObject);
+                Destroy(gameObject, 0.7f);
+
             } else
             {
                 Destroy(other.gameObject);
