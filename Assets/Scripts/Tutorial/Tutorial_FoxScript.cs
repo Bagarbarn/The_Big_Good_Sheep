@@ -35,8 +35,10 @@ public class Tutorial_FoxScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Bullet")
+        if (other.tag == "Bullet" && !canBeCollided)
         {
+            FloatTextController.CreateFloatingText("-5s", transform, false);
+
             string color = other.GetComponent<BulletScript>().p_color;
             Color color_color = GameObject.FindGameObjectWithTag("GameController").GetComponent<ColorManager>().GetColor(color);
             particleScript.SpawnParticleSystem(particleSystem, transform.position, color_color);
@@ -47,6 +49,7 @@ public class Tutorial_FoxScript : MonoBehaviour {
         }
         else if (other.tag == "Player" && canBeCollided)
         {
+            FloatTextController.CreateFloatingText("5p", transform, true);
             Destroy(this.gameObject);
         }
     }
