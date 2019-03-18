@@ -77,7 +77,11 @@ public class SheepController : MovingObjects {
         if (other.tag == "Bullet")
         {
             string bullet_color = other.gameObject.GetComponent<BulletScript>().p_color;
-            Color color_color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(bullet_color);
+            Color color_color = Color.black;
+            if (bullet_color != "Rainbow")
+            {
+                color_color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(bullet_color);
+            }
             particleScript.SpawnParticleSystem(iceCreamParticles, transform.position, color_color);
 
             if (bullet_color == m_demandedColor || bullet_color == "Rainbow")
