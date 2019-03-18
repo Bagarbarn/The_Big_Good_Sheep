@@ -14,7 +14,6 @@ public class Tutorial_SheepScript : MonoBehaviour {
     public bool canBeCollided;
 
     private ParticleManager particleScript;
-
     public GameObject particleSystem;
 
     private Animator m_animator;
@@ -57,6 +56,8 @@ public class Tutorial_SheepScript : MonoBehaviour {
                 other.gameObject.GetComponent<BulletScript>().p_color == "Rainbow")
             {
                 soundManager.PlayAudio(satisfiedBleat);
+                FloatTextController.CreateFloatingText("10p", transform, true);
+                FloatTextController.CreateFloatingText("2s", transform, true);
 
                 m_animator.speed = 1.0f;
                 m_animator.SetBool("isSatisfied", true);
