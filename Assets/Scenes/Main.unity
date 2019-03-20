@@ -2406,15 +2406,16 @@ MonoBehaviour:
   - 70
   - 160
   - 300
-  - 320
-  - 340
+  - 360
+  - 400
   event_obstacleCourse:
   - 120
   - 190
+  - 430
   tick_max: 1.75
   tick_min: 1.3
   tick_rate: 0
-  time_maxDifficulty: 10
+  time_maxDifficulty: 240
   difficulty: 0
   difficulty_multicolor: 8
   wave_difficulty: 0
@@ -2448,15 +2449,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a561eaa5e9629ec42b2634999a7032a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tick_max: 0.5
-  tick_min: 0.2
-  time_maxDifficulty: 5
+  tick_max: 0.9
+  tick_min: 0.5
+  time_maxDifficulty: 500
   wave_spawnChance: 8
   wave_minSize: 3
   wave_maxSize: 5
-  customer_spawnRate: 67
+  customer_spawnRate: 60
   fauxCustomer_spawnChance: 12
-  object_spawnRate: 20
+  object_spawnRate: 55
 --- !u!1 &1690570992
 GameObject:
   m_ObjectHideFlags: 0
