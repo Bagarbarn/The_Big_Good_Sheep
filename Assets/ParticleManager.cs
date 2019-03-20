@@ -30,7 +30,6 @@ public class ParticleManager : MonoBehaviour {
                     ParticleSystem.Particle psp = parts[i];
                     float rand = Random.Range(0f, 1f);
                     psp.startColor = gradient.Evaluate(rand);
-                    Debug.Log(psp.startColor);
                 }
             }
             activeSystems.Add(currentSystem);

@@ -16,6 +16,7 @@ TagManager:
   - FloatingText
   - PowerBar
   - Customer
+  - PauseMenuImage
   layers:
   - Default
   - TransparentFX
