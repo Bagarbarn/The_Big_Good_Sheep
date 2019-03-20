@@ -1,12 +1,16 @@
 fileFormatVersion: 2
-guid: 5dc99f5f9b9078442b3e8873b3d1a034
+guid: da9826e43fe02b4479b0e41f5b609b08
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Shooting_0
-    21300002: Shooting_1
-    21300004: Shooting_2
-    21300006: Shooting_3
-    21300008: Shooting_4
+    21300000: SheepSpriteSheet_0
+    21300002: SheepSpriteSheet_1
+    21300004: SheepSpriteSheet_2
+    21300006: SheepSpriteSheet_3
+    21300008: SheepSpriteSheet_4
+    21300010: SheepSpriteSheet_5
+    21300012: SheepSpriteSheet_6
+    21300014: SheepSpriteSheet_7
+    21300016: SheepSpriteSheet_8
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -48,7 +52,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 75
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,13 +108,97 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shooting_0
+      name: SheepSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 830
+        width: 300
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SheepSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 830
+        width: 300
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SheepSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 830
+        width: 300
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SheepSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 415
+        width: 300
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SheepSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 415
+        width: 300
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SheepSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 415
+        width: 300
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SheepSpriteSheet_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 395
-        height: 279
+        width: 300
+        height: 415
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,13 +206,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Shooting_1
+      name: SheepSpriteSheet_7
       rect:
         serializedVersion: 2
-        x: 395
+        x: 300
         y: 0
-        width: 395
-        height: 279
+        width: 300
+        height: 415
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,41 +220,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Shooting_2
+      name: SheepSpriteSheet_8
       rect:
         serializedVersion: 2
-        x: 790
+        x: 600
         y: 0
-        width: 395
-        height: 279
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Shooting_3
-      rect:
-        serializedVersion: 2
-        x: 1185
-        y: 0
-        width: 395
-        height: 279
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Shooting_4
-      rect:
-        serializedVersion: 2
-        x: 1580
-        y: 0
-        width: 395
-        height: 279
+        width: 300
+        height: 415
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
