@@ -39,9 +39,9 @@ public class GameManagerScript : MonoBehaviour {
         m_acceleration = (p_maxSpeed - p_minSpeed) / p_maxTimer;
         m_currentSpeed = p_minSpeed;
 
-        p_scoreText.text = "Score: " + m_score;
+        p_scoreText.text = m_score.ToString();
         m_multiplier = 1.0f;
-        p_multiplyText.text = "Score x" + m_multiplier;
+        p_multiplyText.text = "Multiplier x" + m_multiplier;
         started = false;
         StartCoroutine("StartGameCountdown");
     }
