@@ -73,6 +73,9 @@ public class SpawnManager : MonoBehaviour {
     private int withoutObstacles;
     private bool cantSpawn;
 
+    public float reset_time;
+    private bool changed = false;
+
     //Function start
 
     private void Awake()
@@ -120,10 +123,6 @@ public class SpawnManager : MonoBehaviour {
 
 
         spawner_objects = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
-
-
-
-
     }
 
     public void StartGame()
@@ -162,6 +161,14 @@ public class SpawnManager : MonoBehaviour {
         }
         if (difficulty > 100)
             difficulty = 100;
+        while (reset_time > 0)
+        {
+            reset_time -= Time.deltaTime;
+            yield return null;
+        }
+        gameObject.GetComponent<SpawnReset>().ChangeVariables(this);
+        changed = true;
+        StartCoroutine(AdjustTick());
     }
 
 
@@ -463,3 +470,9 @@ public class SpawnManager : MonoBehaviour {
         eventing = false;
     }
 }
+
+/* Create event where difficulty jumps and resets to go down
+ * Coroutine, or just a function
+ * In the inspector
+ * Needs to have all the variables we use now again
+ */
