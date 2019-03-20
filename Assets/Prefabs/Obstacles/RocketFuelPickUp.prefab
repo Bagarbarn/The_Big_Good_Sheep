@@ -84,8 +84,9 @@ MonoBehaviour:
   pickup: 1
   speed_max: 0.5
   speed_addition: 0.75
+  lane: 0
   p_effectTime: 5
-  p_boostPercentage: 40
+  p_boostPercentage: 20
   RocketFuelSound: {fileID: 8300000, guid: 8c287f25bbea84c0588789c62f6fb47d, type: 3}
 --- !u!212 &212050266513460412
 SpriteRenderer:
