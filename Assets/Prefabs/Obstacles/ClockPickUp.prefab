@@ -210,6 +210,7 @@ MonoBehaviour:
   speed_max: 0.5
   speed_addition: 0.75
   p_timeToAdd: 5
+  ClockSound: {fileID: 8300000, guid: 5cfe4a0875056ea4bbfd1f24c0952f53, type: 3}
 --- !u!212 &212203092875446874
 SpriteRenderer:
   m_ObjectHideFlags: 1
