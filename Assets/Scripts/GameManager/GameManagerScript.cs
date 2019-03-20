@@ -39,9 +39,9 @@ public class GameManagerScript : MonoBehaviour {
         m_acceleration = (p_maxSpeed - p_minSpeed) / p_maxTimer;
         m_currentSpeed = p_minSpeed;
 
-        p_scoreText.text = "Score: " + m_score;
+        p_scoreText.text = m_score.ToString();
         m_multiplier = 1.0f;
-        p_multiplyText.text = "Score x" + m_multiplier;
+        p_multiplyText.text = "Multiplier x" + m_multiplier;
         started = false;
         StartCoroutine("StartGameCountdown");
     }
@@ -71,6 +71,7 @@ public class GameManagerScript : MonoBehaviour {
         countdownImage.sprite = countdownSprites[0];
         gameObject.GetComponent<TimeManager>().started = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().started = true;
+        gameObject.GetComponent<SpawnManager>().StartGame();
         //gameObject.GetComponent<SpawnManager>().started = true;
         started = true;
         while(p_startTimer >= -1)
@@ -98,7 +99,7 @@ public class GameManagerScript : MonoBehaviour {
             m_multiplier = m_comboCount / 10;
         else if (m_multiplier >= 10)
             m_multiplier = 10;
-        p_multiplyText.text = "Score x" + m_multiplier;
+        p_multiplyText.text = "Multiplier x" + m_multiplier;
 
         if (scoreToAdd >= 10 || m_multiplier >= 2.0f){
             float multipliedScore = (float)scoreToAdd * m_multiplier;
@@ -106,7 +107,7 @@ public class GameManagerScript : MonoBehaviour {
         }
 
         m_score += scoreToAdd;
-        p_scoreText.text = "Score: " + m_score;
+        p_scoreText.text = m_score.ToString();
     }
 
     public void BreakCombo()
@@ -119,7 +120,7 @@ public class GameManagerScript : MonoBehaviour {
             m_multiplier = 1.5f;
         else m_multiplier = 1.0f;
 
-        p_multiplyText.text = "Score x" + m_multiplier;
+        p_multiplyText.text = "Multiplier x" + m_multiplier;
         p_comboText.gameObject.SetActive(false);
     }
 

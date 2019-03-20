@@ -139,7 +139,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.72, y: 1.023}
+    oldSize: {x: 0.84705883, y: 1.2035294}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -161,6 +161,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_demandedColor: 
   satisfiedBleat: {fileID: 8300000, guid: 37c2a3e0972cd9d4f8e460df385ecb90, type: 3}
+  canBeCollided: 0
+  particleSystem: {fileID: 1500438419957900, guid: 1e7dabc23c0cacb42b8be6527eb49a81,
+    type: 2}
 --- !u!212 &212498636903843382
 SpriteRenderer:
   m_ObjectHideFlags: 1

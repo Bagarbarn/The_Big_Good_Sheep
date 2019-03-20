@@ -77,7 +77,11 @@ public class SheepController : MovingObjects {
         if (other.tag == "Bullet")
         {
             string bullet_color = other.gameObject.GetComponent<BulletScript>().p_color;
-            Color color_color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(bullet_color);
+            Color color_color = Color.black;
+            if (bullet_color != "Rainbow")
+            {
+                color_color = gameManagerScript.gameObject.GetComponent<ColorManager>().GetColor(bullet_color);
+            }
             particleScript.SpawnParticleSystem(iceCreamParticles, transform.position, color_color);
 
             if (bullet_color == m_demandedColor || bullet_color == "Rainbow")
@@ -113,11 +117,56 @@ public class SheepController : MovingObjects {
             //Debug.Log("Sheep Hit");
             Destroy(this.gameObject);
         }
+        else if (other.gameObject.tag == "Customer")
+        {
+            if (other.gameObject.transform.position.x < transform.position.x) // This sheep is taking over
+            {
+                p_speed = 0.5f;
+            }
+            else
+            {
+                if (p_speed < 1f)
+                    p_speed = 1f;
+            }
+        }
+        else if (other.gameObject.tag == "Obstacle")
+        {
+            if (other.transform.position.y > 2) // Top lane
+            {
+                StartCoroutine(MoveLane(false));
+            }
+            else if (other.transform.position.y > 0) // Middle lane
+            {
+                int i = Random.Range(0, 2);
+                if (i == 0) StartCoroutine(MoveLane(true));
+                else StartCoroutine(MoveLane(false));
+            }
+            else // Bottom lane
+            {
+                StartCoroutine(MoveLane(true));
+            }
+        }
     }
 
 
+    IEnumerator MoveLane(bool up)
+    {
+        float speed = 6;
+        Vector2 dir = new Vector2(0,0);
+        if (up) dir.y = 1;
+        if (!up) dir.y = -1;
 
+        float time = 2 / speed;
+        float timer = time;
 
+        while (timer > 0)
+        {
+            transform.Translate(dir * speed * Time.deltaTime);
+            spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+    }
 }
 
 

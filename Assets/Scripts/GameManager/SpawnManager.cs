@@ -121,6 +121,13 @@ public class SpawnManager : MonoBehaviour {
 
         spawner_objects = GameObject.FindGameObjectsWithTag("ObstacleSpawner");
 
+
+
+
+    }
+
+    public void StartGame()
+    {
         // Note: Game Start Routines
         StartCoroutine("tick");
         StartCoroutine("AdjustTick");
