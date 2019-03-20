@@ -14,6 +14,7 @@ public class SheepController : MovingObjects {
     private SoundScript soundManager;
     public AudioClip satisfiedBleat;
     public AudioClip satisfiedBleat2;
+    public AudioClip dissatisfiedBleat;
 
     public float p_timeValue;
     public int p_scoreValue;
@@ -107,6 +108,8 @@ public class SheepController : MovingObjects {
                 Destroy(other.gameObject);
                 gameManagerScript.AddScore(-p_scoreFailure);
                 FloatTextController.CreateFloatingText("-"+p_scoreFailure.ToString()+"p", transform, false);
+                soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+                soundManager.PlayAudio(dissatisfiedBleat);
                 //Something when wrong color hits sheeps
             }
         } else if (other.gameObject.tag == "Player")
