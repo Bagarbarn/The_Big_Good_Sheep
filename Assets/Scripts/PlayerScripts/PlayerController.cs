@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour {
     private GameObject gameManager;
     private ColorManager colorManager;
     private Transform barrelEnd;
+    public GameObject bazookaObject;
+    private Animator shootAnimator;
     private SpriteRenderer spriteRenderer;
 
     private bool m_stunned;
@@ -81,6 +83,8 @@ public class PlayerController : MonoBehaviour {
         barrelEnd = transform.Find("Barrel");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         powerBar = Resources.Load<GameObject>("PowerBar");
+        shootAnimator = bazookaObject.GetComponent<Animator>();
+
 
         invincibilityStar = transform.GetChild(2).gameObject;
         invincibilityStar.SetActive(false);
@@ -136,8 +140,10 @@ public class PlayerController : MonoBehaviour {
 
     void Shoot(GameObject bullet)
     {
+        shootAnimator.SetTrigger("shoot");
         Instantiate(bullet, barrelEnd.position, Quaternion.identity);
         shootAudio.Play();
+        //shootAnimator.ResetTrigger("shoot");
     }
 
     public IEnumerator SetStunned(float time)
