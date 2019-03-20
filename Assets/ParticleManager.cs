@@ -21,16 +21,16 @@ public class ParticleManager : MonoBehaviour {
             particles.Play();
             if (color == Color.black)
             {
-                ParticleSystem.Particle[] parts = new ParticleSystem.Particle[30];
-                particles.GetParticles(parts);
+                ParticleSystem.Particle[] parts = new ParticleSystem.Particle[particles.particleCount];
+                int num = particles.GetParticles(parts);
 
                 // Note: In theory and debug it changes the colors randomly but it is not visible in the game
                 for(int i = 0;  i < parts.Length; i++)
                 {
-                    ParticleSystem.Particle psp = parts[i];
                     float rand = Random.Range(0f, 1f);
-                    psp.startColor = gradient.Evaluate(rand);
+                    parts[i].startColor = gradient.Evaluate(rand);
                 }
+                particles.SetParticles(parts, num);
             }
             activeSystems.Add(currentSystem);
         }
