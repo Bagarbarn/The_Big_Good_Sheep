@@ -15,7 +15,7 @@ public abstract class Obstacle : MovingObjects {
     public override void Start()
     {
         base.Start();
-        Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
+        //Destroy(this.gameObject, 25 / (gameManagerScript.m_currentSpeed + p_speed));
         if (pickup)
             StartCoroutine("FloatingAnim");
     }
@@ -38,6 +38,10 @@ public abstract class Obstacle : MovingObjects {
                     ObstacleEvent(other.gameObject);
             } else
                 ObstacleEvent(other.gameObject);
+        }
+        else if (other.tag =="LeftBound")
+        {
+            Destroy(this.gameObject);
         }
     }
 

@@ -53,7 +53,7 @@ public class GameManagerScript : MonoBehaviour {
 	
 	void Update () {
 
-        if (started)
+        if (started && !gameEnded)
         {
             if (m_currentSpeed < p_maxSpeed)
                 m_currentSpeed += m_acceleration * Time.deltaTime;
@@ -156,6 +156,7 @@ public class GameManagerScript : MonoBehaviour {
         }
         else
         {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>().ShakeScreen();
             m_currentSpeed = 0;
             // Screenshake
             // Smoke particles
