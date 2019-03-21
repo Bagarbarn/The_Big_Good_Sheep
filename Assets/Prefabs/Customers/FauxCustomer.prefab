@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114288571939563394}
   - component: {fileID: 61730267320101826}
   - component: {fileID: 50483720026014390}
+  - component: {fileID: 95448319944735222}
   m_Layer: 0
   m_Name: FauxCustomer
   m_TagString: Customer
@@ -95,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1822574494949314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.51974726, y: 0.12406075, z: -0.072265625}
+  m_LocalPosition: {x: 4.909877, y: 0.29660138, z: -0.072265625}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 4248841967877894}
@@ -139,7 +140,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 1.08}
+    oldSize: {x: 0.8674699, y: 1.1710843}
     newSize: {x: 1.8270835, y: 1.2916667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -148,6 +149,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25641203, y: 0.89262915}
   m_EdgeRadius: 0
+--- !u!95 &95448319944735222
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822574494949314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45664887ed876af449328501d9bc90d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114288571939563394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +185,7 @@ MonoBehaviour:
   iceCreamParticles: {fileID: 1500438419957900, guid: 1e7dabc23c0cacb42b8be6527eb49a81,
     type: 2}
   evilLaughter: {fileID: 8300000, guid: 9bcace641bea5824a896f914fbaa81ad, type: 3}
+  HitByTruck: {fileID: 8300000, guid: b2539d2a10d0c7443a7f445894453ac7, type: 3}
 --- !u!212 &212015816446376900
 SpriteRenderer:
   m_ObjectHideFlags: 1

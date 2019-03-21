@@ -143,7 +143,6 @@ public class PlayerController : MonoBehaviour {
         shootAnimator.SetTrigger("shoot");
         Instantiate(bullet, barrelEnd.position, Quaternion.identity);
         shootAudio.Play();
-        //shootAnimator.ResetTrigger("shoot");
     }
 
     public IEnumerator SetStunned(float time)

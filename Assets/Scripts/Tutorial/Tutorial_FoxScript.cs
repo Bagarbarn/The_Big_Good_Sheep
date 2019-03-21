@@ -13,6 +13,7 @@ public class Tutorial_FoxScript : MonoBehaviour {
     [HideInInspector]
     public bool canBeCollided;
 
+    private Animator m_animator;
     private ParticleManager particleScript;
     public GameObject particleSystem;
 
@@ -20,6 +21,7 @@ public class Tutorial_FoxScript : MonoBehaviour {
     {
         demandSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        m_animator = gameObject.GetComponent<Animator>();
         canBeCollided = false;
         particleScript = GameObject.FindWithTag("GameController").GetComponent<ParticleManager>();
     }
@@ -31,6 +33,11 @@ public class Tutorial_FoxScript : MonoBehaviour {
         if (demandSprite != null)
             demandSprite.color = GameObject.FindGameObjectWithTag("GameController").GetComponent<ColorManager>().GetColor(m_demandedColor);
 
+    }
+
+    public void StopAnimation()
+    {
+        m_animator.speed = 0.0f;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
