@@ -15,7 +15,6 @@ public class FauxCustomerController : MovingObjects {
     SpriteRenderer demandSprite;
     SoundScript soundManager;
     public AudioClip evilLaughter;
-    public AudioClip HitByTruck;
 
     ScreenShake ss;
 
@@ -68,8 +67,6 @@ public class FauxCustomerController : MovingObjects {
             FloatTextController.CreateFloatingText((multiplier * p_increasePoints).ToString()+"p", transform, true);
             ss.ShakeScreen();
             Destroy(this.gameObject);
-            soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
-            soundManager.PlayAudio(HitByTruck);
         }
         else if (other.gameObject.tag == "Customer")
         {
