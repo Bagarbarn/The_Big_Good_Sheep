@@ -15,6 +15,7 @@ public class SheepController : MovingObjects {
     public AudioClip satisfiedBleat;
     public AudioClip satisfiedBleat2;
     public AudioClip dissatisfiedBleat;
+    public AudioClip HitByTruck;
 
     public float p_timeValue;
     public int p_scoreValue;
@@ -119,6 +120,8 @@ public class SheepController : MovingObjects {
             ss.ShakeScreen();
             //Debug.Log("Sheep Hit");
             Destroy(this.gameObject);
+            soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+            soundManager.PlayAudio(HitByTruck);
         }
         else if (other.gameObject.tag == "Customer")
         {
