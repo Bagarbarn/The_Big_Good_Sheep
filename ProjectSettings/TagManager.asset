@@ -17,6 +17,7 @@ TagManager:
   - PowerBar
   - Customer
   - PauseMenuImage
+  - LeftBound
   layers:
   - Default
   - TransparentFX

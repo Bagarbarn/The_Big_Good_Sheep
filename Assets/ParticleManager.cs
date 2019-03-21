@@ -22,6 +22,7 @@ public class ParticleManager : MonoBehaviour {
 
     List<ParticleEffect> activeSystems = new List<ParticleEffect>();
 
+    List<ParticleSystem> neutralSystems = new List<ParticleSystem>();
 
 
     public void SpawnParticleSystem(GameObject system, Vector2 position, Color color)
@@ -39,27 +40,19 @@ public class ParticleManager : MonoBehaviour {
             if (color != Color.black) main.startColor = color;
             else { main.startColor = main.startColor.Evaluate(Random.Range(0f, 1f)); partEffect.rainbow = true; }
             particles.Play();
-
-
-
-            //if (color == Color.black)
-            //{
-            //    ParticleSystem.Particle[] parts = new ParticleSystem.Particle[particles.particleCount];
-            //    int num = particles.GetParticles(parts);
-            //    Debug.Log(parts.Length);
-
-            //    // Note: In theory and debug it changes the colors randomly but it is not visible in the game
-            //    for(int i = 0;  i < parts.Length; i++)
-            //    {
-            //        Debug.Log("I'm doing it");
-            //        float rand = Random.Range(0f, 1f);
-            //        parts[i].startColor = main.startColor.Evaluate(Random.Range(0f, 1f));
-            //    }
-            //    Debug.Log("I can change the system!");
-            //    currentSystem.GetComponent<ParticleSystem>().SetParticles(parts, parts.Length);
-            //}
             activeSystems.Add(partEffect);
         }
+    }
+
+
+    public void SpawnNeutralParticleSystem(GameObject system, Vector2 position)
+    {
+        GameObject particleEffect = Instantiate(system, position, Quaternion.identity);
+
+        ParticleSystem particalSystem = particleEffect.GetComponent<ParticleSystem>();
+        particalSystem.Play();
+
+        neutralSystems.Add(particalSystem);
     }
 
     private void Update()
@@ -72,11 +65,20 @@ public class ParticleManager : MonoBehaviour {
                 activeSystems.RemoveAt(i);
             }
         }
+
+        for (int i = 0; i < neutralSystems.Count; i++)
+        {
+            if (!neutralSystems[i].isPlaying)
+            {
+                Destroy(neutralSystems[i].gameObject);
+                neutralSystems.RemoveAt(i);
+            }
+        }
+
     }
 
     private void LateUpdate()
     {
-
         for (int i = 0; i < activeSystems.Count; i++)
         {
             if (activeSystems[i].rainbow && !activeSystems[i].colorsSet)
