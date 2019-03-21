@@ -266,6 +266,7 @@ MonoBehaviour:
   speed_addition: 0.05
   lane: 0
   p_timeToSubstract: 6
+  ConeSound: {fileID: 8300000, guid: bd9524c088687a74fa9cff5df3492222, type: 3}
 --- !u!212 &212028538589833026
 SpriteRenderer:
   m_ObjectHideFlags: 1
