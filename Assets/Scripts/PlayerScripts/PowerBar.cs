@@ -20,7 +20,7 @@ public class PowerBar : MonoBehaviour {
         if (barCheck.Length > 1){
             barOffset += (-0.2f * (barCheck.Length-1));
         }
-        transform.localPosition = new Vector3(-0.4f, -0.9f+barOffset, 0);
+        transform.localPosition = new Vector3(-0.4f, -1.3f+barOffset, 0);
     }
 
     public void ChangeActive(bool active)

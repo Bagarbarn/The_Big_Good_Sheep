@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: de128407c1bb568489f32333584d51a0
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: FoxSpriteSheet_0
+    21300002: FoxSpriteSheet_1
+    21300004: FoxSpriteSheet_2
+    21300006: FoxSpriteSheet_3
+    21300008: FoxSpriteSheet_4
+    21300010: FoxSpriteSheet_5
+    21300012: FoxSpriteSheet_6
+    21300014: FoxSpriteSheet_7
+    21300016: FoxSpriteSheet_8
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -38,12 +47,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 830
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -65,9 +74,145 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: FoxSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3600
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FoxSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 3600
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FoxSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 3600
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FoxSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1800
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FoxSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 1800
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FoxSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 1800
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FoxSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FoxSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 0
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FoxSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 0
+        width: 1300
+        height: 1800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
