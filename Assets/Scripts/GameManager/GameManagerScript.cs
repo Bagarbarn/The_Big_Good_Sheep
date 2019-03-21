@@ -22,12 +22,17 @@ public class GameManagerScript : MonoBehaviour {
     public Text p_comboText;
     public Text p_multiplyText;
 
+    public float end_acceleration_time;
+    public float end_waitTime;
+
     [HideInInspector]
     public float m_multiplier;
     private int m_score;
     private int m_comboCount;
     private float m_acceleration;
 
+    [HideInInspector]
+    public bool gameEnded;
 
     [HideInInspector]
     public float m_currentSpeed;
@@ -124,11 +129,47 @@ public class GameManagerScript : MonoBehaviour {
         p_comboText.gameObject.SetActive(false);
     }
 
-    public void EndGame()
+    public void EndGame(bool blocked = false)
     {
+        gameEnded = true;
+
         GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
         Debug.Log("Times up! \nWait... Am I supposed to do something here?");
-        if (t_gameEnd)
-            SceneManager.LoadScene("ScoreBoard");
+        StartCoroutine(EndTheGame(blocked));
+            //if (t_gameEnd)
+                //SceneManager.LoadScene("ScoreBoard");
+
+    }
+
+    IEnumerator EndTheGame(bool blocked)
+    {
+
+        if (!blocked)
+        {
+            float acceleration = (m_currentSpeed / end_acceleration_time);
+            while (m_currentSpeed > 0)
+            {
+                m_currentSpeed -= acceleration * Time.deltaTime;
+                if (m_currentSpeed < 0) m_currentSpeed = 0;
+                yield return null;
+            }
+        }
+        else
+        {
+            m_currentSpeed = 0;
+            // Screenshake
+            // Smoke particles
+            // Everything
+            // Damn
+        }
+
+
+        while (end_waitTime > 0)
+        {
+            end_waitTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        SceneManager.LoadScene("ScoreBoard");
     }
 }

@@ -2599,13 +2599,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bb9a7724fab5d5241a810840c17cd6ce, type: 3}
   - {fileID: 21300000, guid: 504f11bccf79c6844b011c8ec3efb22a, type: 3}
   - {fileID: 21300000, guid: fe2e1f8b2c2c6834b83b2aa2bfdd3c6b, type: 3}
-  p_minSpeed: 3
+  p_minSpeed: 6
   p_maxSpeed: 6
   p_maxTimer: 60
   p_scoreText: {fileID: 47789418}
   p_comboText: {fileID: 583359641}
   p_multiplyText: {fileID: 490836344}
+  end_acceleration_time: 1
+  end_waitTime: 3
   m_multiplier: 0
+  gameEnded: 0
   m_currentSpeed: 0
 --- !u!4 &1638067195
 Transform:
@@ -2655,7 +2658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_timeText: {fileID: 777019279}
-  p_timeLimit: 45
+  p_timeLimit: 5
   started: 0
 --- !u!114 &1638067198
 MonoBehaviour:
@@ -3513,6 +3516,11 @@ Prefab:
       propertyPath: bazookaObject
       value: 
       objectReference: {fileID: 1966725674}
+    - target: {fileID: 61844785788976288, guid: c0424c22fd7c5bf4dac718f7a11551d1,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114529237953857696, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c0424c22fd7c5bf4dac718f7a11551d1, type: 2}

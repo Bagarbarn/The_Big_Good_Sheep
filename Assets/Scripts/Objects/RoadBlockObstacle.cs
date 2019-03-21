@@ -10,9 +10,11 @@ public class RoadBlockObstacle : Obstacle {
     public override void ObstacleEvent(GameObject playerObject)
     {
 
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>().EndGame();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>().EndGame(true);
 
-        base.ObstacleEvent(playerObject);
+        Debug.Log("Hello? Do you work?");
+
+        //base.ObstacleEvent(playerObject);
         soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
         soundManager.PlayAudio(RoadBlockSound);
     }

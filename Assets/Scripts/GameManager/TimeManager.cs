@@ -19,12 +19,13 @@ public class TimeManager : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (started)
+        if (started && !gameObject.GetComponent<GameManagerScript>().gameEnded)
             m_currentTime -= Time.deltaTime;
         p_timeText.text =  m_currentTime.ToString("F1");
 
         if (m_currentTime < 0)
         {
+            m_currentTime = 0;
             Debug.Log("Time's up!");
             gameObject.GetComponent<GameManagerScript>().EndGame();
         }
