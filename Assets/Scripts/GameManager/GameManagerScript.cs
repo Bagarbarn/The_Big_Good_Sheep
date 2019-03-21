@@ -133,6 +133,7 @@ public class GameManagerScript : MonoBehaviour {
     {
         gameEnded = true;
 
+        GameObject.FindGameObjectWithTag("Player").transform.Find("SmokeParticles").gameObject.SetActive(true);
         GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
         Debug.Log("Times up! \nWait... Am I supposed to do something here?");
         StartCoroutine(EndTheGame(blocked));
@@ -147,6 +148,7 @@ public class GameManagerScript : MonoBehaviour {
         if (!blocked)
         {
             float acceleration = (m_currentSpeed / end_acceleration_time);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>().ShakeScreen();
             while (m_currentSpeed > 0)
             {
                 m_currentSpeed -= acceleration * Time.deltaTime;
