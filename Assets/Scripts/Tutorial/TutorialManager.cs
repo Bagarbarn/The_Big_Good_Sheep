@@ -448,12 +448,20 @@ public class TutorialManager : MonoBehaviour {
         currentSheep.GetComponent<Tutorial_FoxScript>().ObtainColor("blue");
         tutorialUI.infoText.text = "Another customer? How unexpected...";
 
+        stoppedAnim = false;
         while (currentSheep != null)
         {
             if (currentSheep.transform.position.x > tutorial_inwardMovement)
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+
+            //pausing the fox animation
+            else if (stoppedAnim == false){
+                currentSheep.GetComponent<Tutorial_FoxScript>().StopAnimation();
+                stoppedAnim = true;
+            }
             yield return null;
         }
+
         tutorialUI.infoText.text = "Oh no, it was a fox! It just wasted your time.";
         tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
         bool pressed = false;
@@ -474,6 +482,7 @@ public class TutorialManager : MonoBehaviour {
             yield return null;
         }
 
+
         //Fox to run over
         currentSheep = Instantiate(foxObject, spawnPoint.position, Quaternion.identity);
         currentSheep.GetComponent<Tutorial_FoxScript>().ObtainColor("red");
@@ -482,12 +491,20 @@ public class TutorialManager : MonoBehaviour {
         tutorialUI.ChangeActive(tutorialUI.infoText, true);
         currentSheep.GetComponent<Tutorial_FoxScript>().canBeCollided = true;
 
+        stoppedAnim = false;
         while (currentSheep != null)
         {
             if (currentSheep.transform.position.x > (tutorial_inwardMovement/2))
                 currentSheep.transform.Translate(Vector2.left * tutorial_moveSpeed * Time.deltaTime);
+
+            //pausing the fox animation
+            else if (stoppedAnim == false){
+                currentSheep.GetComponent<Tutorial_FoxScript>().StopAnimation();
+                stoppedAnim = true;
+            }
             yield return null;
         }
+
         tutorialUI.infoText.text = "Nice! That's one less predator to compete with.";
         tutorialUI.ChangeActive(tutorialUI.spacebarText, true);
         pressed = false;
