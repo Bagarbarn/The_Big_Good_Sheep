@@ -240,7 +240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: 6429e5c26ecfcbc49a250318d00457de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25ede1d92b9e4c14aae195e7bab9286a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2206,7 +2206,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: 6429e5c26ecfcbc49a250318d00457de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25ede1d92b9e4c14aae195e7bab9286a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2527,7 +2527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6929377f556bfa84f8189afcecbb5591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t_startEvent: 0
+  t_startEvent: 5
   transitionTime: 2
   tutorial_moveSpeed: 3
   tutorial_inwardMovement: 5
@@ -2543,6 +2543,7 @@ MonoBehaviour:
   tutorial_waitTime: 2
   endTimer: 3
   backgrounds: []
+  gameEnded: 0
 --- !u!4 &1017053779
 Transform:
   m_ObjectHideFlags: 0
@@ -3752,6 +3753,7 @@ MonoBehaviour:
   p_speed_x: 5
   bullet_speed: 6
   invincible: 0
+  gameManager: {fileID: 0}
   bazookaObject: {fileID: 511433781}
   currentColor: 
   cameraScript: {fileID: 0}
@@ -3759,6 +3761,7 @@ MonoBehaviour:
   p_boostPercentage: 0
   p_overdriveShotInterval: 0
   started: 0
+  game_ended: 0
 --- !u!212 &1842606560
 SpriteRenderer:
   m_ObjectHideFlags: 0

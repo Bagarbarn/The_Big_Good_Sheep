@@ -50,6 +50,7 @@ public class Tutorial_SheepScript : MonoBehaviour {
         {
             string color = other.GetComponent<BulletScript>().p_color;
             Color color_color = GameObject.FindGameObjectWithTag("GameController").GetComponent<ColorManager>().GetColor(color);
+            if (color == "Rainbow") color_color = Color.black;
             particleScript.SpawnParticleSystem(particleSystem, transform.position, color_color);
 
             if (other.gameObject.GetComponent<BulletScript>().p_color == m_demandedColor ||

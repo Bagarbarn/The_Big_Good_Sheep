@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour {
     private float m_currentSpeed_y;
     private float m_currentSpeed_x;
 
+    [SerializeField]
     private GameObject gameManager;
     private ColorManager colorManager;
     private Transform barrelEnd;
@@ -63,11 +64,16 @@ public class PlayerController : MonoBehaviour {
     public float p_boostPercentage;
     [HideInInspector]
     public float p_overdriveShotInterval;
-    //[HideInInspector]
+    [HideInInspector]
     public bool started;
+
+    [HideInInspector]
+    public bool game_ended;
 
     // Use this for initialization
     void Start() {
+        game_ended = false;
+
         invincible = false;
         m_stunned = false;
         m_overdrive = false;
@@ -90,13 +96,24 @@ public class PlayerController : MonoBehaviour {
         invincibilityStar.SetActive(false);
 
         key_cancelColor = KeyCode.I;
+
+
+
     }
 
     // Update is called once per frame
     void Update() {
-        // if (!m_stunned && started && !gameManager.GetComponent<GameManagerScript>().gameEnded)
+
+        if (!m_stunned && started && !game_ended)
             GetInput();
         spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
+        Transform sprites = transform.Find("Sprites");
+        Transform body = sprites.Find("Car body");
+        body.GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
+        sprites.Find("Wheel1").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
+        sprites.Find("Wheel2").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
+        body.Find("Wolf & bazooka").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
+        body.Find("Smoke").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
     }
 
     void GetInput()
