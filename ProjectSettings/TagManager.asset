@@ -18,6 +18,7 @@ TagManager:
   - Customer
   - PauseMenuImage
   - LeftBound
+  - UIButtons
   layers:
   - Default
   - TransparentFX
