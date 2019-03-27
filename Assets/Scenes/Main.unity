@@ -7493,7 +7493,7 @@ Prefab:
     - target: {fileID: 224692959762721084, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224692959762721084, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
@@ -10107,7 +10107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: 6429e5c26ecfcbc49a250318d00457de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25ede1d92b9e4c14aae195e7bab9286a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10204,7 +10204,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: 6429e5c26ecfcbc49a250318d00457de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25ede1d92b9e4c14aae195e7bab9286a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
