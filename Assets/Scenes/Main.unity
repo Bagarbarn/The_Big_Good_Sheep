@@ -366,7 +366,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464492528}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7402,12 +7402,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464492528}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 40, y: 56}
-  m_SizeDelta: {x: 150, y: 25}
+  m_AnchoredPosition: {x: 64.9, y: 50.9}
+  m_SizeDelta: {x: 120, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &490836344
 MonoBehaviour:
@@ -7429,8 +7429,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 687dcec43b2f746efa5a1ceaf3ba0276, type: 3}
-    m_FontSize: 23
+    m_Font: {fileID: 12800000, guid: 1d03b0a9f92cb47489bd5dc9414e6cef, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -7441,7 +7441,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score xx
+  m_Text: Multiplier x.x
 --- !u!222 &490836345
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7665,22 +7665,22 @@ Prefab:
     - target: {fileID: 224761822405059982, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224304872326071656, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224460326250418660, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224302371934842902, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224870028044115528, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
@@ -7710,18 +7710,18 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 687dcec43b2f746efa5a1ceaf3ba0276,
+      objectReference: {fileID: 12800000, guid: 1d03b0a9f92cb47489bd5dc9414e6cef,
         type: 3}
     - target: {fileID: 114781856003583168, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_FontData.m_FontSize
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 114602746251970454, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 687dcec43b2f746efa5a1ceaf3ba0276,
+      objectReference: {fileID: 12800000, guid: 1d03b0a9f92cb47489bd5dc9414e6cef,
         type: 3}
     - target: {fileID: 114602746251970454, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
@@ -7869,7 +7869,7 @@ Prefab:
     - target: {fileID: 114781856003583168, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_FontData.m_Alignment
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224302371934842902, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
@@ -8071,12 +8071,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464492528}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 56, y: 30.999985}
-  m_SizeDelta: {x: 114.51999, y: 50}
+  m_AnchoredPosition: {x: 70.29998, y: 36.5}
+  m_SizeDelta: {x: 110, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583359641
 MonoBehaviour:
@@ -8098,8 +8098,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 687dcec43b2f746efa5a1ceaf3ba0276, type: 3}
-    m_FontSize: 28
+    m_Font: {fileID: 12800000, guid: 1d03b0a9f92cb47489bd5dc9414e6cef, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -9011,7 +9011,7 @@ RectTransform:
   - {fileID: 1073480686}
   - {fileID: 1939983302}
   m_Father: {fileID: 464492528}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -9881,7 +9881,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464492528}
-  m_RootOrder: 2
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -11352,6 +11352,7 @@ MonoBehaviour:
   - {fileID: 299483982}
   - {fileID: 1307844163}
   - {fileID: 1214061997}
+  isPaused: 0
 --- !u!114 &2069238904
 MonoBehaviour:
   m_ObjectHideFlags: 0
