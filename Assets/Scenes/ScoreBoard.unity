@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 1713561460}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: EditorOnly
+  m_TagString: UIButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1548,6 +1548,7 @@ MonoBehaviour:
   - {fileID: 440070907}
   - {fileID: 1621093674}
   - {fileID: 1657748710}
+  isPaused: 0
 --- !u!1 &1789714719
 GameObject:
   m_ObjectHideFlags: 0

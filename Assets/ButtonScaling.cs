@@ -14,7 +14,7 @@ public class ButtonScaling : MonoBehaviour {
 
     PauseMenu pause;
 
-    bool isPaused = false;
+    public bool isPaused;
 
     public struct Holder
     {
@@ -26,7 +26,8 @@ public class ButtonScaling : MonoBehaviour {
 
     private void Start()
     {
-        if (gameObject.tag == "EditorOnly") isPaused = true;
+        if (gameObject.tag == "UIButtons") isPaused = true;
+        else
         pause = gameObject.GetComponent<PauseMenu>();
         distance = 1f - color_value_low;
         for (int i = 0; i < images.Length; i++)
@@ -70,7 +71,7 @@ public class ButtonScaling : MonoBehaviour {
 
     public void Update()
     {
-        if (Time.timeScale == 1f && isPaused && gameObject.tag != "EditorOnly")
+        if (Time.timeScale == 1f && isPaused && gameObject.tag != "UIButtons")
         {
             isPaused = false;
             for (int i = 0; i < holders.Length; i++)
@@ -93,6 +94,7 @@ public class ButtonScaling : MonoBehaviour {
         {
             foreach (Holder holder in holders)
             {
+                
                 if (holder.mouseOn && holder.image.color.r > color_value_low)
                 {
                     
