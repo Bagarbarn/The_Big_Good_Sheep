@@ -20,3 +20,7 @@ Highscore
 0
 Highscore
 0
+
+-15
+
+-55

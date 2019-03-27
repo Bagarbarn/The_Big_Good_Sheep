@@ -371,7 +371,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364409125
 MonoBehaviour:
@@ -8763,6 +8763,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1940030147}
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1073480688
@@ -8870,6 +8881,7 @@ MonoBehaviour:
   myFx: {fileID: 1073480692}
   hoverFx: {fileID: 8300000, guid: 7d4146d0ccf58e745a6344f2e2a7b790, type: 3}
   clickFx: {fileID: 8300000, guid: 8e74a0a7a947bdb47b7ec82333b6c6f9, type: 3}
+  soundScript: {fileID: 0}
 --- !u!82 &1073480692
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9534,10 +9546,10 @@ MonoBehaviour:
   p_startTimer: 3
   countdownImage: {fileID: 364409125}
   countdownSprites:
-  - {fileID: 21300000, guid: 5f191da6d4b70d34b969ee0891379a75, type: 3}
-  - {fileID: 21300000, guid: bb9a7724fab5d5241a810840c17cd6ce, type: 3}
-  - {fileID: 21300000, guid: 504f11bccf79c6844b011c8ec3efb22a, type: 3}
-  - {fileID: 21300000, guid: fe2e1f8b2c2c6834b83b2aa2bfdd3c6b, type: 3}
+  - {fileID: 21300000, guid: eb2dd78a2eb1b0a4d92fe280d8c55167, type: 3}
+  - {fileID: 21300000, guid: cf3be769f9e35da47841aa7b69aa8dff, type: 3}
+  - {fileID: 21300000, guid: 8b7b04457fbc4174e9a308f9ef6e1274, type: 3}
+  - {fileID: 21300000, guid: ce4173fa8a35e9c4b8dc77cb9e4c042f, type: 3}
   p_minSpeed: 3
   p_maxSpeed: 6
   p_maxTimer: 60
@@ -10560,6 +10572,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1940030147}
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1939983304
@@ -10684,6 +10707,7 @@ MonoBehaviour:
   myFx: {fileID: 1939983308}
   hoverFx: {fileID: 8300000, guid: 7d4146d0ccf58e745a6344f2e2a7b790, type: 3}
   clickFx: {fileID: 8300000, guid: 8e74a0a7a947bdb47b7ec82333b6c6f9, type: 3}
+  soundScript: {fileID: 0}
 --- !u!82 &1939983308
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10845,7 +10869,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1940030147}
-        m_MethodName: HoverSound
+        m_MethodName: ClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11053,6 +11077,7 @@ MonoBehaviour:
   myFx: {fileID: 1940030146}
   hoverFx: {fileID: 8300000, guid: 7d4146d0ccf58e745a6344f2e2a7b790, type: 3}
   clickFx: {fileID: 8300000, guid: 8e74a0a7a947bdb47b7ec82333b6c6f9, type: 3}
+  soundScript: {fileID: 0}
 --- !u!1 &1946676985
 GameObject:
   m_ObjectHideFlags: 0
@@ -11352,6 +11377,7 @@ MonoBehaviour:
   - {fileID: 299483982}
   - {fileID: 1307844163}
   - {fileID: 1214061997}
+  isPaused: 0
 --- !u!114 &2069238904
 MonoBehaviour:
   m_ObjectHideFlags: 0

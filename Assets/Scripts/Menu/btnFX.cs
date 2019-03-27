@@ -8,12 +8,21 @@ public class btnFX : MonoBehaviour {
     public AudioClip hoverFx;
     public AudioClip clickFx;
 
+    public SoundScript soundScript;
+
+    void Start()
+    {
+        if(GameObject.FindGameObjectWithTag("SoundManager") != null)
+        soundScript = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundScript>();
+    }
+
     public void HoverSound()
     {
         myFx.PlayOneShot(hoverFx);
     }
     public void ClickSound()
     {
-        myFx.PlayOneShot(clickFx);
+        if (soundScript != null)
+            soundScript.PlayAudio(clickFx);
     }
 }
