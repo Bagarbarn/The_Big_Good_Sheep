@@ -110,10 +110,10 @@ public class PlayerController : MonoBehaviour {
         Transform sprites = transform.Find("Sprites");
         Transform body = sprites.Find("Car body");
         body.GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
-        sprites.Find("Wheel1").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
-        sprites.Find("Wheel2").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
-        body.Find("Wolf & bazooka").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
-        body.Find("Smoke").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder;
+        sprites.Find("Wheel1").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder + 10;
+        sprites.Find("Wheel2").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder + 10;
+        body.Find("Wolf & bazooka").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder + 10;
+        body.Find("Smoke").GetComponent<SpriteRenderer>().sortingOrder = spriteRenderer.sortingOrder + 10;
     }
 
     void GetInput()
