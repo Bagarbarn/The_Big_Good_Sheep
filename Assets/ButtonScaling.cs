@@ -12,6 +12,7 @@ public class ButtonScaling : MonoBehaviour {
 
     public Image[] images = new Image[3];
 
+    [SerializeField]
     PauseMenu pause;
 
     public bool isPaused;
