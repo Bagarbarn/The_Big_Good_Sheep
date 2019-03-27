@@ -240,7 +240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: 6429e5c26ecfcbc49a250318d00457de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25ede1d92b9e4c14aae195e7bab9286a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1467,7 +1467,7 @@ Prefab:
     - target: {fileID: 224692959762721084, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224692959762721084, guid: a0c39ccb03f87d344b09500bb6edcb74,
         type: 2}
@@ -2206,7 +2206,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: 6429e5c26ecfcbc49a250318d00457de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25ede1d92b9e4c14aae195e7bab9286a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2472,7 +2472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1017053776
 GameObject:
@@ -2543,6 +2543,7 @@ MonoBehaviour:
   tutorial_waitTime: 2
   endTimer: 3
   backgrounds: []
+  gameEnded: 0
 --- !u!4 &1017053779
 Transform:
   m_ObjectHideFlags: 0
@@ -3596,7 +3597,7 @@ Transform:
   - {fileID: 266554203}
   - {fileID: 791313291}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1842606556
 AudioSource:
@@ -3752,6 +3753,7 @@ MonoBehaviour:
   p_speed_x: 5
   bullet_speed: 6
   invincible: 0
+  gameManager: {fileID: 0}
   bazookaObject: {fileID: 511433781}
   currentColor: 
   cameraScript: {fileID: 0}
@@ -3759,6 +3761,7 @@ MonoBehaviour:
   p_boostPercentage: 0
   p_overdriveShotInterval: 0
   started: 0
+  game_ended: 0
 --- !u!212 &1842606560
 SpriteRenderer:
   m_ObjectHideFlags: 0

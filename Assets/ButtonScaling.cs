@@ -26,6 +26,7 @@ public class ButtonScaling : MonoBehaviour {
 
     private void Start()
     {
+        if (gameObject.tag == "EditorOnly") isPaused = true;
         pause = gameObject.GetComponent<PauseMenu>();
         distance = 1f - color_value_low;
         for (int i = 0; i < images.Length; i++)
@@ -69,7 +70,7 @@ public class ButtonScaling : MonoBehaviour {
 
     public void Update()
     {
-        if (Time.timeScale == 1f && isPaused)
+        if (Time.timeScale == 1f && isPaused && gameObject.tag != "EditorOnly")
         {
             isPaused = false;
             for (int i = 0; i < holders.Length; i++)

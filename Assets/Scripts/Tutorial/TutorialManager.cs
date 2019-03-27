@@ -17,7 +17,7 @@ public class TutorialManager : MonoBehaviour {
 
     GameObject playerObject;
     PlayerController playerController;
-    TutorialUIScript tutorialUI;
+    TutorialUIScript tutorialUI;    
 
     Transform spawnPoint;
     Transform offScreenPoint;
@@ -50,6 +50,9 @@ public class TutorialManager : MonoBehaviour {
 
     private int fuck_ups;
     bool cancelInfoReceived = false;
+
+    [HideInInspector]
+    public bool gameEnded = false;
 
     public void Awake()
     {

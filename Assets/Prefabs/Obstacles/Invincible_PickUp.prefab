@@ -173,8 +173,9 @@ MonoBehaviour:
   pickup: 1
   speed_max: 0.5
   speed_addition: 0.75
+  lane: 0
   duration: 10
-  InvincibilitySound: {fileID: 8300000, guid: d401f7965a011e04bbca39ad33813a02, type: 3}
+  InvincibilitySound: {fileID: 8300000, guid: f91bc9eaa02d02a44978d7d85a0b64ac, type: 3}
 --- !u!212 &212298720003904570
 SpriteRenderer:
   m_ObjectHideFlags: 1
