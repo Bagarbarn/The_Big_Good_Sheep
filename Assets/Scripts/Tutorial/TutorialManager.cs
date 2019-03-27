@@ -17,7 +17,7 @@ public class TutorialManager : MonoBehaviour {
 
     GameObject playerObject;
     PlayerController playerController;
-    TutorialUIScript tutorialUI;
+    TutorialUIScript tutorialUI;    
 
     Transform spawnPoint;
     Transform offScreenPoint;

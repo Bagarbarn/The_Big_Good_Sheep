@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (!m_stunned && started && !gameManager.GetComponent<GameManagerScript>().gameEnded)
+        // if (!m_stunned && started && !gameManager.GetComponent<GameManagerScript>().gameEnded)
             GetInput();
         spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
     }
