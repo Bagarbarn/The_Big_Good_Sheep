@@ -6,6 +6,10 @@ Murial
 154
 Mariam
 114
+me
+20
+yeet
+0
 Highscore
 0
 Highscore

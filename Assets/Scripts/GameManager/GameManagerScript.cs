@@ -132,7 +132,7 @@ public class GameManagerScript : MonoBehaviour {
     public void EndGame(bool blocked = false)
     {
         gameEnded = true;
-
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().game_ended = true;
         GameObject.FindGameObjectWithTag("Player").transform.Find("SmokeParticles").gameObject.SetActive(true);
         GameObject.FindGameObjectWithTag("ScoreHolder").GetComponent<ScoreHolderScript>().p_endScore = m_score;
         Debug.Log("Times up! \nWait... Am I supposed to do something here?");

@@ -51,6 +51,9 @@ public class TutorialManager : MonoBehaviour {
     private int fuck_ups;
     bool cancelInfoReceived = false;
 
+    [HideInInspector]
+    public bool gameEnded = false;
+
     public void Awake()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
